@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Claro <img src="img/bandera-puerto-rico.png" alt="Bandera de Puerto Rico"> Entrenamiento OWASP Top 10</title>
+  <title>Claro Entrenamiento OWASP Top 10</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -47,11 +47,28 @@
 
   <button id="scroll-up-button" onclick="scrollToTop()">Scroll Up</button>
 
-  <script src="scripts.js"></script>
   <script>
-    function openVideo(url) {
-      window.open(url, '_blank');
-    }
-  </script>
-</body>
-</html>
+    const owasp_data = {
+      "A1": {
+          "OWASP Top 10": "Control de Acceso Roto | Broken Access Control",
+          "Tipo de Ataque": "Fallos de autorización.",
+          "Consecuencia del Ataque": "Acceso no autorizado a datos o funcionalidades.",
+          "Ejemplo Simple": "Un usuario cambia la URL para acceder a la cuenta de otro usuario sin permiso.",
+          "Cumple": [
+              {
+                  "Descripcion": "Verificar correctamente la autenticación y autorización.",
+                  "Codigo": "if (user.isAuthenticated && user.hasPermission('viewPage')) {\n  // Allow access\n}",
+                  "ResultadoEsperado": "Acceso autorizado solo a usuarios con permisos válidos."
+              }
+          ],
+          "No Cumple": [
+              {
+                  "Descripcion": "No verificar correctamente la autenticación y autorización.",
+                  "Codigo": "if ('admin' in request.GET) {\n  // Allow access\n}",
+                  "ResultadoEsperado": "Acceso no autorizado a datos o funcionalidades."
+              }
+          ],
+          "Imagen": "img/a1.png"
+      },
+      "A2": {
+      
