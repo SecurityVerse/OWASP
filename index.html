@@ -71,4 +71,356 @@
           "Imagen": "img/a1.png"
       },
       "A2": {
+          "OWASP Top 10": "Fallos Criptográficos | Cryptographic Failures",
+          "Tipo de Ataque": "Encriptación débil.",
+          "Consecuencia del Ataque": "Robo o manipulación de datos.",
+          "Ejemplo Simple": "Un atacante descifra datos sensibles debido a algoritmos de encriptación débiles.",
+          "Cumple": [
+              {
+                  "Descripcion": "Usar algoritmos criptográficos fuertes.",
+                  "Codigo": "const encryptedData = encrypt(data, 'AES-256');",
+                  "ResultadoEsperado": "Los datos sensibles están protegidos contra accesos no autorizados."
+              }
+          ],
+          "No Cumple": [
+              {
+                  "Descripcion": "Usar algoritmos criptográficos débiles.",
+                  "Codigo": "const encryptedData = encrypt(data, 'DES');",
+                  "ResultadoEsperado": "Los datos sensibles pueden ser descifrados y comprometidos fácilmente."
+              }
+          ],
+          "Imagen": "img/a2.png"
+      },
+      "A3": {
+          "OWASP Top 10": "Inyección | Injection",
+          "Tipo de Ataque": "Inyección de código.",
+          "Consecuencia del Ataque": "Pérdida de datos, corrupción o acceso no autorizado.",
+          "Ejemplo Simple": "Un atacante envía código SQL malicioso en un campo de formulario para acceder a la base de datos.",
+          "Cumple": [
+              {
+                  "Descripcion": "Usar consultas preparadas para evitar la inyección SQL.",
+                  "Codigo": "query = \"SELECT * FROM users WHERE username = ? AND password = ?\";",
+                  "ResultadoEsperado": "Los datos sensibles están protegidos contra inyecciones de código."
+              }
+          ],
+          "No Cumple": [
+              {
+                  "Descripcion": "Concatenación directa de strings en la consulta SQL, lo que permite la inyección SQL.",
+                  "Codigo": "query = \"SELECT * FROM users WHERE username = '\" + username + \"' AND password = '\" + password + \"'\";",
+                  "ResultadoEsperado": "Acceso no autorizado y posible manipulación de datos."
+              }
+          ],
+          "Imagen": "img/a3.png"
+      },
+      "A4": {
+          "OWASP Top 10": "Diseño Inseguro | Insecure Design",
+          "Tipo de Ataque": "Fallos de diseño o falta de controles de seguridad.",
+          "Consecuencia del Ataque": "Vulnerabilidades del sistema.",
+          "Ejemplo Simple": "Una aplicación carece de limitación de tasa en los intentos de inicio de sesión, permitiendo a un atacante realizar un ataque de fuerza bruta para adivinar contraseñas.",
+          "Cumple": [
+              {
+                  "Descripcion": "Implementar bloqueo de cuenta temporal después de varios intentos fallidos de inicio de sesión.",
+                  "Codigo": "if (loginAttempts >= 3) {\n  lockAccount();\n}",
+                  "ResultadoEsperado": "Se evita el ataque de fuerza bruta."
+              }
+          ],
+          "No Cumple": [
+              {
+                  "Descripcion": "Permitir intentos de inicio de sesión ilimitados sin bloqueo o verificación de CAPTCHA.",
+                  "Codigo": "if (loginAttempts >= 1000) {\n  // Do nothing\n}",
+                  "ResultadoEsperado": "Posible compromiso de cuentas por ataques de fuerza bruta."
+              }
+          ],
+          "Imagen": "img/a4.png"
+      },
+      "A5": {
+          "OWASP Top 10": "Configuración de Seguridad Incorrecta | Security Misconfiguration",
+          "Tipo de Ataque": "Aprovechar configuraciones predeterminadas inseguras o configuraciones incompletas.",
+          "Consecuencia del Ataque": "Acceso no autorizado o fuga de datos.",
+          "Ejemplo Simple": "Un servidor con configuraciones predeterminadas expone información sensible a los atacantes.",
+          "Cumple": [
+              {
+                  "Descripcion": "Eliminar o cambiar las configuraciones predeterminadas de los servidores y servicios.",
+                  "Codigo": "server.setDefaultConfig(false);",
+                  "ResultadoEsperado": "Información sensible protegida."
+              }
+          ],
+          "No Cumple": [
+              {
+                  "Descripcion": "Usar configuraciones predeterminadas o inseguras.",
+                  "Codigo": "server.setDefaultConfig(true);",
+                  "ResultadoEsperado": "Información sensible expuesta."
+              }
+          ],
+          "Imagen": "img/a5.png"
+      },
+      "A6": {
+          "OWASP Top 10": "Componentes Vulnerables y Desactualizados | Vulnerable and Outdated Components",
+          "Tipo de Ataque": "Uso de software vulnerable.",
+          "Consecuencia del Ataque": "Compromiso del sistema o violación de datos.",
+          "Ejemplo Simple": "Una aplicación usa una biblioteca con vulnerabilidades conocidas, permitiendo una explotación.",
+          "Cumple": [
+              {
+                  "Descripcion": "Actualizar regularmente todas las bibliotecas y componentes de software a las últimas versiones seguras.",
+                  "Codigo": "npm update -g",
+                  "ResultadoEsperado": "Sistema seguro y actualizado."
+              }
+          ],
+          "No Cumple": [
+              {
+                  "Descripcion": "No actualizar componentes vulnerables.",
+                  "Codigo": "npm outdated",
+                  "ResultadoEsperado": "Sistema vulnerable."
+              }
+          ],
+          "Imagen": "img/a6.png"
+      },
+      "A7": {
+          "OWASP Top 10": "Fallos de Identificación y Autenticación | Identification and Authentication Failures",
+          "Tipo de Ataque": "Problemas de autenticación.",
+          "Consecuencia del Ataque": "Suplantación de identidad o acceso no autorizado.",
+          "Ejemplo Simple": "Un atacante usa relleno de credenciales para obtener acceso a una cuenta debido a que la aplicación no hace cumplir políticas de contraseñas fuertes o autenticación multifactor.",
+          "Cumple": [
+              {
+                  "Descripcion": "Implementar autenticación multifactor (MFA) para todas las cuentas de usuario.",
+                  "Codigo": "if (user.loginAttempts >= 3) {\n  requireMFA();\n}",
+                  "ResultadoEsperado": "Acceso seguro y autenticado."
+              }
+          ],
+          "No Cumple": [
+              {
+                  "Descripcion": "Permitir contraseñas débiles sin autenticación adicional.",
+                  "Codigo": "if (user.loginAttempts >= 1000) {\n  // Do nothing\n}",
+                  "ResultadoEsperado": "Acceso no autorizado."
+              }
+          ],
+          "Imagen": "img/a7.png"
+      },
+      "A8": {
+          "OWASP Top 10": "Fallos de Integridad de Software y Datos | Software and Data Integrity Failures",
+          "Tipo de Ataque": "Manipulación de software y datos.",
+          "Consecuencia del Ataque": "Compromiso de la integridad de los datos.",
+          "Ejemplo Simple": "Uso de bibliotecas de terceros no verificadas.",
+          "Cumple": [
+              {
+                  "Descripcion": "Verificar la integridad de los paquetes.",
+                  "Codigo": "const hash = crypto.createHash('sha256').update(packageData).digest('hex');",
+                  "ResultadoEsperado": "Datos seguros y verificados."
+              }
+          ],
+          "No Cumple": [
+              {
+                  "Descripcion": "No verificar la integridad de los paquetes.",
+                  "Codigo": "installPackage(packageData);",
+                  "ResultadoEsperado": "Datos comprometidos."
+              }
+          ],
+          "Imagen": "img/a8.png"
+      },
+      "A9": {
+          "OWASP Top 10": "Fallos en el Registro y Monitoreo de Seguridad | Security Logging and Monitoring Failures",
+          "Tipo de Ataque": "Registro y monitoreo inadecuados.",
+          "Consecuencia del Ataque": "Violaciones o ataques no detectados.",
+          "Ejemplo Simple": "Ocurre una violación que pasa desapercibida debido a la falta de monitoreo efectivo.",
+          "Cumple": [
+              {
+                  "Descripcion": "Implementar registro y monitoreo continuo de eventos de seguridad críticos.",
+                  "Codigo": "logger.log('security', 'critical event detected');",
+                  "ResultadoEsperado": "Eventos críticos detectados y gestionados."
+              }
+          ],
+          "No Cumple": [
+              {
+                  "Descripcion": "No registrar eventos críticos de seguridad.",
+                  "Codigo": "logger.log('security', '');",
+                  "ResultadoEsperado": "Eventos críticos no detectados."
+              }
+          ],
+          "Imagen": "img/a9.png"
+      },
+      "A10": {
+          "OWASP Top 10": "Falsificación de Solicitudes del Lado del Servidor (SSRF) | Server-Side Request Forgery (SSRF)",
+          "Tipo de Ataque": "Falsificación de solicitudes de servidor.",
+          "Consecuencia del Ataque": "Acceso no autorizado a sistemas internos.",
+          "Ejemplo Simple": "Un atacante engaña al servidor para que haga solicitudes a servicios internos.",
+          "Cumple": [
+              {
+                  "Descripcion": "Validar y filtrar las URLs y direcciones IP permitidas en las solicitudes del servidor.",
+                  "Codigo": "if (isValidURL(request.url)) {\n  // Allow request\n}",
+                  "ResultadoEsperado": "Solicitudes seguras y autorizadas."
+              }
+          ],
+          "No Cumple": [
+              {
+                  "Descripcion": "Permitir solicitudes abiertas sin validación.",
+                  "Codigo": "if (request.url) {\n  // Allow request\n}",
+                  "ResultadoEsperado": "Acceso no autorizado a sistemas internos."
+              }
+          ],
+          "Imagen": "img/a10.png"
+      }
+  };
+
+  // Función para mostrar la lista de OWASP
+  function mostrarListaOWASP() {
+      const column1 = document.getElementById('owasp-column-1');
+      const column2 = document.getElementById('owasp-column-2');
+      column1.innerHTML = '';
+      column2.innerHTML = '';
+
+      let isFirstColumn = true;
+
+      for (const codigo in owasp_data) {
+          const item = owasp_data[codigo];
+          const listItem = document.createElement('div');
+          listItem.classList.add('owasp-item');
+          listItem.textContent = `${codigo}: ${item['OWASP Top 10']}`;
+          listItem.addEventListener('click', () => mostrarDetalleOWASP(codigo));
+
+          if (isFirstColumn) {
+              column1.appendChild(listItem);
+          } else {
+              column2.appendChild(listItem);
+          }
+
+          isFirstColumn = !isFirstColumn;
+      }
+  }
+
+  // Función para mostrar el detalle de OWASP
+  function mostrarDetalleOWASP(codigo) {
+      const detalleContainer = document.getElementById('owasp-detail');
+      detalleContainer.innerHTML = '';
+
+      const item = owasp_data[codigo];
+
+      const detalle = document.createElement('div');
+      detalle.classList.add('detalle');
       
+      const titulo = document.createElement('h2');
+      titulo.textContent = `${item['OWASP Top 10']}`;
+      detalle.appendChild(titulo);
+
+      const tipoAtaque = document.createElement('p');
+      tipoAtaque.innerHTML = `<strong>Tipo de Ataque:</strong> <span class="highlight">${item['Tipo de Ataque']}</span>`;
+      detalle.appendChild(tipoAtaque);
+
+      const consecuencia = document.createElement('p');
+      consecuencia.innerHTML = `<strong>Consecuencia del Ataque:</strong> <span class="highlight">${item['Consecuencia del Ataque']}</span>`;
+      detalle.appendChild(consecuencia);
+
+      const ejemploSimple = document.createElement('p');
+      ejemploSimple.innerHTML = `<strong>Ejemplo Simple:</strong> <span class="highlight">${item['Ejemplo Simple']}</span>`;
+      detalle.appendChild(ejemploSimple);
+
+      const cumple = document.createElement('div');
+      cumple.classList.add('ejemplos');
+      cumple.innerHTML = `<h3>Ejemplo de Cumplimiento:</h3>`;
+      if (item['Cumple']) {
+          item['Cumple'].forEach(example => {
+              const codeElement = document.createElement('pre');
+              codeElement.textContent = example['Codigo'];
+              const descriptionElement = document.createElement('p');
+              descriptionElement.textContent = example['Descripcion'];
+              const outcomeElement = document.createElement('p');
+              outcomeElement.textContent = `Resultado Esperado: ${example['ResultadoEsperado']}`;
+              cumple.appendChild(descriptionElement);
+              cumple.appendChild(codeElement);
+              cumple.appendChild(outcomeElement);
+          });
+      } else {
+          const noCumpleElement = document.createElement('p');
+          noCumpleElement.textContent = `No se encontraron ejemplos de código que cumplan con el OWASP Top 10.`;
+          cumple.appendChild(noCumpleElement);
+      }
+      detalle.appendChild(cumple);
+
+      const noCumple = document.createElement('div');
+      noCumple.classList.add('ejemplos');
+      noCumple.innerHTML = `<h3>Ejemplo de No Cumplimiento:</h3>`;
+      if (item['No Cumple']) {
+          item['No Cumple'].forEach(example => {
+              const codeElement = document.createElement('pre');
+              codeElement.textContent = example['Codigo'];
+              const descriptionElement = document.createElement('p');
+              descriptionElement.textContent = example['Descripcion'];
+              const outcomeElement = document.createElement('p');
+              outcomeElement.textContent = `Resultado Esperado: ${example['ResultadoEsperado']}`;
+              noCumple.appendChild(descriptionElement);
+              noCumple.appendChild(codeElement);
+              noCumple.appendChild(outcomeElement);
+          });
+      } else {
+          const noCumpleElement = document.createElement('p');
+          noCumpleElement.textContent = `No se encontraron ejemplos de código que no cumplan con el OWASP Top 10.`;
+          noCumple.appendChild(noCumpleElement);
+      }
+      detalle.appendChild(noCumple);
+
+      if (item['Imagen']) {
+          const imagen = document.createElement('img');
+          imagen.src = item['Imagen'];
+          imagen.alt = `Imagen explicativa de ataque ${codigo}`;
+          detalle.appendChild(imagen);
+      }
+
+      detalleContainer.appendChild(detalle);
+  }
+
+  // Cambiar el idioma de la página
+  function changeLanguage(language) {
+      const lang = language === 'en' ? 'es' : 'en';
+      const button = document.getElementById('change-language');
+      button.textContent = lang === 'en' ? 'Cambiar a Español' : 'Change to English';
+      button.setAttribute('onclick', `changeLanguage('${lang}')`);
+
+      // Cambiar el contenido estático
+      document.getElementById('owasp-title').textContent = lang === 'en' ? 'What is OWASP?' : '¿Qué es OWASP?';
+      document.getElementById('owasp-text').textContent = lang === 'en' ? 
+          'Open Web Application Security Project (OWASP) is a non-profit foundation focused on web application security. It publishes free articles, tools, and information with the collaboration of its open programmer and developer community.' :
+          'Open Web Application Security Project (OWASP) es una fundación sin fines de lucro enfocada en la seguridad de aplicaciones web. Publica artículos gratuitos, herramientas e información con la colaboración de su comunidad abierta de programadores y desarrolladores.';
+      document.getElementById('top10-title').textContent = lang === 'en' ? 'What is the OWASP Top 10?' : '¿Qué es el Top 10 de OWASP?';
+      document.getElementById('top10-text').textContent = lang === 'en' ? 
+          'First published in 2003 and regularly updated, the OWASP Top 10 list compiles the 10 most critical vulnerabilities in web applications along with possible mitigations. It uses feedback from global experts and survey data to rank vulnerabilities based on their frequency, severity, and potential impact.' :
+          'Publicada por primera vez en 2003 y actualizada regularmente, la lista OWASP Top 10 recopila las 10 vulnerabilidades más críticas en aplicaciones web junto con posibles mitigaciones. Utiliza comentarios de expertos globales y datos de encuestas para clasificar las vulnerabilidades según su frecuencia, severidad y potencial de impacto.';
+      document.getElementById('resource-text').textContent = lang === 'en' ? 
+          'This resource is essential for developers and security professionals, enabling them to manage emerging risks and demonstrate commitment to security in software development.' :
+          'Este recurso es fundamental para desarrolladores y profesionales de seguridad, permitiéndoles gestionar riesgos emergentes y demostrar compromiso con la seguridad en el desarrollo de software.';
+      document.querySelector('.buttons button:first-child').textContent = lang === 'en' ? 'Watch Demo Video' : 'Ver Video del demo';
+      document.querySelector('.buttons button:last-child').textContent = lang === 'en' ? 'Other Videos' : 'Otros videos';
+      document.querySelector('footer').textContent = lang === 'en' ? 
+          'Property of Claro Puerto Rico, Information Security Department. Developed in June 2024.' :
+          'Propiedad de Claro Puerto Rico, Departamento de Seguridad de la Información. Desarrollado en junio 2024.';
+      
+      // Cambiar los datos dinámicos
+      for (const codigo in owasp_data) {
+          const item = owasp_data[codigo];
+          item['OWASP Top 10'] = lang === 'en' ? item['OWASP Top 10'].split(' | ')[1] : item['OWASP Top 10'].split(' | ')[0];
+          item['Tipo de Ataque'] = lang === 'en' ? item['Tipo de Ataque'].replace('Tipo de Ataque:', 'Type of Attack:') : item['Tipo de Ataque'].replace('Type of Attack:', 'Tipo de Ataque:');
+          item['Consecuencia del Ataque'] = lang === 'en' ? item['Consecuencia del Ataque'].replace('Consecuencia del Ataque:', 'Consequence of Attack:') : item['Consecuencia del Ataque'].replace('Consequence of Attack:', 'Consecuencia del Ataque:');
+          item['Ejemplo Simple'] = lang === 'en' ? item['Ejemplo Simple'].replace('Ejemplo Simple:', 'Simple Example:') : item['Ejemplo Simple'].replace('Simple Example:', 'Ejemplo Simple:');
+          item['Cumple'].forEach(example => {
+              example['Descripcion'] = lang === 'en' ? example['Descripcion'].replace('Ejemplo de Cumplimiento:', 'Example of Compliance:') : example['Descripcion'].replace('Example of Compliance:', 'Ejemplo de Cumplimiento:');
+              example['ResultadoEsperado'] = lang === 'en' ? example['ResultadoEsperado'].replace('Resultado Esperado:', 'Expected Outcome:') : example['ResultadoEsperado'].replace('Expected Outcome:', 'Resultado Esperado:');
+          });
+          item['No Cumple'].forEach(example => {
+              example['Descripcion'] = lang === 'en' ? example['Descripcion'].replace('Ejemplo de No Cumplimiento:', 'Example of Non-Compliance:') : example['Descripcion'].replace('Example of Non-Compliance:', 'Ejemplo de No Cumplimiento:');
+              example['ResultadoEsperado'] = lang === 'en' ? example['ResultadoEsperado'].replace('Resultado Esperado:', 'Expected Outcome:') : example['ResultadoEsperado'].replace('Expected Outcome:', 'Resultado Esperado:');
+          });
+      }
+
+      mostrarListaOWASP();
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+      mostrarListaOWASP();
+  });
+
+  function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  document.getElementById('scroll-up-button').addEventListener('click', scrollToTop);
+  </script>
+</body>
+</html>
