@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Claro <img src="img/bandera-puerto-rico.png" alt="Bandera de Puerto Rico"> Entrenamiento OWASP Top 10</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1><span>Claro</span> <img src="img/bandera-puerto-rico.png" alt="Bandera de Puerto Rico"> Entrenamiento OWASP Top 10</h1>
+      <button id="change-language" onclick="changeLanguage('en')">Change to English</button>
+    </header>
+
+    <section id="owasp-description">
+      <h2 id="owasp-title">¿Qué es OWASP?</h2>
+      <p id="owasp-text">Open Web Application Security Project (OWASP) es una fundación sin fines de lucro enfocada en la seguridad de aplicaciones web. Publica artículos gratuitos, herramientas e información con la colaboración de su comunidad abierta de programadores y desarrolladores.</p>
+
+      <h2 id="top10-title">¿Qué es el Top 10 de OWASP?</h2>
+      <p id="top10-text">Publicada por primera vez en 2003 y actualizada regularmente, la lista OWASP Top 10 recopila las 10 vulnerabilidades más críticas en aplicaciones web junto con posibles mitigaciones. Utiliza comentarios de expertos globales y datos de encuestas para clasificar las vulnerabilidades según su frecuencia, severidad y potencial de impacto.</p>
+
+      <p id="resource-text">Este recurso es fundamental para desarrolladores y profesionales de seguridad, permitiéndoles gestionar riesgos emergentes y demostrar compromiso con la seguridad en el desarrollo de software.</p>
+      
+      <p><strong>Recursos Adicionales:</strong></p>
+      <ul>
+        <li><a href="https://owasp.org/www-community/attacks/" target="_blank">OWASP List of Attacks</a></li>
+        <li><a href="https://cheatsheetseries.owasp.org/" target="_blank">OWASP Cheat Sheet</a></li>
+      </ul>
+    </section>
+
+    <div id="owasp-columns">
+      <div id="owasp-column-1" class="owasp-column"></div>
+      <div id="owasp-column-2" class="owasp-column"></div>
+    </div>
+    <div id="owasp-detail"></div>
+
+    <div class="buttons">
+      <button onclick="openVideo('videos/video1.mp4');">Ver Video del demo</button>
+      <button onclick="openVideo('videos/video2.mp4');">Otros videos</button>   
+    </div>
+
+    <footer>
+      Propiedad de Claro Puerto Rico, Departamento de Seguridad de la Información. Desarrollado en junio 2024.
+    </footer>
+  </div>
+
+  <button id="scroll-up-button" onclick="scrollToTop()">Scroll Up</button>
+
+  <script src="scripts.js"></script>
+  <script>
+    function openVideo(url) {
+      window.open(url, '_blank');
+    }
+  </script>
+</body>
+</html>
