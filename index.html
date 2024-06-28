@@ -143,17 +143,17 @@
         <h1>Training OWASP Top 10</h1>
     </header>
     <nav>
-        <a href="#intro">Introducción</a>
-        <a href="#a1">A1: Control de Acceso Roto</a>
-        <a href="#a2">A2: Fallos Criptográficos</a>
-        <a href="#a3">A3: Inyección</a>
-        <a href="#a4">A4: Diseño Inseguro</a>
-        <a href="#a5">A5: Configuración de Seguridad Incorrecta</a>
-        <a href="#a6">A6: Componentes Vulnerables y Desactualizados</a>
-        <a href="#a7">A7: Fallos de Identificación y Autenticación</a>
-        <a href="#a8">A8: Fallos de Integridad de Software y Datos</a>
-        <a href="#a9">A9: Fallos en el Registro y Monitoreo de Seguridad</a>
-        <a href="#a10">A10: Falsificación de Solicitudes del Lado del Servidor (SSRF)</a>
+        <a href="#intro" data-es="Introducción" data-en="Introduction">Introducción</a>
+        <a href="#a1" data-es="A1: Control de Acceso Roto" data-en="A1: Broken Access Control">A1: Control de Acceso Roto</a>
+        <a href="#a2" data-es="A2: Fallos Criptográficos" data-en="A2: Cryptographic Failures">A2: Fallos Criptográficos</a>
+        <a href="#a3" data-es="A3: Inyección" data-en="A3: Injection">A3: Inyección</a>
+        <a href="#a4" data-es="A4: Diseño Inseguro" data-en="A4: Insecure Design">A4: Diseño Inseguro</a>
+        <a href="#a5" data-es="A5: Configuración de Seguridad Incorrecta" data-en="A5: Security Misconfiguration">A5: Configuración de Seguridad Incorrecta</a>
+        <a href="#a6" data-es="A6: Componentes Vulnerables y Desactualizados" data-en="A6: Vulnerable and Outdated Components">A6: Componentes Vulnerables y Desactualizados</a>
+        <a href="#a7" data-es="A7: Fallos de Identificación y Autenticación" data-en="A7: Identification and Authentication Failures">A7: Fallos de Identificación y Autenticación</a>
+        <a href="#a8" data-es="A8: Fallos de Integridad de Software y Datos" data-en="A8: Software and Data Integrity Failures">A8: Fallos de Integridad de Software y Datos</a>
+        <a href="#a9" data-es="A9: Fallos en el Registro y Monitoreo de Seguridad" data-en="A9: Security Logging and Monitoring Failures">A9: Fallos en el Registro y Monitoreo de Seguridad</a>
+        <a href="#a10" data-es="A10: Falsificación de Solicitudes del Lado del Servidor (SSRF)" data-en="A10: Server-Side Request Forgery (SSRF)">A10: Falsificación de Solicitudes del Lado del Servidor (SSRF)</a>
     </nav>
     <main>
         <section id="intro" class="intro-section">
@@ -687,6 +687,10 @@
             }
 
             document.getElementById('language-button').textContent = newLanguage === 'es' ? 'EN' : 'ES';
+
+            document.querySelectorAll('nav a').forEach(link => {
+                link.textContent = link.getAttribute(`data-${newLanguage}`);
+            });
         }
     </script>
 </body>
