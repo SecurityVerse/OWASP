@@ -100,6 +100,42 @@
             max-width: 100%;
             border-radius: 10px;
         }
+        .floating-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            font-size: 24px;
+            cursor: pointer;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            transition: background-color 0.3s ease;
+        }
+        .floating-button:hover {
+            background-color: #45a049;
+        }
+        .language-button {
+            position: fixed;
+            bottom: 90px;
+            right: 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            font-size: 16px;
+            cursor: pointer;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            transition: background-color 0.3s ease;
+        }
+        .language-button:hover {
+            background-color: #45a049;
+        }
     </style>
 </head>
 <body>
@@ -312,6 +348,8 @@
     <footer>
         <p>&copy; 2024 Training OWASP Top 10. Todos los derechos reservados.</p>
     </footer>
+    <button class="floating-button" onclick="scrollToTop()">↑</button>
+    <button class="language-button" id="language-button" onclick="changeLanguage()">EN</button>
     <script>
         document.querySelectorAll('nav a').forEach(link => {
             link.addEventListener('click', () => {
@@ -322,7 +360,334 @@
                 document.querySelector('#intro').style.display = 'none';
             });
         });
+
         document.querySelector('#intro').style.display = 'block';
+
+        function scrollToTop() {
+            window.scrollTo({top: 0, behavior: 'smooth'});
+        }
+
+        const translations = {
+            es: {
+                intro: {
+                    title: "¿Qué es OWASP?",
+                    text: "El Open Web Application Security Project (OWASP) es una fundación sin fines de lucro que trabaja para mejorar la seguridad del software. OWASP ofrece herramientas, documentos, foros y capítulos locales gratuitos que fomentan la seguridad en las aplicaciones.",
+                    title2: "¿Qué es OWASP Top 10?",
+                    text2: "El OWASP Top 10 es un estándar de concientización sobre la seguridad en aplicaciones web. Representa una amplia consenso sobre los riesgos de seguridad más críticos para las aplicaciones web. Publicado por primera vez en 2003, y actualizado regularmente, proporciona un enfoque prioritario para los desarrolladores y profesionales de seguridad.",
+                    title3: "¿Por qué es importante?",
+                    text3: "El OWASP Top 10 es esencial porque ayuda a los desarrolladores y organizaciones a identificar y mitigar los riesgos de seguridad más significativos. Implementar las prácticas recomendadas por OWASP puede prevenir muchas de las vulnerabilidades más comunes que podrían ser explotadas por los atacantes.",
+                    title4: "¿Para quién es importante?",
+                    text4: "El OWASP Top 10 es importante para desarrolladores de software, profesionales de seguridad, auditores, gerentes de proyectos y cualquier persona involucrada en el ciclo de vida de desarrollo de software. Proporciona una guía clara y concisa para asegurar aplicaciones desde el diseño hasta la implementación y mantenimiento."
+                },
+                a1: {
+                    title: "A1: Control de Acceso Roto",
+                    text: "El control de acceso roto ocurre cuando los usuarios pueden actuar fuera de sus permisos previstos. Esto puede resultar en el acceso a datos sensibles o la modificación de información de otros usuarios.",
+                    correct: "Código Correcto:",
+                    correctCode: "if (user.isAuthenticated && user.hasPermission(\"viewPage\")) {\n    // Permitir el acceso\n}",
+                    incorrect: "Código Incorrecto:",
+                    incorrectCode: "if (\"admin\" in request.GET) {\n    // Permitir el acceso\n}",
+                    bestPractices: "Buenas Prácticas:",
+                    bestPracticesText: "Verificar siempre la autenticación y autorización de los usuarios antes de permitir el acceso a recursos sensibles.",
+                    consequences: "Consecuencias de No Cumplir:",
+                    consequencesText: "Acceso no autorizado a datos o funcionalidades, lo que puede resultar en violaciones de seguridad y pérdida de datos.",
+                    diagram: "Diagrama del Ataque:"
+                },
+                a2: {
+                    title: "A2: Fallos Criptográficos",
+                    text: "Los fallos criptográficos ocurren cuando los datos sensibles no se protegen adecuadamente, lo que puede llevar a la exposición de información confidencial.",
+                    correct: "Código Correcto:",
+                    correctCode: "const encryptedData = encrypt(data, \"AES-256\");",
+                    incorrect: "Código Incorrecto:",
+                    incorrectCode: "const encryptedData = encrypt(data, \"DES\");",
+                    bestPractices: "Buenas Prácticas:",
+                    bestPracticesText: "Usar algoritmos criptográficos fuertes y actualizados, y evitar algoritmos obsoletos y débiles.",
+                    consequences: "Consecuencias de No Cumplir:",
+                    consequencesText: "Exposición de datos sensibles y posible robo o manipulación de información.",
+                    diagram: "Diagrama del Ataque:"
+                },
+                a3: {
+                    title: "A3: Inyección",
+                    text: "La inyección ocurre cuando los datos no confiables se envían a un intérprete como parte de un comando o consulta. Los datos maliciosos pueden engañar al intérprete para ejecutar comandos no intencionados o acceder a datos sin la autorización adecuada.",
+                    correct: "Código Correcto:",
+                    correctCode: "const query = \"SELECT * FROM users WHERE username = ? AND password = ?\";",
+                    incorrect: "Código Incorrecto:",
+                    incorrectCode: "const query = `SELECT * FROM users WHERE username = \"${username}\" AND password = \"${password}\"`;",
+                    bestPractices: "Buenas Prácticas:",
+                    bestPracticesText: "Usar consultas preparadas y procedimientos almacenados para evitar la inyección SQL.",
+                    consequences: "Consecuencias de No Cumplir:",
+                    consequencesText: "Compromiso de la base de datos, pérdida o corrupción de datos, y posibles violaciones de seguridad.",
+                    diagram: "Diagrama del Ataque:"
+                },
+                a4: {
+                    title: "A4: Diseño Inseguro",
+                    text: "El diseño inseguro se refiere a la ausencia de controles de seguridad en la fase de diseño, lo que permite que los atacantes exploten vulnerabilidades no mitigadas.",
+                    correct: "Código Correcto:",
+                    correctCode: "if (loginAttempts > MAX_ATTEMPTS) {\n    // Bloquear la cuenta temporalmente\n}",
+                    incorrect: "Código Incorrecto:",
+                    incorrectCode: "// Permitir intentos ilimitados de inicio de sesión",
+                    bestPractices: "Buenas Prácticas:",
+                    bestPracticesText: "Implementar controles de seguridad desde la fase de diseño, como la limitación de intentos de inicio de sesión.",
+                    consequences: "Consecuencias de No Cumplir:",
+                    consequencesText: "Mayor vulnerabilidad a ataques de fuerza bruta y compromisos de cuentas de usuario.",
+                    diagram: "Diagrama del Ataque:"
+                },
+                a5: {
+                    title: "A5: Configuración de Seguridad Incorrecta",
+                    text: "La configuración de seguridad incorrecta puede permitir que los atacantes exploten configuraciones predeterminadas inseguras, configuraciones incompletas o abiertas.",
+                    correct: "Código Correcto:",
+                    correctCode: "// Cambiar configuraciones predeterminadas y aplicar configuraciones mínimas de seguridad",
+                    incorrect: "Código Incorrecto:",
+                    incorrectCode: "// Mantener configuraciones predeterminadas",
+                    bestPractices: "Buenas Prácticas:",
+                    bestPracticesText: "Revisar y modificar las configuraciones predeterminadas para asegurar que sean seguras, y seguir las guías de seguridad recomendadas.",
+                    consequences: "Consecuencias de No Cumplir:",
+                    consequencesText: "Acceso no autorizado y posible exposición de información sensible.",
+                    diagram: "Diagrama del Ataque:"
+                },
+                a6: {
+                    title: "A6: Componentes Vulnerables y Desactualizados",
+                    text: "El uso de componentes vulnerables y desactualizados puede permitir a los atacantes explotar vulnerabilidades conocidas en esas bibliotecas y frameworks.",
+                    correct: "Código Correcto:",
+                    correctCode: "// Actualizar regularmente todas las bibliotecas y componentes de software",
+                    incorrect: "Código Incorrecto:",
+                    incorrectCode: "// Ignorar las actualizaciones de software y bibliotecas",
+                    bestPractices: "Buenas Prácticas:",
+                    bestPracticesText: "Mantener actualizado todo el software y las bibliotecas utilizadas, y monitorizar continuamente las vulnerabilidades conocidas.",
+                    consequences: "Consecuencias de No Cumplir:",
+                    consequencesText: "Mayor riesgo de explotación de vulnerabilidades y compromisos de seguridad.",
+                    diagram: "Diagrama del Ataque:"
+                },
+                a7: {
+                    title: "A7: Fallos de Identificación y Autenticación",
+                    text: "Los fallos de identificación y autenticación permiten a los atacantes comprometer credenciales, asumir la identidad de otros usuarios y acceder a datos y sistemas sensibles.",
+                    correct: "Código Correcto:",
+                    correctCode: "// Implementar autenticación multifactor (MFA) para todas las cuentas de usuario",
+                    incorrect: "Código Incorrecto:",
+                    incorrectCode: "// Permitir contraseñas débiles o predecibles",
+                    bestPractices: "Buenas Prácticas:",
+                    bestPracticesText: "Requerir contraseñas fuertes y complejas, e implementar autenticación multifactor para mayor seguridad.",
+                    consequences: "Consecuencias de No Cumplir:",
+                    consequencesText: "Compromiso de cuentas de usuario y acceso no autorizado a sistemas y datos sensibles.",
+                    diagram: "Diagrama del Ataque:"
+                },
+                a8: {
+                    title: "A8: Fallos de Integridad de Software y Datos",
+                    text: "Los fallos de integridad de software y datos ocurren cuando los programas y las infraestructuras no protegen contra cambios no autorizados. Esto puede llevar a la ejecución de código malicioso o la alteración de datos.",
+                    correct: "Código Correcto:",
+                    correctCode: "const hash = crypto.createHash(\"sha256\").update(packageData).digest(\"hex\");",
+                    incorrect: "Código Incorrecto:",
+                    incorrectCode: "// No verificar la integridad de los paquetes",
+                    bestPractices: "Buenas Prácticas:",
+                    bestPracticesText: "Verificar siempre la integridad de los paquetes y bibliotecas antes de su implementación.",
+                    consequences: "Consecuencias de No Cumplir:",
+                    consequencesText: "Riesgo de manipulación de datos y ejecución de código malicioso.",
+                    diagram: "Diagrama del Ataque:"
+                },
+                a9: {
+                    title: "A9: Fallos en el Registro y Monitoreo de Seguridad",
+                    text: "Los fallos en el registro y monitoreo de seguridad permiten a los atacantes explotar sistemas sin ser detectados, retrasando la respuesta a incidentes.",
+                    correct: "Código Correcto:",
+                    correctCode: "// Implementar registro y monitoreo continuo de eventos de seguridad críticos",
+                    incorrect: "Código Incorrecto:",
+                    incorrectCode: "// No registrar o monitorizar eventos críticos de seguridad",
+                    bestPractices: "Buenas Prácticas:",
+                    bestPracticesText: "Configurar sistemas de registro y monitoreo que alerten sobre actividades sospechosas en tiempo real.",
+                    consequences: "Consecuencias de No Cumplir:",
+                    consequencesText: "Mayor riesgo de violaciones de seguridad no detectadas y retraso en la respuesta a incidentes.",
+                    diagram: "Diagrama del Ataque:"
+                },
+                a10: {
+                    title: "A10: Falsificación de Solicitudes del Lado del Servidor (SSRF)",
+                    text: "La falsificación de solicitudes del lado del servidor (SSRF) ocurre cuando un atacante puede hacer que el servidor realice solicitudes no autorizadas a servicios internos o externos.",
+                    correct: "Código Correcto:",
+                    correctCode: "if (isValidUrl(requestedUrl)) {\n    // Permitir solicitud\n}",
+                    incorrect: "Código Incorrecto:",
+                    incorrectCode: "fetch(requestedUrl);",
+                    bestPractices: "Buenas Prácticas:",
+                    bestPracticesText: "Validar y filtrar todas las URLs y direcciones IP permitidas en las solicitudes del servidor.",
+                    consequences: "Consecuencias de No Cumplir:",
+                    consequencesText: "Riesgo de acceso no autorizado a sistemas internos y posible explotación de servicios internos.",
+                    diagram: "Diagrama del Ataque:"
+                }
+            },
+            en: {
+                intro: {
+                    title: "What is OWASP?",
+                    text: "The Open Web Application Security Project (OWASP) is a non-profit foundation that works to improve software security. OWASP provides free tools, documents, forums, and local chapters to promote application security.",
+                    title2: "What is OWASP Top 10?",
+                    text2: "The OWASP Top 10 is a standard for web application security awareness. It represents a broad consensus on the most critical security risks for web applications. First published in 2003, and regularly updated, it provides a prioritized approach for developers and security professionals.",
+                    title3: "Why is it important?",
+                    text3: "The OWASP Top 10 is essential because it helps developers and organizations identify and mitigate the most significant security risks. Implementing the practices recommended by OWASP can prevent many of the most common vulnerabilities that attackers might exploit.",
+                    title4: "Who is it important for?",
+                    text4: "The OWASP Top 10 is important for software developers, security professionals, auditors, project managers, and anyone involved in the software development lifecycle. It provides a clear and concise guide to securing applications from design to implementation and maintenance."
+                },
+                a1: {
+                    title: "A1: Broken Access Control",
+                    text: "Broken access control occurs when users can act outside of their intended permissions. This can result in access to sensitive data or modification of other users' information.",
+                    correct: "Correct Code:",
+                    correctCode: "if (user.isAuthenticated && user.hasPermission(\"viewPage\")) {\n    // Allow access\n}",
+                    incorrect: "Incorrect Code:",
+                    incorrectCode: "if (\"admin\" in request.GET) {\n    // Allow access\n}",
+                    bestPractices: "Best Practices:",
+                    bestPracticesText: "Always verify user authentication and authorization before allowing access to sensitive resources.",
+                    consequences: "Consequences of Not Complying:",
+                    consequencesText: "Unauthorized access to data or functionalities, which can result in security breaches and data loss.",
+                    diagram: "Attack Diagram:"
+                },
+                a2: {
+                    title: "A2: Cryptographic Failures",
+                    text: "Cryptographic failures occur when sensitive data is not adequately protected, which can lead to exposure of confidential information.",
+                    correct: "Correct Code:",
+                    correctCode: "const encryptedData = encrypt(data, \"AES-256\");",
+                    incorrect: "Incorrect Code:",
+                    incorrectCode: "const encryptedData = encrypt(data, \"DES\");",
+                    bestPractices: "Best Practices:",
+                    bestPracticesText: "Use strong, up-to-date cryptographic algorithms, and avoid outdated and weak algorithms.",
+                    consequences: "Consequences of Not Complying:",
+                    consequencesText: "Exposure of sensitive data and potential theft or manipulation of information.",
+                    diagram: "Attack Diagram:"
+                },
+                a3: {
+                    title: "A3: Injection",
+                    text: "Injection occurs when untrusted data is sent to an interpreter as part of a command or query. Malicious data can trick the interpreter into executing unintended commands or accessing data without proper authorization.",
+                    correct: "Correct Code:",
+                    correctCode: "const query = \"SELECT * FROM users WHERE username = ? AND password = ?\";",
+                    incorrect: "Incorrect Code:",
+                    incorrectCode: "const query = `SELECT * FROM users WHERE username = \"${username}\" AND password = \"${password}\"`;",
+                    bestPractices: "Best Practices:",
+                    bestPracticesText: "Use prepared statements and stored procedures to avoid SQL injection.",
+                    consequences: "Consequences of Not Complying:",
+                    consequencesText: "Compromise of the database, loss or corruption of data, and potential security breaches.",
+                    diagram: "Attack Diagram:"
+                },
+                a4: {
+                    title: "A4: Insecure Design",
+                    text: "Insecure design refers to the lack of security controls in the design phase, allowing attackers to exploit unmitigated vulnerabilities.",
+                    correct: "Correct Code:",
+                    correctCode: "if (loginAttempts > MAX_ATTEMPTS) {\n    // Temporarily lock the account\n}",
+                    incorrect: "Incorrect Code:",
+                    incorrectCode: "// Allow unlimited login attempts",
+                    bestPractices: "Best Practices:",
+                    bestPracticesText: "Implement security controls from the design phase, such as limiting login attempts.",
+                    consequences: "Consequences of Not Complying:",
+                    consequencesText: "Increased vulnerability to brute force attacks and user account compromises.",
+                    diagram: "Attack Diagram:"
+                },
+                a5: {
+                    title: "A5: Security Misconfiguration",
+                    text: "Security misconfiguration can allow attackers to exploit default insecure settings, incomplete configurations, or open configurations.",
+                    correct: "Correct Code:",
+                    correctCode: "// Change default settings and apply minimum security configurations",
+                    incorrect: "Incorrect Code:",
+                    incorrectCode: "// Keep default settings",
+                    bestPractices: "Best Practices:",
+                    bestPracticesText: "Review and modify default settings to ensure they are secure, and follow recommended security guidelines.",
+                    consequences: "Consequences of Not Complying:",
+                    consequencesText: "Unauthorized access and potential exposure of sensitive information.",
+                    diagram: "Attack Diagram:"
+                },
+                a6: {
+                    title: "A6: Vulnerable and Outdated Components",
+                    text: "Using vulnerable and outdated components can allow attackers to exploit known vulnerabilities in those libraries and frameworks.",
+                    correct: "Correct Code:",
+                    correctCode: "// Regularly update all software libraries and components",
+                    incorrect: "Incorrect Code:",
+                    incorrectCode: "// Ignore software and library updates",
+                    bestPractices: "Best Practices:",
+                    bestPracticesText: "Keep all software and libraries up to date and continuously monitor known vulnerabilities.",
+                    consequences: "Consequences of Not Complying:",
+                    consequencesText: "Increased risk of vulnerability exploitation and security compromises.",
+                    diagram: "Attack Diagram:"
+                },
+                a7: {
+                    title: "A7: Identification and Authentication Failures",
+                    text: "Identification and authentication failures allow attackers to compromise credentials, assume the identity of other users, and access sensitive data and systems.",
+                    correct: "Correct Code:",
+                    correctCode: "// Implement multi-factor authentication (MFA) for all user accounts",
+                    incorrect: "Incorrect Code:",
+                    incorrectCode: "// Allow weak or predictable passwords",
+                    bestPractices: "Best Practices:",
+                    bestPracticesText: "Require strong, complex passwords and implement multi-factor authentication for added security.",
+                    consequences: "Consequences of Not Complying:",
+                    consequencesText: "Compromise of user accounts and unauthorized access to sensitive systems and data.",
+                    diagram: "Attack Diagram:"
+                },
+                a8: {
+                    title: "A8: Software and Data Integrity Failures",
+                    text: "Software and data integrity failures occur when programs and infrastructures do not protect against unauthorized changes. This can lead to the execution of malicious code or data alteration.",
+                    correct: "Correct Code:",
+                    correctCode: "const hash = crypto.createHash(\"sha256\").update(packageData).digest(\"hex\");",
+                    incorrect: "Incorrect Code:",
+                    incorrectCode: "// Do not verify the integrity of packages",
+                    bestPractices: "Best Practices:",
+                    bestPracticesText: "Always verify the integrity of packages and libraries before deployment.",
+                    consequences: "Consequences of Not Complying:",
+                    consequencesText: "Risk of data manipulation and execution of malicious code.",
+                    diagram: "Attack Diagram:"
+                },
+                a9: {
+                    title: "A9: Security Logging and Monitoring Failures",
+                    text: "Security logging and monitoring failures allow attackers to exploit systems undetected, delaying incident response.",
+                    correct: "Correct Code:",
+                    correctCode: "// Implement continuous logging and monitoring of critical security events",
+                    incorrect: "Incorrect Code:",
+                    incorrectCode: "// Do not log or monitor critical security events",
+                    bestPractices: "Best Practices:",
+                    bestPracticesText: "Set up logging and monitoring systems that alert to suspicious activities in real-time.",
+                    consequences: "Consequences of Not Complying:",
+                    consequencesText: "Increased risk of undetected security breaches and delayed incident response.",
+                    diagram: "Attack Diagram:"
+                },
+                a10: {
+                    title: "A10: Server-Side Request Forgery (SSRF)",
+                    text: "Server-side request forgery (SSRF) occurs when an attacker can make the server perform unauthorized requests to internal or external services.",
+                    correct: "Correct Code:",
+                    correctCode: "if (isValidUrl(requestedUrl)) {\n    // Allow request\n}",
+                    incorrect: "Incorrect Code:",
+                    incorrectCode: "fetch(requestedUrl);",
+                    bestPractices: "Best Practices:",
+                    bestPracticesText: "Validate and filter all allowed URLs and IP addresses in server requests.",
+                    consequences: "Consequences of Not Complying:",
+                    consequencesText: "Risk of unauthorized access to internal systems and potential exploitation of internal services.",
+                    diagram: "Attack Diagram:"
+                }
+            }
+        };
+
+        function changeLanguage() {
+            const currentLanguage = document.documentElement.lang;
+            const newLanguage = currentLanguage === 'es' ? 'en' : 'es';
+            document.documentElement.lang = newLanguage;
+
+            const content = translations[newLanguage];
+
+            document.getElementById('intro').querySelector('h2').textContent = content.intro.title;
+            document.getElementById('intro').querySelectorAll('p')[0].textContent = content.intro.text;
+            document.getElementById('intro').querySelectorAll('h2')[1].textContent = content.intro.title2;
+            document.getElementById('intro').querySelectorAll('p')[1].textContent = content.intro.text2;
+            document.getElementById('intro').querySelectorAll('h2')[2].textContent = content.intro.title3;
+            document.getElementById('intro').querySelectorAll('p')[2].textContent = content.intro.text3;
+            document.getElementById('intro').querySelectorAll('h2')[3].textContent = content.intro.title4;
+            document.getElementById('intro').querySelectorAll('p')[3].textContent = content.intro.text4;
+
+            for (let i = 1; i <= 10; i++) {
+                const section = document.getElementById(`a${i}`);
+                const sectionContent = content[`a${i}`];
+                section.querySelector('h2').textContent = sectionContent.title;
+                section.querySelector('p').textContent = sectionContent.text;
+                section.querySelectorAll('h3')[0].textContent = sectionContent.correct;
+                section.querySelectorAll('pre')[0].querySelector('code').textContent = sectionContent.correctCode;
+                section.querySelectorAll('h3')[1].textContent = sectionContent.incorrect;
+                section.querySelectorAll('pre')[1].querySelector('code').textContent = sectionContent.incorrectCode;
+                section.querySelectorAll('h3')[2].textContent = sectionContent.bestPractices;
+                section.querySelectorAll('p')[1].textContent = sectionContent.bestPracticesText;
+                section.querySelectorAll('h3')[3].textContent = sectionContent.consequences;
+                section.querySelectorAll('p')[2].textContent = sectionContent.consequencesText;
+                section.querySelectorAll('h3')[4].textContent = sectionContent.diagram;
+            }
+
+            document.getElementById('language-button').textContent = newLanguage === 'es' ? 'EN' : 'ES';
+        }
     </script>
 </body>
 </html>
