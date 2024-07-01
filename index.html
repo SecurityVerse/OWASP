@@ -34,16 +34,17 @@
             top: 70px;
             bottom: 0;
             overflow-y: auto;
-            padding: 20px;
+            padding: 10px;
         }
         nav a {
             color: white;
             text-decoration: none;
             display: block;
-            margin: 10px 0;
-            padding: 10px;
+            margin: 5px 0;
+            padding: 5px;
             border-radius: 5px;
             transition: background-color 0.3s ease;
+			font-size: 14px; /* Reduces the font size */
         }
         nav a:hover {
             background-color: #4CAF50;
@@ -144,7 +145,7 @@
     </header>
     <nav>
         <a href="https://securityverse.github.io/OWASP" data-es="HOME" data-en="HOME">HOME</a>
-        <a href="#a1" data-es="A1: Control de Acceso Roto" data-en="A1: Broken Access Control">A1: Control de Acceso Roto</a>
+		<a href="#a1" data-es="A1: Control de Acceso Roto" data-en="A1: Broken Access Control">A1: Control de Acceso Roto</a>
         <a href="#a2" data-es="A2: Fallos Criptográficos" data-en="A2: Cryptographic Failures">A2: Fallos Criptográficos</a>
         <a href="#a3" data-es="A3: Inyección" data-en="A3: Injection">A3: Inyección</a>
         <a href="#a4" data-es="A4: Diseño Inseguro" data-en="A4: Insecure Design">A4: Diseño Inseguro</a>
@@ -154,7 +155,8 @@
         <a href="#a8" data-es="A8: Fallos de Integridad de Software y Datos" data-en="A8: Software and Data Integrity Failures">A8: Fallos de Integridad de Software y Datos</a>
         <a href="#a9" data-es="A9: Fallos en el Registro y Monitoreo de Seguridad" data-en="A9: Security Logging and Monitoring Failures">A9: Fallos en el Registro y Monitoreo de Seguridad</a>
         <a href="#a10" data-es="A10: Falsificación de Solicitudes del Lado del Servidor (SSRF)" data-en="A10: Server-Side Request Forgery (SSRF)">A10: Falsificación de Solicitudes del Lado del Servidor (SSRF)</a>
-    </nav>
+        <a href="#trivia" data-es="Trivia" data-en="Trivia">Trivia</a>
+		</nav>
     <main>
         <section id="intro" class="intro-section">
             <h2>¿Qué es OWASP?</h2>
@@ -344,6 +346,11 @@
                 <img src="img/a10.png" alt="Diagrama del ataque para A10: Falsificación de Solicitudes del Lado del Servidor (SSRF)">
             </div>
         </section>
+        
+        <section id="trivia" class="content-section">
+            <h2>Trivia</h2>
+            <div id="trivia-container"></div>
+        </section>
     </main>
     <footer>
         <p>&copy; 2024 Training OWASP Top 10. Todos los derechos reservados.</p>
@@ -507,7 +514,7 @@
                     bestPracticesText: "Validar y filtrar todas las URLs y direcciones IP permitidas en las solicitudes del servidor.",
                     consequences: "Consecuencias de No Cumplir:",
                     consequencesText: "Riesgo de acceso no autorizado a sistemas internos y posible explotación de servicios internos.",
-                    diagram: "Diagrama del Ataque:"
+                    diagram: "Attack Diagram:"
                 }
             },
             en: {
@@ -691,6 +698,142 @@
             document.querySelectorAll('nav a').forEach(link => {
                 link.textContent = link.getAttribute(`data-${newLanguage}`);
             });
+        }
+
+        const questions = [
+    {
+        question: "¿Qué es OWASP?",
+        options: [
+            "Una organización sin fines de lucro que trabaja para mejorar la seguridad del software.",
+            "Una empresa de desarrollo de software.",
+            "Un conjunto de herramientas para programadores.",
+            "Una técnica de hacking."
+        ],
+        answer: 0
+    },
+    {
+        question: "¿Qué es el OWASP Top 10?",
+        options: [
+            "Una lista de los diez mejores desarrolladores de software.",
+            "Un estándar de concientización sobre la seguridad en aplicaciones web.",
+            "Un ranking de las mejores aplicaciones web.",
+            "Una guía para el desarrollo de juegos."
+        ],
+        answer: 1
+    },
+    {
+        question: "¿Cuál es el principal objetivo del OWASP Top 10?",
+        options: [
+            "Proporcionar una guía para el desarrollo de videojuegos.",
+            "Concientizar sobre los riesgos de seguridad más críticos en aplicaciones web.",
+            "Ofrecer herramientas de desarrollo de software.",
+            "Capacitar a hackers."
+        ],
+        answer: 1
+    },
+    {
+        question: "¿Qué significa la sigla OWASP?",
+        options: [
+            "Open Web Application Security Project.",
+            "Open Web Application Software Platform.",
+            "Online Web Application Security Protocol.",
+            "Open Web Application Service Provider."
+        ],
+        answer: 0
+    },
+    {
+        question: "¿Cuál de los siguientes es un riesgo incluido en el OWASP Top 10?",
+        options: [
+            "Configuración de seguridad incorrecta.",
+            "Errores de gramática en el código.",
+            "Baja velocidad de carga de la página.",
+            "Interfaz de usuario poco atractiva."
+        ],
+        answer: 0
+    },
+    {
+        question: "¿Cuál es una práctica recomendada por OWASP para mejorar la seguridad en aplicaciones web?",
+        options: [
+            "Usar contraseñas fuertes y complejas.",
+            "Reducir la cantidad de comentarios en el código.",
+            "Optimizar las imágenes para una carga rápida.",
+            "Usar colores atractivos en la interfaz de usuario."
+        ],
+        answer: 0
+    },
+    {
+        question: "¿Qué riesgo de seguridad trata sobre la exposición de datos sensibles?",
+        options: [
+            "Fallos Criptográficos.",
+            "Control de Acceso Roto.",
+            "Diseño Inseguro.",
+            "Inyección."
+        ],
+        answer: 0
+    },
+    {
+        question: "¿Qué tipo de ataque ocurre cuando un atacante puede engañar a un intérprete para que ejecute comandos no intencionados?",
+        options: [
+            "Inyección.",
+            "Falsificación de Solicitudes del Lado del Servidor (SSRF).",
+            "Fallos Criptográficos.",
+            "Componentes Vulnerables y Desactualizados."
+        ],
+        answer: 0
+    },
+    {
+        question: "¿Cuál es una consecuencia de no cumplir con las buenas prácticas de OWASP?",
+        options: [
+            "Mayor vulnerabilidad a ataques de fuerza bruta.",
+            "Mayor velocidad de carga de la página.",
+            "Mejor experiencia de usuario.",
+            "Interfaz de usuario más atractiva."
+        ],
+        answer: 0
+    },
+    {
+        question: "¿Qué riesgo aborda la falta de controles de seguridad desde la fase de diseño?",
+        options: [
+            "Diseño Inseguro.",
+            "Inyección.",
+            "Control de Acceso Roto.",
+            "Fallos Criptográficos."
+        ],
+        answer: 0
+    }
+            
+// Añadir más preguntas aquí
+        ];
+
+        let currentQuestion = 0;
+
+        function loadQuestion() {
+            const container = document.getElementById('trivia-container');
+            container.innerHTML = `
+                <h3>${questions[currentQuestion].question}</h3>
+                ${questions[currentQuestion].options.map((option, index) => `
+                    <button onclick="checkAnswer(${index})">${option}</button>
+                `).join('')}
+            `;
+        }
+
+        function checkAnswer(selected) {
+            const container = document.getElementById('trivia-container');
+            if (selected === questions[currentQuestion].answer) {
+                container.innerHTML += '<p>Respuesta correcta!</p>';
+            } else {
+                container.innerHTML += `<p>Respuesta incorrecta. La respuesta correcta es: ${questions[currentQuestion].options[questions[currentQuestion].answer]}</p>`;
+            }
+            currentQuestion++;
+            if (currentQuestion < questions.length) {
+                setTimeout(loadQuestion, 2000);
+            } else {
+                container.innerHTML += '<p>Has completado el examen!</p>';
+            }
+        }
+
+        if (document.querySelector('#trivia')) {
+            loadQuestion();
         }
     </script>
 </body>
