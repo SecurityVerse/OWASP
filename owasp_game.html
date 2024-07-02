@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juego OWASP</title>
+    <script defer src="owasp_game.js"></script>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+        }
+        h1 {
+            color: #4CAF50;
+        }
+        #question-container {
+            margin-top: 20px;
+        }
+        #options {
+            list-style-type: none;
+            padding: 0;
+        }
+        #options li {
+            margin-bottom: 10px;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <h1>Juego OWASP</h1>
+    <div id="game">
+        <div id="language-container">
+            <label for="language-select">Language / Idioma:</label>
+            <select id="language-select">
+                <option value="es">Español</option>
+                <option value="en">English</option>
+            </select>
+        </div>
+        <div id="question-container"></div>
+        <ul id="options"></ul>
+        <button id="next-button">Next / Siguiente</button>
+    </div>
+    <script src="owasp_game.js"></script>
+</body>
+</html>
