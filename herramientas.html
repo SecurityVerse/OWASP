@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Herramientas - Kiuwan y Tenable IO</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f8ff;
+            color: #333;
+        }
+        .container {
+            max-width: 900px;
+            margin: 50px auto;
+            padding: 20px;
+            background: #fff;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        h1 span {
+            color: #4285F4; /* Google blue */
+        }
+        h1 span:nth-child(2) {
+            color: #DB4437; /* Google red */
+        }
+        h1 span:nth-child(3) {
+            color: #F4B400; /* Google yellow */
+        }
+        h1 span:nth-child(4) {
+            color: #0F9D58; /* Google green */
+        }
+        .section-title {
+            font-size: 2em;
+            margin-top: 40px;
+            cursor: pointer;
+            text-align: center;
+            padding: 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+            background-color: #f0f0f0;
+        }
+        .section-title:hover {
+            background-color: #e0e0e0;
+        }
+        .content {
+            display: none;
+            margin-top: 20px;
+        }
+        ul {
+            margin: 10px 0 20px 20px;
+            list-style-type: disc;
+        }
+        p {
+            margin: 10px 0;
+        }
+        #translate-btn, #scroll-top-btn, #back-btn {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 60px;
+            height: 60px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            font-size: 18px;
+            transition: background-color 0.3s;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        #scroll-top-btn {
+            bottom: 90px; /* Positioned above the translate button */
+        }
+        #back-btn {
+            bottom: 160px; /* Positioned above the scroll top button */
+        }
+        #translate-btn:hover, #scroll-top-btn:hover, #back-btn:hover {
+            background-color: #0056b3;
+        }
+        @media (max-width: 600px) {
+            .container {
+                margin: 20px;
+                padding: 15px;
+            }
+            #translate-btn, #scroll-top-btn, #back-btn {
+                width: 50px;
+                height: 50px;
+                font-size: 16px;
+            }
+            #scroll-top-btn {
+                bottom: 70px; /* Adjust for smaller screens */
+            }
+            #back-btn {
+                bottom: 120px; /* Adjust for smaller screens */
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="content">
+        <button id="back-btn" onclick="location.href='agenda.html'">↩️</button>
+        <h1>
+            <span class="google-colors">H</span>
+            <span class="google-colors">e</span>
+            <span class="google-colors">r</span>
+            <span class="google-colors">r</span>
+            <span class="google-colors">a</span>
+            <span class="google-colors">m</span>
+            <span class="google-colors">i</span>
+            <span class="google-colors">e</span>
+            <span class="google-colors">n</span>
+            <span class="google-colors">t</span>
+            <span class="google-colors">a</span>
+            <span class="google-colors">s</span>
+        </h1>
+        <div class="section-title" onclick="toggleContent('kiuwan')">¿Qué es Kiuwan?</div>
+        <div class="content" id="kiuwan-content">
+            <p>Kiuwan es una plataforma de análisis y gestión de la seguridad y calidad del software. Ofrece una suite de herramientas diseñadas para ayudar a los equipos de desarrollo a identificar y corregir vulnerabilidades de seguridad, así como a mejorar la calidad del código en sus aplicaciones. Kiuwan soporta una amplia gama de lenguajes de programación y se integra fácilmente con los flujos de trabajo de desarrollo existentes.</p>
+            <h3>Utilización de Kiuwan</h3>
+            <p>Kiuwan se utiliza para varios propósitos clave en el desarrollo de software seguro:</p>
+            <ul>
+                <li><strong>Análisis de Seguridad del Código (SAST - Static Application Security Testing):</strong>
+                    <ul>
+                        <li>Identifica vulnerabilidades de seguridad en el código fuente antes de que la aplicación sea desplegada.</li>
+                        <li>Ofrece recomendaciones para corregir vulnerabilidades específicas.</li>
+                    </ul>
+                </li>
+                <li><strong>Análisis de la Calidad del Código:</strong>
+                    <ul>
+                        <li>Evalúa la calidad del código en base a estándares de codificación, mantenibilidad y mejores prácticas.</li>
+                        <li>Proporciona métricas y reportes que ayudan a mejorar la calidad general del software.</li>
+                    </ul>
+                </li>
+                <li><strong>Gestión de la Conformidad:</strong>
+                    <ul>
+                        <li>Verifica el cumplimiento con estándares de la industria y regulaciones específicas, como PCI-DSS.</li>
+                        <li>Genera informes de conformidad y proporciona una trazabilidad clara de las mejoras realizadas.</li>
+                    </ul>
+                </li>
+                <li><strong>Integración con CI/CD:</strong>
+                    <ul>
+                        <li>Se integra con herramientas de integración y entrega continua (CI/CD), como Jenkins, Azure DevOps, y GitHub Actions, permitiendo el análisis de seguridad y calidad como parte del ciclo de vida de desarrollo.</li>
+                    </ul>
+                </li>
+            </ul>
+            <h3>Uso de Kiuwan para Mitigar y Corregir en Desarrollo Seguro</h3>
+            <p>Para utilizar Kiuwan en la mitigación y corrección de vulnerabilidades en el desarrollo seguro, se pueden seguir estos pasos:</p>
+            <ul>
+                <li><strong>Integración Inicial:</strong>
+                    <ul>
+                        <li>Integra Kiuwan en el entorno de desarrollo y las herramientas CI/CD.</li>
+                        <li>Configura el análisis automático del código en cada commit o pull request.</li>
+                    </ul>
+                </li>
+                <li><strong>Análisis Regular:</strong>
+                    <ul>
+                        <li>Realiza análisis regulares del código para identificar vulnerabilidades y problemas de calidad.</li>
+                        <li>Revisa los reportes generados para entender las vulnerabilidades y las áreas de mejora.</li>
+                    </ul>
+                </li>
+                <li><strong>Corrección de Vulnerabilidades:</strong>
+                    <ul>
+                        <li>Sigue las recomendaciones proporcionadas por Kiuwan para corregir vulnerabilidades específicas.</li>
+                        <li>Asigna tareas a los desarrolladores para corregir problemas de seguridad y calidad identificados.</li>
+                    </ul>
+                </li>
+                <li><strong>Monitoreo y Seguimiento:</strong>
+                    <ul>
+                        <li>Monitorea las métricas de seguridad y calidad para asegurar que el código cumple con los estándares definidos.</li>
+                        <li>Utiliza los reportes de conformidad para documentar y demostrar el cumplimiento con PCI-DSS y otros estándares de seguridad.</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <div class="section-title" onclick="toggleContent('tenable')">¿Qué es Tenable IO?</div>
+        <div class="content" id="tenable-content">
+            <p>Tenable IO es una plataforma de gestión de vulnerabilidades basada en la nube que ayuda a las organizaciones a identificar, evaluar y gestionar riesgos de seguridad en sus redes y aplicaciones. Ofrece una visión integral del estado de la seguridad, permitiendo a los equipos de seguridad priorizar y abordar las vulnerabilidades más críticas.</p>
+            <h3>Utilización de Tenable IO</h3>
+            <p>Tenable IO se utiliza para varios propósitos clave en la gestión de la seguridad:</p>
+            <ul>
+                <li><strong>Análisis de Vulnerabilidades:</strong>
+                    <ul>
+                        <li>Identifica y evalúa vulnerabilidades en sistemas operativos, aplicaciones y dispositivos de red.</li>
+                        <li>Proporciona información detallada sobre las vulnerabilidades, incluyendo cómo explotarlas y cómo mitigarlas.</li>
+                    </ul>
+                </li>
+                <li><strong>Gestión de Activos:</strong>
+                    <ul>
+                        <li>Realiza un inventario completo de todos los activos de la red, incluyendo dispositivos, aplicaciones y servicios.</li>
+                        <li>Asocia vulnerabilidades detectadas con activos específicos para una gestión más eficiente.</li>
+                    </ul>
+                </li>
+                <li><strong>Prioritización de Riesgos:</strong>
+                    <ul>
+                        <li>Utiliza el modelo de puntuación de riesgos de Tenable para priorizar las vulnerabilidades en función de su impacto y la facilidad de explotación.</li>
+                        <li>Ayuda a los equipos de seguridad a centrarse en las amenazas más críticas primero.</li>
+                    </ul>
+                </li>
+                <li><strong>Informes y Cumplimiento:</strong>
+                    <ul>
+                        <li>Genera informes detallados y personalizados que pueden ser utilizados para demostrar el cumplimiento con normativas y estándares de seguridad.</li>
+                        <li>Proporciona una visión clara y accionable del estado de seguridad de la organización.</li>
+                    </ul>
+                </li>
+            </ul>
+            <h3>Uso de Tenable IO para Mitigar y Corregir Vulnerabilidades</h3>
+            <p>Para utilizar Tenable IO en la mitigación y corrección de vulnerabilidades, se pueden seguir estos pasos:</p>
+            <ul>
+                <li><strong>Integración Inicial:</strong>
+                    <ul>
+                        <li>Configura Tenable IO para escanear todos los activos de la red y aplicaciones.</li>
+                        <li>Realiza un análisis inicial para establecer una línea base de seguridad.</li>
+                    </ul>
+                </li>
+                <li><strong>Análisis Continuo:</strong>
+                    <ul>
+                        <li>Configura escaneos periódicos para identificar nuevas vulnerabilidades y cambios en los activos.</li>
+                        <li>Revisa los resultados del análisis para priorizar y abordar las vulnerabilidades críticas.</li>
+                    </ul>
+                </li>
+                <li><strong>Corrección de Vulnerabilidades:</strong>
+                    <ul>
+                        <li>Implementa las recomendaciones proporcionadas por Tenable IO para mitigar vulnerabilidades.</li>
+                        <li>Coordina con los equipos de TI para aplicar parches y configuraciones de seguridad necesarias.</li>
+                    </ul>
+                </li>
+                <li><strong>Monitoreo y Seguimiento:</strong>
+                    <ul>
+                        <li>Monitorea el estado de seguridad continuamente y ajusta las estrategias de mitigación según sea necesario.</li>
+                        <li>Utiliza los informes de Tenable IO para mantener una visión clara y actualizada del estado de seguridad.</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <button id="translate-btn" onclick="translateContent()">EN</button>
+    <button id="scroll-top-btn" onclick="scrollToTop()">↑</button>
+    <button id="back-btn" onclick="location.href='agenda.html'">↩️</button>
+
+    <script>
+        let isSpanish = true;
+
+        function translateContent() {
+            const contentDiv = document.getElementById('content');
+            const translateBtn = document.getElementById('translate-btn');
+            
+            if (isSpanish) {
+                contentDiv.innerHTML = `
+                    <button id="back-btn" onclick="location.href='agenda.html'">↩️</button>
+                    <h1>
+                        <span class="google-colors">T</span>
+                        <span class="google-colors">o</span>
+                        <span class="google-colors">o</span>
+                        <span class="google-colors">l</span>
+                        <span class="google-colors">s</span>
+                    </h1>
+                    <div class="section-title" onclick="toggleContent('kiuwan')">What is Kiuwan?</div>
+                    <div class="content" id="kiuwan-content">
+                        <p>Kiuwan is a software security and quality analysis and management platform. It offers a suite of tools designed to help development teams identify and fix security vulnerabilities, as well as improve code quality in their applications. Kiuwan supports a wide range of programming languages and easily integrates with existing development workflows.</p>
+                        <h3>Using Kiuwan</h3>
+                        <p>Kiuwan is used for several key purposes in secure software development:</p>
+                        <ul>
+                            <li><strong>Static Application Security Testing (SAST):</strong>
+                                <ul>
+                                    <li>Identifies security vulnerabilities in the source code before the application is deployed.</li>
+                                    <li>Offers recommendations to fix specific vulnerabilities.</li>
+                                </ul>
+                            </li>
+                            <li><strong>Code Quality Analysis:</strong>
+                                <ul>
+                                    <li>Evaluates code quality based on coding standards, maintainability, and best practices.</li>
+                                    <li>Provides metrics and reports that help improve the overall quality of the software.</li>
+                                </ul>
+                            </li>
+                            <li><strong>Compliance Management:</strong>
+                                <ul>
+                                    <li>Verifies compliance with industry standards and specific regulations, such as PCI-DSS.</li>
+                                    <li>Generates compliance reports and provides clear traceability of improvements made.</li>
+                                </ul>
+                            </li>
+                            <li><strong>CI/CD Integration:</strong>
+                                <ul>
+                                    <li>Integrates with continuous integration and delivery (CI/CD) tools, such as Jenkins, Azure DevOps, and GitHub Actions, enabling security and quality analysis as part of the development lifecycle.</li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <h3>Using Kiuwan to Mitigate and Correct in Secure Development</h3>
+                        <p>To use Kiuwan in mitigating and correcting vulnerabilities in secure development, you can follow these steps:</p>
+                        <ul>
+                            <li><strong>Initial Integration:</strong>
+                                <ul>
+                                    <li>Integrate Kiuwan into the development environment and CI/CD tools.</li>
+                                    <li>Configure automatic code analysis on each commit or pull request.</li>
+                                </ul>
+                            </li>
+                            <li><strong>Regular Analysis:</strong>
+                                <ul>
+                                    <li>Perform regular code analyses to identify vulnerabilities and quality issues.</li>
+                                    <li>Review the generated reports to understand vulnerabilities and areas for improvement.</li>
+                                </ul>
+                            </li>
+                            <li><strong>Vulnerability Correction:</strong>
+                                <ul>
+                                    <li>Follow the recommendations provided by Kiuwan to fix specific vulnerabilities.</li>
+                                    <li>Assign tasks to developers to fix identified security and quality issues.</li>
+                                </ul>
+                            </li>
+                            <li><strong>Monitoring and Follow-Up:</strong>
+                                <ul>
+                                    <li>Monitor security and quality metrics to ensure that the code meets defined standards.</li>
+                                    <li>Use compliance reports to document and demonstrate adherence to PCI-DSS and other security standards.</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="section-title" onclick="toggleContent('tenable')">What is Tenable IO?</div>
+                    <div class="content" id="tenable-content">
+                        <p>Tenable IO is a cloud-based vulnerability management platform that helps organizations identify, assess, and manage security risks in their networks and applications. It offers a comprehensive view of the security posture, enabling security teams to prioritize and address the most critical vulnerabilities.</p>
+                        <h3>Using Tenable IO</h3>
+                        <p>Tenable IO is used for several key purposes in security management:</p>
+                        <ul>
+                            <li><strong>Vulnerability Scanning:</strong>
+                                <ul>
+                                    <li>Identifies and assesses vulnerabilities in operating systems, applications, and network devices.</li>
+                                    <li>Provides detailed information on vulnerabilities, including how to exploit them and how to mitigate them.</li>
+                                </ul>
+                            </li>
+                            <li><strong>Asset Management:</strong>
+                                <ul>
+                                    <li>Performs a complete inventory of all network assets, including devices, applications, and services.</li>
+                                    <li>Associates detected vulnerabilities with specific assets for more efficient management.</li>
+                                </ul>
+                            </li>
+                            <li><strong>Risk Prioritization:</strong>
+                                <ul>
+                                    <li>Uses Tenable's risk scoring model to prioritize vulnerabilities based on their impact and ease of exploitation.</li>
+                                    <li>Helps security teams focus on the most critical threats first.</li>
+                                </ul>
+                            </li>
+                            <li><strong>Reporting and Compliance:</strong>
+                                <ul>
+                                    <li>Generates detailed and customized reports that can be used to demonstrate compliance with security regulations and standards.</li>
+                                    <li>Provides a clear and actionable view of the organization's security posture.</li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <h3>Using Tenable IO to Mitigate and Correct Vulnerabilities</h3>
+                        <p>To use Tenable IO in mitigating and correcting vulnerabilities, you can follow these steps:</p>
+                        <ul>
+                            <li><strong>Initial Integration:</strong>
+                                <ul>
+                                    <li>Configure Tenable IO to scan all network and application assets.</li>
+                                    <li>Perform an initial scan to establish a security baseline.</li>
+                                </ul>
+                            </li>
+                            <li><strong>Continuous Scanning:</strong>
+                                <ul>
+                                    <li>Set up periodic scans to identify new vulnerabilities and changes in assets.</li>
+                                    <li>Review scan results to prioritize and address critical vulnerabilities.</li>
+                                </ul>
+                            </li>
+                            <li><strong>Vulnerability Remediation:</strong>
+                                <ul>
+                                    <li>Implement the recommendations provided by Tenable IO to mitigate vulnerabilities.</li>
+                                    <li>Coordinate with IT teams to apply necessary patches and security configurations.</li>
+                                </ul>
+                            </li>
+                            <li><strong>Monitoring and Follow-Up:</strong>
+                                <ul>
+                                    <li>Continuously monitor the security posture and adjust mitigation strategies as needed.</li>
+                                    <li>Use Tenable IO reports to maintain a clear and updated view of security status.</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                `;
+                translateBtn.textContent = 'ES';
+            } else {
+                contentDiv.innerHTML = `
+                    <button id="back-btn" onclick="location.href='agenda.html'">↩️</button>
+                    <h1>
+                        <span class="google-colors">H</span>
+                        <span class="google-colors">e</span>
+                        <span class="google-colors">r</span>
+                        <span class="google-colors">r</span>
+                        <span class="google-colors">a</span>
+                        <span class="google-colors">m</span>
+                        <span class="google-colors">i</span>
+                        <span class="google-colors">e</span>
+                        <span class="google-colors">n</span>
+                        <span class="google-colors">t</span>
+                        <span class="google-colors">a</span>
+                        <span class="google-colors">s</span>
+                    </h1>
+                    <div class="section-title" onclick="toggleContent('kiuwan')">¿Qué es Kiuwan?</div>
+                    <div class="content" id="kiuwan-content">
+                        <p>Kiuwan es una plataforma de análisis y gestión de la seguridad y calidad del software. Ofrece una suite de herramientas diseñadas para ayudar a los equipos de desarrollo a identificar y corregir vulnerabilidades de seguridad, así como a mejorar la calidad del código en sus aplicaciones. Kiuwan soporta una amplia gama de lenguajes de programación y se integra fácilmente con los flujos de trabajo de desarrollo existentes.</p>
+                        <h3>Utilización de Kiuwan</h3>
+                        <p>Kiuwan se utiliza para varios propósitos clave en el desarrollo de software seguro:</p>
+                        <ul>
+                            <li><strong>Análisis de Seguridad del Código (SAST - Static Application Security Testing):</strong>
+                                <ul>
+                                    <li>Identifica vulnerabilidades de seguridad en el código fuente antes de que la aplicación sea desplegada.</li>
+                                    <li>Ofrece recomendaciones para corregir vulnerabilidades específicas.</li>
+                                </ul>
+                            </li>
+                            <li><strong>Análisis de la Calidad del Código:</strong>
+                                <ul>
+                                    <li>Evalúa la calidad del código en base a estándares de codificación, mantenibilidad y mejores prácticas.</li>
+                                    <li>Proporciona métricas y reportes que ayudan a mejorar la calidad general del software.</li>
+                                </ul>
+                            </li>
+                            <li><strong>Gestión de la Conformidad:</strong>
+                                <ul>
+                                    <li>Verifica el cumplimiento con estándares de la industria y regulaciones específicas, como PCI-DSS.</li>
+                                    <li>Genera informes de conformidad y proporciona una trazabilidad clara de las mejoras realizadas.</li>
+                                </ul>
+                            </li>
+                            <li><strong>Integración con CI/CD:</strong>
+                                <ul>
+                                    <li>Se integra con herramientas de integración y entrega continua (CI/CD), como Jenkins, Azure DevOps, y GitHub Actions, permitiendo el análisis de seguridad y calidad como parte del ciclo de vida de desarrollo.</li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <h3>Uso de Kiuwan para Mitigar y Corregir en Desarrollo Seguro</h3>
+                        <p>Para utilizar Kiuwan en la mitigación y corrección de vulnerabilidades en el desarrollo seguro, se pueden seguir estos pasos:</p>
+                        <ul>
+                            <li><strong>Integración Inicial:</strong>
+                                <ul>
+                                    <li>Integra Kiuwan en el entorno de desarrollo y las herramientas CI/CD.</li>
+                                    <li>Configura el análisis automático del código en cada commit o pull request.</li>
+                                </ul>
+                            </li>
+                            <li><strong>Análisis Regular:</strong>
+                                <ul>
+                                    <li>Realiza análisis regulares del código para identificar vulnerabilidades y problemas de calidad.</li>
+                                    <li>Revisa los reportes generados para entender las vulnerabilidades y las áreas de mejora.</li>
+                                </ul>
+                            </li>
+                            <li><strong>Corrección de Vulnerabilidades:</strong>
+                                <ul>
+                                    <li>Sigue las recomendaciones proporcionadas por Kiuwan para corregir vulnerabilidades específicas.</li>
+                                    <li>Asigna tareas a los desarrolladores para corregir problemas de seguridad y calidad identificados.</li>
+                                </ul>
+                            </li>
+                            <li><strong>Monitoreo y Seguimiento:</strong>
+                                <ul>
+                                    <li>Monitorea las métricas de seguridad y calidad para asegurar que el código cumple con los estándares definidos.</li>
+                                    <li>Utiliza los reportes de conformidad para documentar y demostrar el cumplimiento con PCI-DSS y otros estándares de seguridad.</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="section-title" onclick="toggleContent('tenable')">¿Qué es Tenable IO?</div>
+                    <div class="content" id="tenable-content">
+                        <p>Tenable IO es una plataforma de gestión de vulnerabilidades basada en la nube que ayuda a las organizaciones a identificar, evaluar y gestionar riesgos de seguridad en sus redes y aplicaciones. Ofrece una visión integral del estado de la seguridad, permitiendo a las equipos de seguridad priorizar y abordar las vulnerabilidades más críticas.</p>
+                        <h3>Utilización de Tenable IO</h3>
+                        <p>Tenable IO se utiliza para varios propósitos clave en la gestión de la seguridad:</p>
+                        <ul>
+                            <li><strong>Análisis de Vulnerabilidades:</strong>
+                                <ul>
+                                    <li>Identifica y evalúa vulnerabilidades en sistemas operativos, aplicaciones y dispositivos de red.</li>
+                                    <li>Proporciona información detallada sobre las vulnerabilidades, incluyendo cómo explotarlas y cómo mitigarlas.</li>
+                                </ul>
+                            </li>
+                            <li><strong>Gestión de Activos:</strong>
+                                <ul>
+                                    <li>Realiza un inventario completo de todos los activos de la red, incluyendo dispositivos, aplicaciones y servicios.</li>
+                                    <li>Asocia vulnerabilidades detectadas con activos específicos para una gestión más eficiente.</li>
+                                </ul>
+                            </li>
+                            <li><strong>Prioritización de Riesgos:</strong>
+                                <ul>
+                                    <li>Utiliza el modelo de puntuación de riesgos de Tenable para priorizar las vulnerabilidades en función de su impacto y la facilidad de explotación.</li>
+                                    <li>Ayuda a los equipos de seguridad a centrarse en las amenazas más críticas primero.</li>
+                                </ul>
+                            </li>
+                            <li><strong>Informes y Cumplimiento:</strong>
+                                <ul>
+                                    <li>Genera informes detallados y personalizados que pueden ser utilizados para demostrar el cumplimiento con normativas y estándares de seguridad.</li>
+                                    <li>Proporciona una visión clara y accionable del estado de seguridad de la organización.</li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <h3>Uso de Tenable IO para Mitigar y Corregir Vulnerabilidades</h3>
+                        <p>Para utilizar Tenable IO en la mitigación y corrección de vulnerabilidades, se pueden seguir estos pasos:</p>
+                        <ul>
+                            <li><strong>Integración Inicial:</strong>
+                                <ul>
+                                    <li>Configura Tenable IO para escanear todos los activos de la red y aplicaciones.</li>
+                                    <li>Realiza un análisis inicial para establecer una línea base de seguridad.</li>
+                                </ul>
+                            </li>
+                            <li><strong>Análisis Continuo:</strong>
+                                <ul>
+                                    <li>Configura escaneos periódicos para identificar nuevas vulnerabilidades y cambios en los activos.</li>
+                                    <li>Revisa los resultados del análisis para priorizar y abordar las vulnerabilidades críticas.</li>
+                                </ul>
+                            </li>
+                            <li><strong>Corrección de Vulnerabilidades:</strong>
+                                <ul>
+                                    <li>Implementa las recomendaciones proporcionadas por Tenable IO para mitigar vulnerabilidades.</li>
+                                    <li>Coordina con los equipos de TI para aplicar parches y configuraciones de seguridad necesarias.</li>
+                                </ul>
+                            </li>
+                            <li><strong>Monitoreo y Seguimiento:</strong>
+                                <ul>
+                                    <li>Monitorea el estado de seguridad continuamente y ajusta las estrategias de mitigación según sea necesario.</li>
+                                    <li>Utiliza los informes de Tenable IO para mantener una visión clara y actualizada del estado de seguridad.</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                `;
+                translateBtn.textContent = 'EN';
+            }
+            isSpanish = !isSpanish;
+        }
+
+        function toggleContent(id) {
+            const content = document.getElementById(`${id}-content`);
+            content.style.display = content.style.display === 'none' ? 'block' : 'none';
+        }
+
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
