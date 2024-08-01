@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cómo se relaciona PCI-DSS y OWASP</title>
+    <title>Conexión entre PCI-DSS y OWASP</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <style>
         body {
@@ -28,20 +28,61 @@
             text-align: center;
         }
         .google-colors {
-            color: #4285F4;
             display: inline;
         }
-        .google-colors:nth-child(2) {
+        .word {
+            margin: 0 5px;
+        }
+        .word:nth-child(1) .google-colors:nth-child(1) {
+            color: #4285F4;
+        }
+        .word:nth-child(1) .google-colors:nth-child(2) {
             color: #DB4437;
         }
-        .google-colors:nth-child(3) {
+        .word:nth-child(1) .google-colors:nth-child(3) {
             color: #F4B400;
         }
-        .google-colors:nth-child(4) {
+        .word:nth-child(1) .google-colors:nth-child(4) {
             color: #0F9D58;
         }
-        p {
-            margin: 20px 0;
+        .word:nth-child(2) .google-colors:nth-child(1) {
+            color: #4285F4;
+        }
+        .word:nth-child(2) .google-colors:nth-child(2) {
+            color: #DB4437;
+        }
+        .word:nth-child(2) .google-colors:nth-child(3) {
+            color: #F4B400;
+        }
+        .word:nth-child(2) .google-colors:nth-child(4) {
+            color: #0F9D58;
+        }
+        .word:nth-child(3) .google-colors:nth-child(1) {
+            color: #4285F4;
+        }
+        .word:nth-child(3) .google-colors:nth-child(2) {
+            color: #DB4437;
+        }
+        .word:nth-child(3) .google-colors:nth-child(3) {
+            color: #F4B400;
+        }
+        .word:nth-child(3) .google-colors:nth-child(4) {
+            color: #0F9D58;
+        }
+        p, ul {
+            margin: 10px 0;
+            text-align: justify;
+        }
+        ul {
+            padding-left: 20px;
+        }
+        ul ul {
+            list-style-type: disc;
+        }
+        strong {
+            display: block;
+            margin-top: 10px;
+            font-weight: bold;
         }
         #translate-btn, #scroll-top-btn, #back-btn {
             display: flex;
@@ -93,20 +134,34 @@
     <div class="container" id="content">
         <button id="back-btn" onclick="location.href='agenda.html'">↩️</button>
         <h1>
-            <span class="google-colors">Cómo</span> <span class="google-colors">se</span> <span class="google-colors">relaciona</span> <span class="google-colors">PCI-DSS</span> <span class="google-colors">y</span> <span class="google-colors">OWASP</span>
+            <span class="word"><span class="google-colors">C</span><span class="google-colors">o</span><span class="google-colors">n</span><span class="google-colors">e</span><span class="google-colors">x</span><span class="google-colors">i</span><span class="google-colors">ó</span><span class="google-colors">n</span></span>
+            <span class="word"><span class="google-colors">e</span><span class="google-colors">n</span><span class="google-colors">t</span><span class="google-colors">r</span><span class="google-colors">e</span></span>
+            <span class="word"><span class="google-colors">P</span><span class="google-colors">C</span><span class="google-colors">I</span><span class="google-colors">-</span><span class="google-colors">D</span><span class="google-colors">S</span><span class="google-colors">S</span></span>
+            <span class="word"><span class="google-colors">y</span></span>
+            <span class="word"><span class="google-colors">O</span><span class="google-colors">W</span><span class="google-colors">A</span><span class="google-colors">S</span><span class="google-colors">P</span></span>
         </h1>
-        <p><strong>Explicaremos la relación entre PCI-DSS y OWASP.</strong></p>
-        <p>PCI-DSS (Payment Card Industry Data Security Standard) y OWASP (Open Web Application Security Project) se relacionan en el ámbito de la seguridad de aplicaciones web y la protección de datos de tarjetas de pago. OWASP proporciona una lista de las principales vulnerabilidades de seguridad en aplicaciones web, conocida como OWASP Top 10, que es una referencia ampliamente reconocida para la seguridad de aplicaciones.</p>
-        <p>PCI-DSS, por otro lado, establece una serie de requisitos de seguridad para proteger los datos de tarjetas de pago. Algunos de estos requisitos están directamente relacionados con las vulnerabilidades identificadas por OWASP. Por ejemplo:</p>
+        <p>Vamos a ver cómo se conectan PCI-DSS y OWASP.</p>
+        <p>PCI-DSS es un estándar de seguridad para pagos con tarjeta. OWASP es un proyecto que nos ayuda a proteger las aplicaciones web. OWASP tiene una lista de las 10 amenazas de seguridad más comunes en aplicaciones web.</p>
+        <h3>¿De qué forma se conectan PCI-DSS 4.0.1 y OWASP?</h3>
         <ul>
-            <li>Requisito 6.5 de PCI-DSS: "Abordar las vulnerabilidades de seguridad de aplicaciones" hace referencia directa a las vulnerabilidades del OWASP Top 10.</li>
-            <li>Requisito 6.6 de PCI-DSS: "Asegurar que las aplicaciones web internas y externas estén protegidas contra ataques conocidos utilizando métodos tales como firewalls de aplicaciones web (WAF) o revisiones de código seguro" también está alineado con las mejores prácticas promovidas por OWASP.</li>
+            <li>PCI-DSS nos solicita proteger los sistemas de pago de amenazas conocidas. Muchas de estas amenazas están en la lista de OWASP.</li>
+            <li>PCI-DSS también dice que debemos crear aplicaciones seguras. Esto significa evitar las amenazas que OWASP menciona.</li>
+            <li>PCI-DSS quiere que hagamos evaluaciones de seguridad en nuestros sistemas. Estas evaluaciones deben buscar las amenazas que OWASP ha identificado.</li>
         </ul>
-        <p><strong>Aprenderemos cómo OWASP ayuda a cumplir con los requisitos de PCI-DSS.</strong></p>
-        <p>Al seguir las directrices y mejores prácticas de OWASP, las organizaciones pueden fortalecer la seguridad de sus aplicaciones web y, en consecuencia, cumplir con varios requisitos de PCI-DSS. Implementar controles de seguridad basados en las vulnerabilidades del OWASP Top 10 ayuda a mitigar riesgos y protege los datos de tarjetas de pago, asegurando así el cumplimiento con los estándares de PCI-DSS.</p>
+        <strong>OWASP nos ayuda a cumplir con PCI-DSS:</strong>
+        <p>Si seguimos las guías de OWASP, podemos hacer que nuestras aplicaciones web sean más seguras. Esto nos ayuda a cumplir con los requisitos de PCI-DSS.</p>
+        <p>Al usar la lista de OWASP, podemos evitar amenazas de seguridad y proteger mejor los datos de las tarjetas de pago. Así cumplimos con PCI-DSS.</p>
+        <h3>Implementación de OWASP para cumplir con PCI-DSS:</h3>
+        <ul>
+            <li><strong>PCI-DSS 4.0.1 Requisito 6.2.6:</strong> "Asegúrese de que los sistemas de pago y las aplicaciones estén protegidos contra amenazas conocidas". Este requisito resalta la importancia de abordar las amenazas identificadas, muchas de las cuales están cubiertas en el OWASP Top 10.</li>
+            <li><strong>PCI-DSS 4.0.1 Requisito 6.4.3:</strong> "Desarrollar aplicaciones de manera segura". Esto incluye asegurar que las aplicaciones no sean vulnerables a las amenazas enumeradas en el OWASP Top 10.</li>
+            <li><strong>PCI-DSS 4.0.1 Requisito 11.3.1:</strong> "Realizar evaluaciones de penetración en las aplicaciones y sistemas de pago". Las evaluaciones deben abordar las amenazas descritas en el OWASP Top 10.</li>
+        </ul>
+        <p>Al seguir las guías y mejores prácticas de OWASP, las organizaciones pueden fortalecer la seguridad de sus aplicaciones web y, en consecuencia, cumplir con varios requisitos de PCI-DSS 4.0.1. Implementar controles de seguridad basados en las amenazas del OWASP Top 10 ayuda a mitigar amenazas y protege los datos de tarjetas de pago, asegurando así el cumplimiento con los estándares de PCI-DSS.</p>
     </div>
     <button id="translate-btn" onclick="translateContent()">EN</button>
     <button id="scroll-top-btn" onclick="scrollToTop()">↑</button>
+    <button id="back-btn" onclick="location.href='agenda.html'">↩️</button>
 
     <script>
         let isSpanish = true;
@@ -114,39 +169,65 @@
         function translateContent() {
             const contentDiv = document.getElementById('content');
             const translateBtn = document.getElementById('translate-btn');
-            
+
             if (isSpanish) {
                 contentDiv.innerHTML = `
                     <button id="back-btn" onclick="location.href='agenda.html'">↩️</button>
                     <h1>
-                        <span class="google-colors">How</span> <span class="google-colors">PCI-DSS</span> <span class="google-colors">is</span> <span class="google-colors">related</span> <span class="google-colors">to</span> <span class="google-colors">OWASP</span>
+                        <span class="word"><span class="google-colors">C</span><span class="google-colors">o</span><span class="google-colors">n</span><span class="google-colors">n</span><span class="google-colors">e</span><span class="google-colors">c</span><span class="google-colors">t</span><span class="google-colors">i</span><span class="google-colors">o</span><span class="google-colors">n</span></span>
+                        <span class="word"><span class="google-colors">b</span><span class="google-colors">e</span><span class="google-colors">t</span><span class="google-colors">w</span><span class="google-colors">e</span><span class="google-colors">e</span><span class="google-colors">n</span></span>
+                        <span class="word"><span class="google-colors">P</span><span class="google-colors">C</span><span class="google-colors">I</span><span class="google-colors">-</span><span class="google-colors">D</span><span class="google-colors">S</span><span class="google-colors">S</span></span>
+                        <span class="word"><span class="google-colors">a</span><span class="google-colors">n</span><span class="google-colors">d</span></span>
+                        <span class="word"><span class="google-colors">O</span><span class="google-colors">W</span><span class="google-colors">A</span><span class="google-colors">S</span><span class="google-colors">P</span></span>
                     </h1>
-                    <p><strong>We will explain the relationship between PCI-DSS and OWASP.</strong></p>
-                    <p>PCI-DSS (Payment Card Industry Data Security Standard) and OWASP (Open Web Application Security Project) are related in the realm of web application security and payment card data protection. OWASP provides a list of the top security vulnerabilities in web applications, known as the OWASP Top 10, which is a widely recognized reference for application security.</p>
-                    <p>PCI-DSS, on the other hand, establishes a series of security requirements to protect payment card data. Some of these requirements are directly related to the vulnerabilities identified by OWASP. For example:</p>
+                    <p>Let's see how PCI-DSS and OWASP are connected.</p>
+                    <p>PCI-DSS is a security standard for card payments. OWASP is a project that helps us protect web applications. OWASP has a list of the 10 most common security threats in web applications.</p>
+                    <h3>How are PCI-DSS 4.0.1 and OWASP connected?</h3>
                     <ul>
-                        <li>PCI-DSS Requirement 6.5: "Address common coding vulnerabilities in software development processes" directly references the OWASP Top 10 vulnerabilities.</li>
-                        <li>PCI-DSS Requirement 6.6: "Ensure that all public-facing web applications are protected against known attacks by applying either of the following methods: web application firewall (WAF) or application security code reviews" also aligns with the best practices promoted by OWASP.</li>
+                        <li>PCI-DSS asks us to protect payment systems from known threats. Many of these threats are on the OWASP list.</li>
+                        <li>PCI-DSS also says we should create secure applications. This means avoiding the threats that OWASP mentions.</li>
+                        <li>PCI-DSS wants us to do security assessments on our systems. These assessments should look for the threats that OWASP has identified.</li>
                     </ul>
-                    <p><strong>We will learn how OWASP helps to meet PCI-DSS requirements.</strong></p>
-                    <p>By following the guidelines and best practices from OWASP, organizations can strengthen the security of their web applications and, consequently, meet several PCI-DSS requirements. Implementing security controls based on OWASP Top 10 vulnerabilities helps mitigate risks and protect payment card data, ensuring compliance with PCI-DSS standards.</p>
+                    <strong>OWASP helps us comply with PCI-DSS:</strong>
+                    <p>If we follow OWASP's guidelines, we can make our web applications more secure. This helps us comply with PCI-DSS requirements.</p>
+                    <p>By using the OWASP list, we can avoid security threats and better protect payment card data. This way, we comply with PCI-DSS.</p>
+                    <h3>Implementing OWASP to meet PCI-DSS requirements:</h3>
+                    <ul>
+                        <li><strong>PCI-DSS 4.0.1 Requirement 6.2.6:</strong> "Ensure that payment systems and applications are protected against known threats." This requirement highlights the importance of addressing identified threats, many of which are covered in the OWASP Top 10.</li>
+                        <li><strong>PCI-DSS 4.0.1 Requirement 6.4.3:</strong> "Develop applications securely." This includes ensuring that applications are not vulnerable to the threats listed in the OWASP Top 10.</li>
+                        <li><strong>PCI-DSS 4.0.1 Requirement 11.3.1:</strong> "Conduct penetration assessments on applications and payment systems." The assessments must address the threats described in the OWASP Top 10.</li>
+                    </ul>
+                    <p>By following OWASP's guidelines and best practices, organizations can strengthen the security of their web applications and, consequently, meet several PCI-DSS 4.0.1 requirements. Implementing security controls based on the OWASP Top 10 threats helps mitigate threats and protect payment card data, thereby ensuring compliance with PCI-DSS standards.</p>
                 `;
                 translateBtn.textContent = 'ES';
             } else {
                 contentDiv.innerHTML = `
                     <button id="back-btn" onclick="location.href='agenda.html'">↩️</button>
                     <h1>
-                        <span class="google-colors">Cómo</span> <span class="google-colors">se</span> <span class="google-colors">relaciona</span> <span class="google-colors">PCI-DSS</span> <span class="google-colors">y</span> <span class="google-colors">OWASP</span>
+                        <span class="word"><span class="google-colors">C</span><span class="google-colors">o</span><span class="google-colors">n</span><span class="google-colors">e</span><span class="google-colors">x</span><span class="google-colors">i</span><span class="google-colors">ó</span><span class="google-colors">n</span></span>
+                        <span class="word"><span class="google-colors">e</span><span class="google-colors">n</span><span class="google-colors">t</span><span class="google-colors">r</span><span class="google-colors">e</span></span>
+                        <span class="word"><span class="google-colors">P</span><span class="google-colors">C</span><span class="google-colors">I</span><span class="google-colors">-</span><span class="google-colors">D</span><span class="google-colors">S</span><span class="google-colors">S</span></span>
+                        <span class="word"><span class="google-colors">y</span></span>
+                        <span class="word"><span class="google-colors">O</span><span class="google-colors">W</span><span class="google-colors">A</span><span class="google-colors">S</span><span class="google-colors">P</span></span>
                     </h1>
-                    <p><strong>Explicaremos la relación entre PCI-DSS y OWASP.</strong></p>
-                    <p>PCI-DSS (Payment Card Industry Data Security Standard) y OWASP (Open Web Application Security Project) se relacionan en el ámbito de la seguridad de aplicaciones web y la protección de datos de tarjetas de pago. OWASP proporciona una lista de las principales vulnerabilidades de seguridad en aplicaciones web, conocida como OWASP Top 10, que es una referencia ampliamente reconocida para la seguridad de aplicaciones.</p>
-                    <p>PCI-DSS, por otro lado, establece una serie de requisitos de seguridad para proteger los datos de tarjetas de pago. Algunos de estos requisitos están directamente relacionados con las vulnerabilidades identificadas por OWASP. Por ejemplo:</p>
+                    <p>Vamos a ver cómo se conectan PCI-DSS y OWASP.</p>
+                    <p>PCI-DSS es un estándar de seguridad para pagos con tarjeta. OWASP es un proyecto que nos ayuda a proteger las aplicaciones web. OWASP tiene una lista de las 10 amenazas de seguridad más comunes en aplicaciones web.</p>
+                    <h3>¿De qué forma se conectan PCI-DSS 4.0.1 y OWASP?</h3>
                     <ul>
-                        <li>Requisito 6.5 de PCI-DSS: "Abordar las vulnerabilidades de seguridad de aplicaciones" hace referencia directa a las vulnerabilidades del OWASP Top 10.</li>
-                        <li>Requisito 6.6 de PCI-DSS: "Asegurar que las aplicaciones web internas y externas estén protegidas contra ataques conocidos utilizando métodos tales como firewalls de aplicaciones web (WAF) o revisiones de código seguro" también está alineado con las mejores prácticas promovidas por OWASP.</li>
+                        <li>PCI-DSS nos solicita proteger los sistemas de pago de amenazas conocidas. Muchas de estas amenazas están en la lista de OWASP.</li>
+                        <li>PCI-DSS también dice que debemos crear aplicaciones seguras. Esto significa evitar las amenazas que OWASP menciona.</li>
+                        <li>PCI-DSS quiere que hagamos evaluaciones de seguridad en nuestros sistemas. Estas evaluaciones deben buscar las amenazas que OWASP ha identificado.</li>
                     </ul>
-                    <p><strong>Aprenderemos cómo OWASP ayuda a cumplir con los requisitos de PCI-DSS.</strong></p>
-                    <p>Al seguir las directrices y mejores prácticas de OWASP, las organizaciones pueden fortalecer la seguridad de sus aplicaciones web y, en consecuencia, cumplir con varios requisitos de PCI-DSS. Implementar controles de seguridad basados en las vulnerabilidades del OWASP Top 10 ayuda a mitigar riesgos y protege los datos de tarjetas de pago, asegurando así el cumplimiento con los estándares de PCI-DSS.</p>
+                    <strong>OWASP nos ayuda a cumplir con PCI-DSS:</strong>
+                    <p>Si seguimos las guías de OWASP, podemos hacer que nuestras aplicaciones web sean más seguras. Esto nos ayuda a cumplir con los requisitos de PCI-DSS.</p>
+                    <p>Al usar la lista de OWASP, podemos evitar amenazas de seguridad y proteger mejor los datos de las tarjetas de pago. Así cumplimos con PCI-DSS.</p>
+                    <h3>Implementación de OWASP para cumplir con PCI-DSS:</h3>
+                    <ul>
+                        <li><strong>PCI-DSS 4.0.1 Requisito 6.2.6:</strong> "Asegúrese de que los sistemas de pago y las aplicaciones estén protegidos contra amenazas conocidas". Este requisito resalta la importancia de abordar las amenazas identificadas, muchas de las cuales están cubiertas en el OWASP Top 10.</li>
+                        <li><strong>PCI-DSS 4.0.1 Requisito 6.4.3:</strong> "Desarrollar aplicaciones de manera segura". Esto incluye asegurar que las aplicaciones no sean vulnerables a las amenazas enumeradas en el OWASP Top 10.</li>
+                        <li><strong>PCI-DSS 4.0.1 Requisito 11.3.1:</strong> "Realizar evaluaciones de penetración en las aplicaciones y sistemas de pago". Las evaluaciones deben abordar las amenazas descritas en el OWASP Top 10.</li>
+                    </ul>
+                    <p>Al seguir las guías y mejores prácticas de OWASP, las organizaciones pueden fortalecer la seguridad de sus aplicaciones web y, en consecuencia, cumplir con varios requisitos de PCI-DSS 4.0.1. Implementar controles de seguridad basados en las amenazas del OWASP Top 10 ayuda a mitigar amenazas y protege los datos de tarjetas de pago, asegurando así el cumplimiento con los estándares de PCI-DSS.</p>
                 `;
                 translateBtn.textContent = 'EN';
             }
