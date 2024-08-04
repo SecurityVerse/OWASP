@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agenda - OWASP TOP 10 y PCI DSS</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f8ff;
+            color: #333;
+        }
+        .container {
+            max-width: 900px;
+            margin: 50px auto;
+            padding: 20px;
+            background: #fff;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .google-colors {
+            color: #4285F4;
+            display: inline;
+        }
+        .google-colors:nth-child(2) {
+            color: #DB4437;
+        }
+        .google-colors:nth-child(3) {
+            color: #F4B400;
+        }
+        .google-colors:nth-child(4) {
+            color: #0F9D58;
+        }
+        ol {
+            margin: 20px 0;
+            padding-left: 20px;
+            counter-reset: section;
+        }
+        ol > li {
+            margin-bottom: 20px;
+            list-style-type: none;
+        }
+        ol > li::before {
+            counter-increment: section;
+            content: counter(section) ". ";
+            font-weight: bold;
+            color: #007bff;
+            margin-right: 5px;
+        }
+        ul {
+            margin: 10px 0 20px 20px;
+            list-style-type: disc;
+        }
+        a {
+            text-decoration: none;
+            color: #333; /* Black color for links */
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        #translate-btn, #scroll-top-btn, #back-btn {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 60px;
+            height: 60px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            font-size: 18px;
+            transition: background-color 0.3s;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        #scroll-top-btn {
+            bottom: 90px; /* Positioned above the translate button */
+        }
+        #back-btn {
+            bottom: 160px; /* Positioned above the scroll top button */
+        }
+        #translate-btn:hover, #scroll-top-btn:hover, #back-btn:hover {
+            background-color: #0056b3;
+        }
+        @media (max-width: 600px) {
+            .container {
+                margin: 20px;
+                padding: 15px;
+            }
+            #translate-btn, #scroll-top-btn, #back-btn {
+                width: 50px;
+                height: 50px;
+                font-size: 16px;
+            }
+            #scroll-top-btn {
+                bottom: 70px; /* Adjust for smaller screens */
+            }
+            #back-btn {
+                bottom: 120px; /* Adjust for smaller screens */
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="content">
+        <button id="back-btn" onclick="location.href='https://securityverse.github.io/OWASP/'">↩️</button>
+        <h1>
+            <span class="google-colors">A</span>
+            <span class="google-colors">g</span>
+            <span class="google-colors">e</span>
+            <span class="google-colors">n</span>
+            <span class="google-colors">d</span>
+            <span class="google-colors">a</span>
+        </h1>
+        <ol>
+            <li><a href="https://securityverse.github.io/OWASP/"><strong>Qué es OWASP TOP 10 y su importancia</strong></a>
+                <ul>
+                    <li>Vamos a comenzar con una vista general del OWASP TOP 10.</li>
+                    <li>Veremos por qué es esencial para la seguridad de las aplicaciones web.</li>
+                </ul>
+            </li>
+            <li><a href="pci-dss-owasp.html"><strong>Cómo se relaciona PCI-DSS y OWASP</strong></a>
+                <ul>
+                    <li>Explicaremos la relación entre PCI-DSS y OWASP.</li>
+                    <li>Aprenderemos cómo OWASP ayuda a cumplir con los requisitos de PCI-DSS.</li>
+                </ul>
+            </li>
+            <li><a href="https://securityverse.github.io/OWASP/"><strong>OWASP TOP 10: Los 10 tipos de vulnerabilidades más importantes en las aplicaciones web</strong></a>
+                <ul>
+                    <li>Detallaremos los 10 tipos de vulnerabilidades más comunes y peligrosas.</li>
+                    <li>Veremos ejemplos prácticos de cada tipo de vulnerabilidad.</li>
+                </ul>
+            </li>
+            <li><a href="herramientas.html"><strong>Herramientas de escaneos de vulnerabilidades web: Kiuwan y Tenable IO</strong></a>
+                <ul>
+                    <li>Presentaremos Kiuwan y Tenable IO como herramientas para escanear vulnerabilidades web.</li>
+                    <li>Explicaremos cómo estas herramientas ayudan a identificar y remediar problemas de seguridad en el código y configuraciones de las aplicaciones.</li>
+                </ul>
+            </li>
+            <li><strong>Demo: SQL Injection, Database Connection String Disclosure y detección de archivos de configuración (.env)</strong>
+                <ul>
+                    <li>Realizaremos una demostración de una inyección SQL.</li>
+                    <li>Mostraremos cómo un atacante puede explotar estas vulnerabilidades y cómo prevenirlas.</li>
+                </ul>
+            </li>
+            <li><strong>Preguntas y Respuestas</strong>
+                <ul>
+                    <li>Al final, abriremos el espacio para preguntas y respuestas.</li>
+                    <li>Preferimos que las preguntas se envíen por chat para ir coordinando su respuesta.</li>
+                </ul>
+            </li>
+        </ol>
+    </div>
+    <button id="translate-btn" onclick="translateContent()">EN</button>
+    <button id="scroll-top-btn" onclick="scrollToTop()">↑</button>
+    <button id="back-btn" onclick="location.href='https://securityverse.github.io/OWASP/'">↩️</button>
+
+    <script>
+        let isSpanish = true;
+
+        function translateContent() {
+            const contentDiv = document.getElementById('content');
+            const translateBtn = document.getElementById('translate-btn');
+            
+            if (isSpanish) {
+                contentDiv.innerHTML = `
+                    <button id="back-btn" onclick="location.href='https://securityverse.github.io/OWASP/'">↩️</button>
+                    <h1>
+                        <span class="google-colors">A</span>
+                        <span class="google-colors">g</span>
+                        <span class="google-colors">e</span>
+                        <span class="google-colors">n</span>
+                        <span class="google-colors">d</span>
+                        <span class="google-colors">a</span>
+                    </h1>
+                    <ol>
+                        <li><a href="https://securityverse.github.io/OWASP/"><strong>What is OWASP TOP 10 and its importance</strong></a>
+                            <ul>
+                                <li>We will start with an overview of the OWASP TOP 10.</li>
+                                <li>We will see why it is essential for web application security.</li>
+                            </ul>
+                        </li>
+                        <li><a href="pci-dss-owasp.html"><strong>How PCI-DSS and OWASP are related</strong></a>
+                            <ul>
+                                <li>We will explain the relationship between PCI-DSS and OWASP.</li>
+                                <li>We will learn how OWASP helps to meet PCI-DSS requirements.</li>
+                            </ul>
+                        </li>
+                        <li><a href="https://securityverse.github.io/OWASP/"><strong>OWASP TOP 10: The 10 most important vulnerabilities in web applications</strong></a>
+                            <ul>
+                                <li>We will detail the 10 most common and dangerous types of vulnerabilities.</li>
+                                <li>We will see practical examples of each type of vulnerability.</li>
+                            </ul>
+                        </li>
+                        <li><a href="herramientas.html"><strong>Web Vulnerability Scanning Tools: Kiuwan and Tenable IO</strong></a>
+                            <ul>
+                                <li>We will present Kiuwan and Tenable IO as tools for scanning web vulnerabilities.</li>
+                                <li>We will explain how these tools help to identify and remediate security issues in the code and application configurations.</li>
+                            </ul>
+                        </li>
+                        <li><strong>Demo: SQL Injection, Database Connection String Disclosure, and detection of environment configuration files (.env)</strong>
+                            <ul>
+                                <li>We will conduct a demonstration of SQL Injection.</li>
+                                <li>We will show how an attacker can exploit these vulnerabilities and how to prevent them.</li>
+                            </ul>
+                        </li>
+                        <li><strong>Questions and Answers</strong>
+                            <ul>
+                                <li>At the end, we will open the space for questions and answers.</li>
+                                <li>We prefer that questions are sent via chat to coordinate their response.</li>
+                            </ul>
+                        </li>
+                    </ol>
+                `;
+                translateBtn.textContent = 'ES';
+            } else {
+                contentDiv.innerHTML = `
+                    <button id="back-btn" onclick="location.href='https://securityverse.github.io/OWASP/'">↩️</button>
+                    <h1>
+                        <span class="google-colors">A</span>
+                        <span class="google-colors">g</span>
+                        <span class="google-colors">e</span>
+                        <span class="google-colors">n</span>
+                        <span class="google-colors">d</span>
+                        <span class="google-colors">a</span>
+                    </h1>
+                    <ol>
+                        <li><a href="https://securityverse.github.io/OWASP/"><strong>Qué es OWASP TOP 10 y su importancia</strong></a>
+                            <ul>
+                                <li>Vamos a comenzar con una vista general del OWASP TOP 10.</li>
+                                <li>Veremos por qué es esencial para la seguridad de las aplicaciones web.</li>
+                            </ul>
+                        </li>
+                        <li><a href="pci-dss-owasp.html"><strong>Cómo se relaciona PCI-DSS y OWASP</strong></a>
+                            <ul>
+                                <li>Explicaremos la relación entre PCI-DSS y OWASP.</li>
+                                <li>Aprenderemos cómo OWASP ayuda a cumplir con los requisitos de PCI-DSS.</li>
+                            </ul>
+                        </li>
+                        <li><a href="https://securityverse.github.io/OWASP/"><strong>OWASP TOP 10: Los 10 tipos de vulnerabilidades más importantes en las aplicaciones web</strong></a>
+                            <ul>
+                                <li>Detallaremos los 10 tipos de vulnerabilidades más comunes y peligrosas.</li>
+                                <li>Veremos ejemplos prácticos de cada tipo de vulnerabilidad.</li>
+                            </ul>
+                        </li>
+                        <li><a href="herramientas.html"><strong>Herramientas de escaneos de vulnerabilidades web: Kiuwan y Tenable IO</strong></a>
+                            <ul>
+                                <li>Presentaremos Kiuwan y Tenable IO como herramientas para escanear vulnerabilidades web.</li>
+                                <li>Explicaremos cómo estas herramientas ayudan a identificar y remediar problemas de seguridad en el código y configuraciones de las aplicaciones.</li>
+                            </ul>
+                        </li>
+                        <li><strong>Demo: SQL Injection, Database Connection String Disclosure y detección de archivos de configuración (.env)</strong>
+                            <ul>
+                                <li>Realizaremos una demostración de una inyección SQL.</li>
+                                <li>Mostraremos cómo un atacante puede explotar estas vulnerabilidades y cómo prevenirlas.</li>
+                            </ul>
+                        </li>
+                        <li><strong>Preguntas y Respuestas</strong>
+                            <ul>
+                                <li>Al final, abriremos el espacio para preguntas y respuestas.</li>
+                                <li>Preferimos que las preguntas se envíen por chat para ir coordinando su respuesta.</li>
+                            </ul>
+                        </li>
+                    </ol>
+                `;
+                translateBtn.textContent = 'EN';
+            }
+            isSpanish = !isSpanish;
+        }
+
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
