@@ -1,0 +1,1525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Top 100 Network Hacking Techniques</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+            padding: 20px;
+            background: #fff;
+            margin-top: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #4285f4; /* Google Blue */
+        }
+        ol {
+            list-style: decimal;
+        }
+        li {
+            margin-bottom: 10px;
+            cursor: pointer;
+        }
+        .details {
+            display: none;
+            margin-top: 10px;
+            margin-left: 20px;
+            font-size: 14px;
+            color: #666;
+        }
+        .buttons {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            display: flex;
+            flex-direction: column;
+        }
+        .buttons a {
+            text-decoration: none;
+            padding: 10px;
+            margin: 5px 0;
+            color: white;
+            background-color: #4285f4; /* Google Blue */
+            border-radius: 50%;
+            text-align: center;
+            width: 50px;
+            height: 50px;
+            line-height: 30px;
+            font-size: 20px;
+            transition: background-color 0.3s;
+        }
+        .buttons a:hover {
+            background-color: #3367d6; /* Darker Blue */
+        }
+        .buttons a.back {
+            background-color: #0f9d58; /* Google Green */
+        }
+        .buttons a.back:hover {
+            background-color: #0c7b43; /* Darker Green */
+        }
+        .buttons a.top {
+            background-color: #db4437; /* Google Red */
+        }
+        .buttons a.top:hover {
+            background-color: #c33c29; /* Darker Red */
+        }
+        .buttons a.translate {
+            background-color: #f4b400; /* Google Yellow */
+        }
+        .buttons a.translate:hover {
+            background-color: #d99b00; /* Darker Yellow */
+        }
+    </style>
+    <script>
+        function toggleDetails(id) {
+            const details = document.getElementById(id);
+            if (details.style.display === "none") {
+                details.style.display = "block";
+            } else {
+                details.style.display = "none";
+            }
+        }
+
+        function toggleLanguage() {
+            const englishSection = document.getElementById('english');
+            const spanishSection = document.getElementById('espanol');
+            if (englishSection.style.display === "none") {
+                englishSection.style.display = "block";
+                spanishSection.style.display = "none";
+            } else {
+                englishSection.style.display = "none";
+                spanishSection.style.display = "block";
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1 id="english-title">Top 100 Network Hacking Techniques for Every Bug Bounty Hunter</h1>
+        <h1 id="spanish-title" style="display:none;">Top 100 Técnicas de Hacking de Red para Cazadores de Bug Bounties</h1>
+
+        <ol id="english">
+            <li onclick="toggleDetails('details1')">Vulnerability Scanning
+                <div id="details1" class="details">
+                    <p><strong>Description:</strong> Identifying vulnerabilities in the network.</p>
+                    <p><strong>Exploitation:</strong> An attacker can use scanning tools to find weak points in the network.</p>
+                    <p><strong>Mitigation:</strong> Keep systems updated and conduct regular scans.</p>
+                </div>
+            </li>
+            <li onclick="toggleDetails('details2')">Packet Sniffing
+                <div id="details2" class="details">
+                    <p><strong>Description:</strong> Capturing and analyzing data packets on the network.</p>
+                    <p><strong>Exploitation:</strong> An attacker can intercept and read sensitive data.</p>
+                    <p><strong>Mitigation:</strong> Use encryption for network communications.</p>
+                </div>
+            </li>
+            <li onclick="toggleDetails('details3')">Man-in-the-Middle Attacks (MitM)
+                <div id="details3" class="details">
+                    <p><strong>Description:</strong> Intercepting communication between two parties.</p>
+                    <p><strong>Exploitation:</strong> An attacker can alter and manipulate transmitted data.</p>
+                    <p><strong>Mitigation:</strong> Use HTTPS and mutual authentication.</p>
+                </div>
+            </li>
+            <li onclick="toggleDetails('details4')">DNS Spoofing
+                <div id="details4" class="details">
+                    <p><strong>Description:</strong> Redirecting DNS traffic to a malicious site.</p>
+                    <p><strong>Exploitation:</strong> An attacker can intercept and modify DNS responses.</p>
+                    <p><strong>Mitigation:</strong> Use DNSSEC and configure DNS servers securely.</p>
+                </div>
+            </li>
+            <li onclick="toggleDetails('details5')">ARP Spoofing
+                <div id="details5" class="details">
+                    <p><strong>Description:</strong> Sending fake ARP messages to link an attacker's MAC address with a legitimate IP address.</p>
+                    <p><strong>Exploitation:</strong> An attacker can intercept, modify, or stop data in a network.</p>
+                    <p><strong>Mitigation:</strong> Use static ARP entries and network monitoring tools.</p>
+                </div>
+            </li>
+            <li onclick="toggleDetails('details6')">SSL/TLS Hijacking
+                <div id="details6" class="details">
+                    <p><strong>Description:</strong> Intercepting and altering encrypted SSL/TLS traffic.</p>
+                    <p><strong>Exploitation:</strong> An attacker can decrypt, modify, and re-encrypt data.</p>
+                    <p><strong>Mitigation:</strong> Use strong encryption methods and certificate pinning.</p>
+                </div>
+            </li>
+            <li onclick="toggleDetails('details7')">Session Hijacking
+                <div id="details7" class="details">
+                    <p><strong>Description:</strong> Taking over a user's session by stealing or predicting session tokens.</p>
+                    <p><strong>Exploitation:</strong> An attacker can impersonate a legitimate user.</p>
+                    <p><strong>Mitigation:</strong> Use secure cookies and session management practices.</p>
+                </div>
+            </li>
+            <li onclick="toggleDetails('details8')">IP Spoofing
+                <div id="details8" class="details">
+                    <p><strong>Description:</strong> Creating IP packets with a false source IP address.</p>
+                    <p><strong>Exploitation:</strong> An attacker can bypass security measures and launch attacks.</p>
+                    <p><strong>Mitigation:</strong> Implement packet filtering and network monitoring.</p>
+                </div>
+            </li>
+            <li onclick="toggleDetails('details9')">MAC Address Spoofing
+                <div id="details9" class="details">
+                    <p><strong>Description:</strong> Changing a device's MAC address to bypass access control lists.</p>
+                    <p><strong>Exploitation:</strong> An attacker can gain unauthorized network access.</p>
+                    <p><strong>Mitigation:</strong> Use port security and MAC address filtering.</p>
+                </div>
+            </li>
+            <li onclick="toggleDetails('details10')">SMTP Relay Exploits
+                <div id="details10" class="details">
+                    <p><strong>Description:</strong> Exploiting SMTP servers to send spam or malicious emails.</p>
+                    <p><strong>Exploitation:</strong> An attacker can use open relays to hide their origin.</p>
+                    <p><strong>Mitigation:</strong> Secure SMTP servers with authentication and relay restrictions.</p>
+                </div>
+            </li>
+            <li onclick="toggleDetails('details11')">Firewall Evasion Techniques
+                <div id="details11" class="details">
+                    <p><strong>Description:</strong> Bypassing firewall rules to access restricted areas.</p>
+                    <p><strong>Exploitation:</strong> An attacker can use techniques like fragmentation, tunneling, or spoofing.</p>
+                    <p><strong>Mitigation:</strong> Configure firewalls properly and monitor traffic for anomalies.</p>
+                </div>
+            </li>
+            <li onclick="toggleDetails('details12')">Bypassing IDS/IPS Systems
+                <div id="details12" class="details">
+                    <p><strong>Description:</strong> Avoiding detection by intrusion detection/prevention systems.</p>
+                    <p><strong>Exploitation:</strong> An attacker can modify payloads or use encryption to evade detection.</p>
+                    <p><strong>Mitigation:</strong> Regularly update IDS/IPS signatures and use multiple detection methods.</p>
+                </div>
+            </li>
+            <li onclick="toggleDetails('details13')">SQL Injection over Network
+                <div id="details13" class="details">
+                    <p><strong>Description:</strong> Injecting malicious SQL queries through network interfaces.</p>
+                    <p><strong>Exploitation:</strong> An attacker can retrieve, modify, or delete database data.</p>
+                    <p><strong>Mitigation:</strong> Use parameterized queries and input validation.</p>
+                </div>
+            </li>
+            <li onclick="toggleDetails('details14')">Exploiting Buffer Overflows over Network
+                <div id="details14" class="details">
+                    <p><strong>Description:</strong> Sending data to overflow a buffer and execute arbitrary code.</p>
+                    <p><strong>Exploitation:</strong> An attacker can gain control of the affected system.</p>
+                    <p><strong>Mitigation:</strong> Implement proper bounds checking and use safe programming practices.</p>
+                </div>
+            </li>
+            <li onclick="toggleDetails('details15')">Denial of Service (DoS) Attacks
+                <div id="details15" class="details">
+                    <p><strong>Description:</strong> Overloading a system to make it unavailable to users.</p>
+                    <p><strong>Exploitation:</strong> An attacker can disrupt services and cause downtime.</p>
+                    <p><strong>Mitigation:</strong> Use rate limiting, load balancing, and DDoS protection services.</p>
+                </div>
+            </li>
+            <li onclick="toggleDetails('details16')">Distributed Denial of Service (DDoS) Attacks
+                <div id="details16" class="details">
+                    <p><strong>Description:</strong> Using multiple systems to launch a DoS attack.</p>
+                    <p><strong>Exploitation:</strong> An attacker can use botnets to amplify the attack.</p>
+                    <p><strong>Mitigation:</strong> Implement robust DDoS mitigation strategies and use cloud-based protections.</p>
+                </div>
+            </li>
+            <li onclick="toggleDetails('details17')">Exploiting Known Vulnerabilities (using tools like Metasploit)
+                <div id="details17" class="details">
+                    <p><strong>Description:</strong> Using pre-built exploits to take advantage of known vulnerabilities.</p>
+                    <p><strong>Exploitation:</strong> An attacker can gain unauthorized access or control.</p>
+                    <p><strong>Mitigation:</strong> Regularly apply patches and updates to all systems.</p>
+                </div>
+            </li>
+            <li onclick="toggleDetails('details18')">Password Cracking via Network
+                <div id="details18" class="details">
+                    <p><strong>Description:</strong> Capturing and cracking passwords transmitted over the network.</p>
+                    <p><strong>Exploitation:</strong> An attacker can gain access to user accounts.</p>
+                    <p><strong>Mitigation:</strong> Use strong, hashed passwords and implement multi-factor authentication.</p>
+                </div>
+            </li>
+            <li onclick="toggleDetails('details19')">Wireless Network Hacking
+                <div id="details19" class="details">
+                    <p><strong>Description:</strong> Compromising wireless networks to gain unauthorized access.</p>
+                    <p><strong>Exploitation:</strong> An attacker can eavesdrop, inject data, or gain network access.</p>
+                    <p><strong>Mitigation:</strong> Use strong WPA3 encryption and disable WPS.</p>
+                </div>
+            </li>
+            <li onclick="toggleDetails('details20')">Rogue DHCP Server Setup
+                <div id="details20" class="details">
+                    <p><strong>Description:</strong> Setting up a malicious DHCP server to assign incorrect IP addresses.</p>
+                    <p><strong>Exploitation:</strong> An attacker can redirect traffic and perform MitM attacks.</p>
+                    <p><strong>Mitigation:</strong> Use DHCP snooping and monitor network traffic for anomalies.</p>
+                </div>
+            </li>
+            <li onclick="toggleDetails('details21')">Remote Code Execution
+                <div id="details21" class="details">
+                    <p><strong>Description:</strong> Executing arbitrary code on a remote system.</p>
+                    <p><strong>Exploitation:</strong> An attacker can gain control over the affected system.</p>
+                    <p><strong>Mitigation:</strong> Apply patches and use secure coding practices.</p>
+                </div>
+            </li>
+            <li onclick="toggleDetails('details22')">Network Protocol Attacks
+                <div id="details22" class="details">
+                    <p><strong>Description:</strong> Exploiting weaknesses in network protocols.</p>
+                    <p><strong>Exploitation:</strong> An attacker can disrupt communications or gain unauthorized access.</p>
+                    <p><strong>Mitigation:</strong> Use secure versions of protocols and configure them properly.</p>
+                </div>
+            </li>
+            <li onclick="toggleDetails('details23')">Network Service Exploitation
+                <div id="details23" class="details">
+                    <p><strong>Description:</strong> Exploiting vulnerabilities in network services.</p>
+                    <p><strong>Exploitation:</strong> An attacker can gain unauthorized access or control.</p>
+                    <p><strong>Mitigation:</strong> Regularly update and secure all network services.</p>
+                </div>
+            </li>
+            <li onclick="toggleDetails('details24')">Evading Secure Network Communication Protocols
+                <div id="details24" class="details">
+                    <p><strong>Description:</strong> Bypassing security measures in network communication protocols.</p>
+                    <p><strong>Exploitation:</strong> An attacker can intercept or manipulate data.</p>
+                    <p><strong>Mitigation:</strong> Use strong encryption and authentication methods.</p>
+                </div>
+            </li>
+            <li onclick="toggleDetails('details25')">Zero-day Exploit Surfacing
+                <div id="details25" class="details">
+                    <p><strong>Description:</strong> Exploiting unknown vulnerabilities in software or hardware.</p>
+                    <p><strong>Exploitation:</strong> An attacker can gain control before a patch is available.</p>
+                    <p><strong>Mitigation:</strong> Use threat intelligence and monitoring to detect anomalies.</p>
+                </div>
+            </li>
+            <li onclick="toggleDetails('details26')">Router Hacking
+                <div id="details26" class="details">
+                    <p><strong>Description:</strong> Compromising routers to intercept or manipulate traffic.</p>
+                    <p><strong>Exploitation:</strong> An attacker can gain control over network traffic.</p>
+                    <p><strong>Mitigation:</strong> Use strong passwords and update router firmware regularly.</p>
+                </div>
+            </li>
+            <li onclick="toggleDetails('details27')">Honeypot Evasion Techniques
+                <div id="details27" class="details">
+                    <p><strong>Description:</strong> Avoiding detection by honeypots set up to trap attackers.</p>
+                    <p><strong>Exploitation:</strong> An attacker can bypass honeypots and avoid detection.</p>
+                    <p><strong>Mitigation:</strong> Use multiple layers of defense and monitor for evasion tactics.</p>
+                </div>
+            </li>
+            <li onclick="toggleDetails('details28')">VPN Pivoting
+                <div id="details28" class="details">
+                    <p><strong>Description:</strong> Using a compromised VPN to access internal networks.</p>
+                    <p><strong>Exploitation:</strong> An attacker can move laterally within a network.</p>
+                    <p><strong>Mitigation:</strong> Use network segmentation and monitor VPN activity.</p>
+                </div>
+            </li>
+            <li onclick="toggleDetails('details29')">SSH Tunneling
+                <div id="details29" class="details">
+                    <p><strong>Description:</strong> Creating encrypted tunnels using SSH.</p>
+                    <p><strong>Exploitation:</strong> An attacker can bypass firewalls and access restricted areas.</p>
+                    <p><strong>Mitigation:</strong> Monitor SSH traffic and use strict access controls.</p>
+                </div>
+            </li>
+            <li onclick="toggleDetails('details30')">SSL Stripping
+                <div id="details30" class="details">
+                    <p><strong>Description:</strong> Downgrading HTTPS to HTTP to intercept data.</p>
+                    <p><strong>Exploitation:</strong> An attacker can intercept and read sensitive information.</p>
+                    <p><strong>Mitigation:</strong> Use HSTS and monitor for SSL stripping attempts.</p>
+                </div>
+            </li>
+            <li onclick="toggleDetails('details31')">Credential Replay Attacks
+                <div id="details31" class="details">
+                    <p><strong>Description:</strong> Reusing captured credentials to gain unauthorized access.</p>
+                    <p><strong>Exploitation:</strong> An attacker can impersonate a legitimate user.</p>
+                    <p><strong>Mitigation:</strong> Use unique session tokens and implement multi-factor authentication.</p>
+                </div>
+            </li>
+            <li onclick="toggleDetails('details32')">Side-channel Attacks
+                <div id="details32" class="details">
+                    <p><strong>Description:</strong> Exploiting indirect information leaks from a system.</p>
+                    <p><strong>Exploitation:</strong> An attacker can infer sensitive data from power usage, timing, etc.</p>
+                    <p><strong>Mitigation:</strong> Implement noise generation and use secure hardware design.</p>
+                </div>
+            </li>
+            <li onclick="toggleDetails('details33')">Subdomain Takeover through Network Misconfigurations
+                <div id="details33" class="details">
+                    <p><strong>Description:</strong> Taking control of a subdomain due to DNS misconfigurations.</p>
+                    <p><strong>Exploitation:</strong> An attacker can redirect traffic and perform phishing attacks.</p>
+                    <p><strong>Mitigation:</strong> Regularly audit DNS settings and remove unused subdomains.</p>
+                </div>
+            </li>
+            <li onclick="toggleDetails('details34')">SMB Relay Attacks
+                <div id="details34" class="details">
+                    <p><strong>Description:</strong> Relaying SMB authentication requests to gain unauthorized access.</p>
+                    <p><strong>Exploitation:</strong> An attacker can authenticate as a legitimate user.</p>
+                    <p><strong>Mitigation:</strong> Disable SMBv1 and use SMB signing.</p>
+                </div>
+            </li>
+            <li onclick="toggleDetails('details35')">Kerberos Attacks
+                <div id="details35" class="details">
+                    <p><strong>Description:</strong> Exploiting weaknesses in the Kerberos authentication protocol.</p>
+                    <p><strong>Exploitation:</strong> An attacker can impersonate users or escalate privileges.</p>
+                    <p><strong>Mitigation:</strong> Keep systems updated and monitor Kerberos tickets for anomalies.</p>
+                </div>
+            </li>
+            <li onclick="toggleDetails('details36')">LDAP Injection
+                <div id="details36" class="details">
+                    <p><strong>Description:</strong> Injecting malicious LDAP queries to manipulate directory services.</p>
+                    <p><strong>Exploitation:</strong> An attacker can access, modify, or delete directory data.</p>
+                    <p><strong>Mitigation:</strong> Use parameterized queries and input validation.</p>
+                </div>
+            </li>
+            <li onclick="toggleDetails('details37')">RDP Exploits
+                <div id="details37" class="details">
+                    <p><strong>Description:</strong> Exploiting vulnerabilities in Remote Desktop Protocol.</p>
+                    <p><strong>Exploitation:</strong> An attacker can gain remote access to systems.</p>
+                    <p><strong>Mitigation:</strong> Apply patches and use strong authentication methods.</p>
+                </div>
+            </li>
+            <li onclick="toggleDetails('details38')">VoIP Hacking
+                <div id="details38" class="details">
+                    <p><strong>Description:</strong> Compromising Voice over IP systems to eavesdrop or disrupt communications.</p>
+                    <p><strong>Exploitation:</strong> An attacker can intercept calls or cause service disruptions.</p>
+                    <p><strong>Mitigation:</strong> Use encryption and secure VoIP infrastructure.</p>
+                </div>
+            </li>
+            <li onclick="toggleDetails('details39')">Mobile Network Hacking
+                <div id="details39" class="details">
+                    <p><strong>Description:</strong> Compromising mobile networks to intercept or manipulate data.</p>
+                    <p><strong>Exploitation:</strong> An attacker can eavesdrop, track, or disrupt communications.</p>
+                    <p><strong>Mitigation:</strong> Use strong encryption and secure mobile network infrastructure.</p>
+                </div>
+            </li>
+            <li onclick="toggleDetails('details40')">API Gateway Hijacking
+                <div id="details40" class="details">
+                    <p><strong>Description:</strong> Compromising API gateways to intercept or manipulate API traffic.</p>
+                    <p><strong>Exploitation:</strong> An attacker can alter API responses or gain unauthorized access.</p>
+                    <p><strong>Mitigation:</strong> Secure API gateways and use strong authentication methods.</p>
+                </div>
+            </li>
+            <li onclick="toggleDetails('details41')">Exploiting Network File Systems
+                <div id="details41" class="details">
+                    <p><strong>Description:</strong> Compromising network file systems to access or manipulate files.</p>
+                    <p><strong>Exploitation:</strong> An attacker can steal or modify sensitive data.</p>
+                    <p><strong>Mitigation:</strong> Secure network file systems with strong authentication and encryption.</p>
+                </div>
+            </li>
+            <li onclick="toggleDetails('details42')">Cloud Network Attacks
+                <div id="details42" class="details">
+                    <p><strong>Description:</strong> Compromising cloud networks to access or manipulate data.</p>
+                    <p><strong>Exploitation:</strong> An attacker can steal data or disrupt cloud services.</p>
+                    <p><strong>Mitigation:</strong> Use strong authentication and encryption for cloud services.</p>
+                </div>
+            </li>
+            <li onclick="toggleDetails('details43')">Network Segmentation Bypass
+                <div id="details43" class="details">
+                    <p><strong>Description:</strong> Bypassing network segmentation to gain unauthorized access.</p>
+                    <p><strong>Exploitation:</strong> An attacker can move laterally within a network.</p>
+                    <p><strong>Mitigation:</strong> Use strict network segmentation and monitor for anomalies.</p>
+                </div>
+            </li>
+            <li onclick="toggleDetails('details44')">IPv6 Attacks
+                <div id="details44" class="details">
+                    <p><strong>Description:</strong> Exploiting vulnerabilities in IPv6 protocols and implementations.</p>
+                    <p><strong>Exploitation:</strong> An attacker can disrupt or manipulate IPv6 traffic.</p>
+                    <p><strong>Mitigation:</strong> Use secure IPv6 configurations and monitor IPv6 traffic.</p>
+                </div>
+            </li>
+            <li onclick="toggleDetails('details45')">Network Timing Attacks
+                <div id="details45" class="details">
+                    <p><strong>Description:</strong> Exploiting timing information to infer sensitive data.</p>
+                    <p><strong>Exploitation:</strong> An attacker can infer data based on response times.</p>
+                    <p><strong>Mitigation:</strong> Use timing obfuscation techniques and secure coding practices.</p>
+                </div>
+            </li>
+            <li onclick="toggleDetails('details46')">Utilizing Botnets
+                <div id="details46" class="details">
+                    <p><strong>Description:</strong> Using a network of compromised devices to launch attacks.</p>
+                    <p><strong>Exploitation:</strong> An attacker can conduct DDoS attacks or distribute malware.</p>
+                    <p><strong>Mitigation:</strong> Detect and dismantle botnets and use robust network defenses.</p>
+                </div>
+            </li>
+            <li onclick="toggleDetails('details47')">Cryptojacking through Network Devices
+                <div id="details47" class="details">
+                    <p><strong>Description:</strong> Using network devices to mine cryptocurrency without consent.</p>
+                    <p><strong>Exploitation:</strong> An attacker can use system resources for mining.</p>
+                    <p><strong>Mitigation:</strong> Monitor network traffic for unusual activity and secure devices.</p>
+                </div>
+            </li>
+            <li onclick="toggleDetails('details48')">Wi-Fi Deauthentication Attacks
+                <div id="details48" class="details">
+                    <p><strong>Description:</strong> Forcing devices to disconnect from Wi-Fi networks.</p>
+                    <p><strong>Exploitation:</strong> An attacker can disrupt Wi-Fi connectivity.</p>
+                    <p><strong>Mitigation:</strong> Use WPA3 and monitor Wi-Fi traffic for deauthentication frames.</p>
+                </div>
+            </li>
+            <li onclick="toggleDetails('details49')">Bluejacking
+                <div id="details49" class="details">
+                    <p><strong>Description:</strong> Sending unsolicited messages over Bluetooth.</p>
+                    <p><strong>Exploitation:</strong> An attacker can send spam or phishing messages.</p>
+                    <p><strong>Mitigation:</strong> Keep Bluetooth devices in non-discoverable mode.</p>
+                </div>
+            </li>
+            <li onclick="toggleDetails('details50')">Bluesnarfing
+                <div id="details50" class="details">
+                    <p><strong>Description:</strong> Unauthorized access to Bluetooth-enabled devices.</p>
+                    <p><strong>Exploitation:</strong> An attacker can steal data from Bluetooth devices.</p>
+                    <p><strong>Mitigation:</strong> Use strong Bluetooth pairing and keep devices updated.</p>
+                </div>
+            </li>
+            <li onclick="toggleDetails('details51')">Pharming
+                <div id="details51" class="details">
+                    <p><strong>Description:</strong> Redirecting traffic from a legitimate site to a malicious one.</p>
+                    <p><strong>Exploitation:</strong> An attacker can steal credentials or distribute malware.</p>
+                    <p><strong>Mitigation:</strong> Use secure DNS and monitor for DNS changes.</p>
+                </div>
+            </li>
+            <li onclick="toggleDetails('details52')">Clickjacking on Network Panels
+                <div id="details52" class="details">
+                    <p><strong>Description:</strong> Tricking users into clicking on malicious content hidden behind legitimate elements.</p>
+                    <p><strong>Exploitation:</strong> An attacker can execute actions without the user's knowledge.</p>
+                    <p><strong>Mitigation:</strong> Use frame-busting techniques and secure headers.</p>
+                </div>
+            </li>
+            <li onclick="toggleDetails('details53')">Sybil Attack in Networked Environments
+                <div id="details53" class="details">
+                    <p><strong>Description:</strong> Creating multiple fake identities to influence or disrupt network operations.</p>
+                    <p><strong>Exploitation:</strong> An attacker can manipulate network data or decisions.</p>
+                    <p><strong>Mitigation:</strong> Use strong identity verification methods and monitor for anomalies.</p>
+                </div>
+            </li>
+            <li onclick="toggleDetails('details54')">Exploiting Network Configuration Errors
+                <div id="details54" class="details">
+                    <p><strong>Description:</strong> Taking advantage of misconfigurations in network settings.</p>
+                    <p><strong>Exploitation:</strong> An attacker can gain unauthorized access or disrupt services.</p>
+                    <p><strong>Mitigation:</strong> Regularly audit network configurations and apply best practices.</p>
+                </div>
+            </li>
+            <li onclick="toggleDetails('details55')">Utilizing Exploit Kits
+                <div id="details55" class="details">
+                    <p><strong>Description:</strong> Using pre-packaged exploit kits to automate attacks.</p>
+                    <p><strong>Exploitation:</strong> An attacker can quickly exploit known vulnerabilities.</p>
+                    <p><strong>Mitigation:</strong> Keep systems updated and use security tools to detect exploit kits.</p>
+                </div>
+            </li>
+            <li onclick="toggleDetails('details56')">NAT Slipstreaming
+                <div id="details56" class="details">
+                    <p><strong>Description:</strong> Bypassing NAT/firewall protections to access internal devices.</p>
+                    <p><strong>Exploitation:</strong> An attacker can remotely access devices behind a NAT.</p>
+                    <p><strong>Mitigation:</strong> Use strict firewall rules and monitor for unusual traffic.</p>
+                </div>
+            </li>
+            <li onclick="toggleDetails('details57')">Service Side Request Forgery (SSRF) in Network Services
+                <div id="details57" class="details">
+                    <p><strong>Description:</strong> Exploiting server-side request handling to perform unauthorized actions.</p>
+                    <p><strong>Exploitation:</strong> An attacker can manipulate requests to access internal systems.</p>
+                    <p><strong>Mitigation:</strong> Validate and sanitize server-side requests.</p>
+                </div>
+            </li>
+            <li onclick="toggleDetails('details58')">Network Traffic Manipulation
+                <div id="details58" class="details">
+                    <p><strong>Description:</strong> Intercepting and altering network traffic.</p>
+                    <p><strong>Exploitation:</strong> An attacker can modify data or inject malicious content.</p>
+                    <p><strong>Mitigation:</strong> Use encryption and monitor for traffic anomalies.</p>
+                </div>
+            </li>
+            <li onclick="toggleDetails('details59')">Ransomware Attacks via Network
+                <div id="details59" class="details">
+                    <p><strong>Description:</strong> Spreading ransomware through network channels.</p>
+                    <p><strong>Exploitation:</strong> An attacker can encrypt data and demand ransom.</p>
+                    <p><strong>Mitigation:</strong> Use robust backup and security practices.</p>
+                </div>
+            </li>
+            <li onclick="toggleDetails('details60')">Utilizing Malware in Network Attacks
+                <div id="details60" class="details">
+                    <p><strong>Description:</strong> Using malicious software to compromise network systems.</p>
+                    <p><strong>Exploitation:</strong> An attacker can steal data or disrupt operations.</p>
+                    <p><strong>Mitigation:</strong> Use antivirus and anti-malware tools and keep systems updated.</p>
+                </div>
+            </li>
+            <li onclick="toggleDetails('details61')">Data Exfiltration over Covert Channels
+                <div id="details61" class="details">
+                    <p><strong>Description:</strong> Transmitting data out of a network through hidden channels.</p>
+                    <p><strong>Exploitation:</strong> An attacker can steal sensitive information undetected.</p>
+                    <p><strong>Mitigation:</strong> Monitor network traffic and use data loss prevention tools.</p>
+                </div>
+            </li>
+            <li onclick="toggleDetails('details62')">DNS Rebinding
+                <div id="details62" class="details">
+                    <p><strong>Description:</strong> Exploiting DNS responses to bypass same-origin policy and access internal resources.</p>
+                    <p><strong>Exploitation:</strong> An attacker can control client browsers to access internal systems.</p>
+                    <p><strong>Mitigation:</strong> Use DNS rebinding protections and monitor DNS traffic.</p>
+                </div>
+            </li>
+            <li onclick="toggleDetails('details63')">Manipulating Network-based Application Logic
+                <div id="details63" class="details">
+                    <p><strong>Description:</strong> Exploiting logical flaws in network-based applications.</p>
+                    <p><strong>Exploitation:</strong> An attacker can manipulate application behavior to their advantage.</p>
+                    <p><strong>Mitigation:</strong> Use secure coding practices and conduct thorough testing.</p>
+                </div>
+            </li>
+            <li onclick="toggleDetails('details64')">Physical Network Tap
+                <div id="details64" class="details">
+                    <p><strong>Description:</strong> Installing a physical device to intercept network traffic.</p>
+                    <p><strong>Exploitation:</strong> An attacker can capture and analyze data packets.</p>
+                    <p><strong>Mitigation:</strong> Secure physical access to network infrastructure.</p>
+                </div>
+            </li>
+            <li onclick="toggleDetails('details65')">Modifying Network Device Firmware
+                <div id="details65" class="details">
+                    <p><strong>Description:</strong> Altering the firmware of network devices to introduce vulnerabilities.</p>
+                    <p><strong>Exploitation:</strong> An attacker can gain persistent control over devices.</p>
+                    <p><strong>Mitigation:</strong> Use signed firmware updates and monitor device integrity.</p>
+                </div>
+            </li>
+            <li onclick="toggleDetails('details66')">Cross-Site Scripting (XSS) over Network
+                <div id="details66" class="details">
+                    <p><strong>Description:</strong> Injecting malicious scripts into network-based applications.</p>
+                    <p><strong>Exploitation:</strong> An attacker can steal session tokens or perform actions on behalf of users.</p>
+                    <p><strong>Mitigation:</strong> Use input validation and content security policies.</p>
+                </div>
+            </li>
+            <li onclick="toggleDetails('details67')">Cross-Site Request Forgery (CSRF) on Network Devices
+                <div id="details67" class="details">
+                    <p><strong>Description:</strong> Forcing users to perform unwanted actions on network devices.</p>
+                    <p><strong>Exploitation:</strong> An attacker can change settings or execute commands without the user's knowledge.</p>
+                    <p><strong>Mitigation:</strong> Use anti-CSRF tokens and secure device configurations.</p>
+                </div>
+            </li>
+            <li onclick="toggleDetails('details68')">Spear Phishing on Network Administrators
+                <div id="details68" class="details">
+                    <p><strong>Description:</strong> Targeted phishing attacks on network administrators.</p>
+                    <p><strong>Exploitation:</strong> An attacker can gain administrator credentials and access.</p>
+                    <p><strong>Mitigation:</strong> Conduct security awareness training and use multi-factor authentication.</p>
+                </div>
+            </li>
+            <li onclick="toggleDetails('details69')">Code Injection in Network Protocols
+                <div id="details69" class="details">
+                    <p><strong>Description:</strong> Injecting malicious code into network protocols to execute arbitrary commands.</p>
+                    <p><strong>Exploitation:</strong> An attacker can control network devices or applications.</p>
+                    <p><strong>Mitigation:</strong> Use secure coding practices and validate protocol data.</p>
+                </div>
+            </li>
+            <li onclick="toggleDetails('details70')">Exploiting Race Conditions over Network
+                <div id="details70" class="details">
+                    <p><strong>Description:</strong> Exploiting timing vulnerabilities to alter the order of operations.</p>
+                    <p><strong>Exploitation:</strong> An attacker can manipulate data or execution flow.</p>
+                    <p><strong>Mitigation:</strong> Use synchronization mechanisms and conduct thorough testing.</p>
+                </div>
+            </li>
+            <li onclick="toggleDetails('details71')">Time of Check to Time of Use (TOCTOU) in Network Configurations
+                <div id="details71" class="details">
+                    <p><strong>Description:</strong> Exploiting timing gaps between verification and execution of actions.</p>
+                    <p><strong>Exploitation:</strong> An attacker can change conditions after checks but before execution.</p>
+                    <p><strong>Mitigation:</strong> Use atomic operations and reduce the window between check and use.</p>
+                </div>
+            </li>
+            <li onclick="toggleDetails('details72')">Network Load Balancer Exploitation
+                <div id="details72" class="details">
+                    <p><strong>Description:</strong> Compromising load balancers to manipulate traffic distribution.</p>
+                    <p><strong>Exploitation:</strong> An attacker can disrupt service availability or redirect traffic.</p>
+                    <p><strong>Mitigation:</strong> Secure load balancers with strong authentication and monitoring.</p>
+                </div>
+            </li>
+            <li onclick="toggleDetails('details73')">Exploiting Network Management Tools
+                <div id="details73" class="details">
+                    <p><strong>Description:</strong> Compromising tools used to manage network infrastructure.</p>
+                    <p><strong>Exploitation:</strong> An attacker can control or disrupt network operations.</p>
+                    <p><strong>Mitigation:</strong> Secure management tools and limit access to authorized users.</p>
+                </div>
+            </li>
+            <li onclick="toggleDetails('details74')">Bypassing Network Access Controls
+                <div id="details74" class="details">
+                    <p><strong>Description:</strong> Circumventing mechanisms that control access to network resources.</p>
+                    <p><strong>Exploitation:</strong> An attacker can gain unauthorized access to sensitive areas.</p>
+                    <p><strong>Mitigation:</strong> Use strong access controls and monitor for unauthorized attempts.</p>
+                </div>
+            </li>
+            <li onclick="toggleDetails('details75')">Quota Manipulation
+                <div id="details75" class="details">
+                    <p><strong>Description:</strong> Altering quota settings to exceed allocated resources.</p>
+                    <p><strong>Exploitation:</strong> An attacker can cause service disruptions or resource exhaustion.</p>
+                    <p><strong>Mitigation:</strong> Monitor resource usage and enforce strict quota policies.</p>
+                </div>
+            </li>
+            <li onclick="toggleDetails('details76')">Reflective DDoS Attacks
+                <div id="details76" class="details">
+                    <p><strong>Description:</strong> Amplifying DDoS attacks by reflecting traffic off misconfigured servers.</p>
+                    <p><strong>Exploitation:</strong> An attacker can increase the volume of attack traffic.</p>
+                    <p><strong>Mitigation:</strong> Configure servers properly and use DDoS protection services.</p>
+                </div>
+            </li>
+            <li onclick="toggleDetails('details77')">Amplification DDoS Attacks
+                <div id="details77" class="details">
+                    <p><strong>Description:</strong> Using amplification techniques to increase the impact of DDoS attacks.</p>
+                    <p><strong>Exploitation:</strong> An attacker can overwhelm targets with amplified traffic.</p>
+                    <p><strong>Mitigation:</strong> Use rate limiting and DDoS mitigation services.</p>
+                </div>
+            </li>
+            <li onclick="toggleDetails('details78')">DNS Tunneling
+                <div id="details78" class="details">
+                    <p><strong>Description:</strong> Using DNS queries to tunnel data in and out of a network.</p>
+                    <p><strong>Exploitation:</strong> An attacker can bypass security measures to exfiltrate data.</p>
+                    <p><strong>Mitigation:</strong> Monitor DNS traffic for anomalies and use DNS filtering.</p>
+                </div>
+            </li>
+            <li onclick="toggleDetails('details79')">ICMP Tunneling
+                <div id="details79" class="details">
+                    <p><strong>Description:</strong> Using ICMP packets to tunnel data through a network.</p>
+                    <p><strong>Exploitation:</strong> An attacker can exfiltrate data or bypass firewalls.</p>
+                    <p><strong>Mitigation:</strong> Monitor ICMP traffic and use strict filtering rules.</p>
+                </div>
+            </li>
+            <li onclick="toggleDetails('details80')">Manipulating Network-based Authentication Mechanisms
+                <div id="details80" class="details">
+                    <p><strong>Description:</strong> Exploiting weaknesses in authentication protocols.</p>
+                    <p><strong>Exploitation:</strong> An attacker can gain unauthorized access to network resources.</p>
+                    <p><strong>Mitigation:</strong> Use strong, multi-factor authentication methods.</p>
+                </div>
+            </li>
+            <li onclick="toggleDetails('details81')">Network Data Leakage via Side Channels
+                <div id="details81" class="details">
+                    <p><strong>Description:</strong> Exfiltrating data through indirect means like power consumption or timing.</p>
+                    <p><strong>Exploitation:</strong> An attacker can infer sensitive information without direct access.</p>
+                    <p><strong>Mitigation:</strong> Implement side-channel resistance techniques and secure coding practices.</p>
+                </div>
+            </li>
+            <li onclick="toggleDetails('details82')">Memory Dumping over Network
+                <div id="details82" class="details">
+                    <p><strong>Description:</strong> Capturing and analyzing memory contents remotely.</p>
+                    <p><strong>Exploitation:</strong> An attacker can retrieve sensitive data from memory dumps.</p>
+                    <p><strong>Mitigation:</strong> Secure memory access and use encryption.</p>
+                </div>
+            </li>
+            <li onclick="toggleDetails('details83')">Bypassing Two-Factor Authentication via Network Intercept
+                <div id="details83" class="details">
+                    <p><strong>Description:</strong> Intercepting and bypassing two-factor authentication mechanisms.</p>
+                    <p><strong>Exploitation:</strong> An attacker can gain access despite 2FA protections.</p>
+                    <p><strong>Mitigation:</strong> Use secure communication channels and monitor for anomalies.</p>
+                </div>
+            </li>
+            <li onclick="toggleDetails('details84')">Exploiting Weak SSL/TLS Ciphers
+                <div id="details84" class="details">
+                    <p><strong>Description:</strong> Attacking systems that use weak or outdated encryption ciphers.</p>
+                    <p><strong>Exploitation:</strong> An attacker can decrypt or manipulate encrypted data.</p>
+                    <p><strong>Mitigation:</strong> Use strong, up-to-date encryption ciphers and protocols.</p>
+                </div>
+            </li>
+            <li onclick="toggleDetails('details85')">Forceful Browsing in Network Environments
+                <div id="details85" class="details">
+                    <p><strong>Description:</strong> Accessing unauthorized parts of a network by manipulating URLs.</p>
+                    <p><strong>Exploitation:</strong> An attacker can bypass access controls to restricted areas.</p>
+                    <p><strong>Mitigation:</strong> Use proper access controls and validate URLs.</p>
+                </div>
+            </li>
+            <li onclick="toggleDetails('details86')">HTTP Smuggling
+                <div id="details86" class="details">
+                    <p><strong>Description:</strong> Crafting HTTP requests to bypass security measures and reach protected resources.</p>
+                    <p><strong>Exploitation:</strong> An attacker can manipulate and bypass security controls.</p>
+                    <p><strong>Mitigation:</strong> Use robust HTTP parsing and validate requests.</p>
+                </div>
+            </li>
+            <li onclick="toggleDetails('details87')">HTTP Flooding
+                <div id="details87" class="details">
+                    <p><strong>Description:</strong> Overwhelming a server with HTTP requests to cause a denial of service.</p>
+                    <p><strong>Exploitation:</strong> An attacker can disrupt services and cause downtime.</p>
+                    <p><strong>Mitigation:</strong> Use rate limiting and DDoS protection services.</p>
+                </div>
+            </li>
+            <li onclick="toggleDetails('details88')">Web Socket Hijacking
+                <div id="details88" class="details">
+                    <p><strong>Description:</strong> Compromising web socket connections to intercept or manipulate data.</p>
+                    <p><strong>Exploitation:</strong> An attacker can read or alter real-time communications.</p>
+                    <p><strong>Mitigation:</strong> Use secure web socket protocols and validate data.</p>
+                </div>
+            </li>
+            <li onclick="toggleDetails('details89')">Exploiting Web Application Firewalls over Network
+                <div id="details89" class="details">
+                    <p><strong>Description:</strong> Bypassing or manipulating web application firewalls to launch attacks.</p>
+                    <p><strong>Exploitation:</strong> An attacker can access protected resources or inject malicious code.</p>
+                    <p><strong>Mitigation:</strong> Use strong, well-configured web application firewalls.</p>
+                </div>
+            </li>
+            <li onclick="toggleDetails('details90')">BGP Hijacking
+                <div id="details90" class="details">
+                    <p><strong>Description:</strong> Manipulating BGP routes to redirect or intercept traffic.</p>
+                    <p><strong>Exploitation:</strong> An attacker can disrupt or eavesdrop on network communications.</p>
+                    <p><strong>Mitigation:</strong> Use secure BGP configurations and monitor routes for anomalies.</p>
+                </div>
+            </li>
+            <li onclick="toggleDetails('details91')">Using Advanced Persistent Threat (APT) Techniques in Network Environments
+                <div id="details91" class="details">
+                    <p><strong>Description:</strong> Employing sophisticated, long-term strategies to compromise networks.</p>
+                    <p><strong>Exploitation:</strong> An attacker can maintain access and exfiltrate data over extended periods.</p>
+                    <p><strong>Mitigation:</strong> Use comprehensive security measures and continuous monitoring.</p>
+                </div>
+            </li>
+            <li onclick="toggleDetails('details92')">Firmware Reversing and Exploitation in Network Devices
+                <div id="details92" class="details">
+                    <p><strong>Description:</strong> Analyzing and exploiting firmware in network devices.</p>
+                    <p><strong>Exploitation:</strong> An attacker can introduce backdoors or vulnerabilities.</p>
+                    <p><strong>Mitigation:</strong> Use signed firmware updates and secure coding practices.</p>
+                </div>
+            </li>
+            <li onclick="toggleDetails('details93')">Cellular Network Exploitation
+                <div id="details93" class="details">
+                    <p><strong>Description:</strong> Compromising cellular networks to intercept or manipulate communications.</p>
+                    <p><strong>Exploitation:</strong> An attacker can eavesdrop, track, or disrupt cellular services.</p>
+                    <p><strong>Mitigation:</strong> Use strong encryption and secure cellular infrastructure.</p>
+                </div>
+            </li>
+            <li onclick="toggleDetails('details94')">IoT Device Network Attacks
+                <div id="details94" class="details">
+                    <p><strong>Description:</strong> Compromising Internet of Things devices to gain network access.</p>
+                    <p><strong>Exploitation:</strong> An attacker can use IoT devices to launch attacks or gather data.</p>
+                    <p><strong>Mitigation:</strong> Secure IoT devices with strong authentication and regular updates.</p>
+                </div>
+            </li>
+            <li onclick="toggleDetails('details95')">Skimming Data over Network Layers
+                <div id="details95" class="details">
+                    <p><strong>Description:</strong> Intercepting data as it traverses network layers.</p>
+                    <p><strong>Exploitation:</strong> An attacker can steal sensitive information in transit.</p>
+                    <p><strong>Mitigation:</strong> Use encryption and secure communication channels.</p>
+                </div>
+            </li>
+            <li onclick="toggleDetails('details96')">Using Rogue Security Software to Phish Network Credentials
+                <div id="details96" class="details">
+                    <p><strong>Description:</strong> Deploying fake security software to steal credentials.</p>
+                    <p><strong>Exploitation:</strong> An attacker can gather login information under the guise of security.</p>
+                    <p><strong>Mitigation:</strong> Educate users and use legitimate, verified security tools.</p>
+                </div>
+            </li>
+            <li onclick="toggleDetails('details97')">Threat Intelligence on Network Vulnerabilities
+                <div id="details97" class="details">
+                    <p><strong>Description:</strong> Gathering and analyzing information on network vulnerabilities.</p>
+                    <p><strong>Exploitation:</strong> An attacker can use threat intelligence to plan attacks.</p>
+                    <p><strong>Mitigation:</strong> Stay informed about threats and implement proactive security measures.</p>
+                </div>
+            </li>
+            <li onclick="toggleDetails('details98')">Using Custom Exploitation Tools
+                <div id="details98" class="details">
+                    <p><strong>Description:</strong> Developing and deploying custom tools to exploit network vulnerabilities.</p>
+                    <p><strong>Exploitation:</strong> An attacker can use tailored tools to evade detection and maximize impact.</p>
+                    <p><strong>Mitigation:</strong> Monitor for unusual activity and use advanced threat detection tools.</p>
+                </div>
+            </li>
+            <li onclick="toggleDetails('details99')">Chain Exploitation for Network-Wide Impact
+                <div id="details99" class="details">
+                    <p><strong>Description:</strong> Linking multiple exploits to compromise an entire network.</p>
+                    <p><strong>Exploitation:</strong> An attacker can move laterally and escalate privileges across a network.</p>
+                    <p><strong>Mitigation:</strong> Use layered security defenses and conduct regular security assessments.</p>
+                </div>
+            </li>
+            <li onclick="toggleDetails('details100')">Amplifying DDoS Attacks
+                <div id="details100" class="details">
+                    <p><strong>Description:</strong> Using amplification techniques to increase the impact of DDoS attacks.</p>
+                    <p><strong>Exploitation:</strong> An attacker can overwhelm targets with amplified traffic.</p>
+                    <p><strong>Mitigation:</strong> Use rate limiting and DDoS mitigation services.</p>
+                </div>
+            </li>
+        </ol>
+
+        <ol id="espanol" style="display:none;">
+            <li onclick="toggleDetails('details101')">Escaneo de Vulnerabilidades
+                <div id="details101" class="details">
+                    <p><strong>Descripción:</strong> Identificación de vulnerabilidades en la red.</p>
+                    <p><strong>Explotación:</strong> Un atacante puede usar herramientas de escaneo para encontrar puntos débiles en la red.</p>
+                    <p><strong>Mitigación:</strong> Mantener los sistemas actualizados y realizar escaneos regulares.</p>
+                </div>
+            </li>
+            <li onclick="toggleDetails('details102')">Captura de Paquetes
+                <div id="details102" class="details">
+                    <p><strong>Descripción:</strong> Captura y análisis de paquetes de datos en la red.</p>
+                    <p><strong>Explotación:</strong> Un atacante puede interceptar y leer datos sensibles.</p>
+                    <p><strong>Mitigación:</strong> Usar cifrado en las comunicaciones de red.</p>
+                </div>
+            </li>
+            <li onclick="toggleDetails('details103')">Ataques Man-in-the-Middle (MitM)
+                <div id="details103" class="details">
+                    <p><strong>Descripción:</strong> Interceptación de la comunicación entre dos partes.</p>
+                    <p><strong>Explotación:</strong> Un atacante puede alterar y manipular los datos transmitidos.</p>
+                    <p><strong>Mitigación:</strong> Usar HTTPS y autenticación mutua.</p>
+                </div>
+            </li>
+            <li onclick="toggleDetails('details104')">Suplantación de DNS
+                <div id="details104" class="details">
+                    <p><strong>Descripción:</strong> Redirigir el tráfico DNS a un sitio malicioso.</p>
+                    <p><strong>Explotación:</strong> Un atacante puede interceptar y modificar respuestas DNS.</p>
+                    <p><strong>Mitigación:</strong> Usar DNSSEC y configurar los servidores DNS de manera segura.</p>
+                </div>
+            </li>
+            <li onclick="toggleDetails('details105')">Suplantación de ARP
+                <div id="details105" class="details">
+                    <p><strong>Descripción:</strong> Enviar mensajes ARP falsos para vincular la dirección MAC del atacante con una dirección IP legítima.</p>
+                    <p><strong>Explotación:</strong> Un atacante puede interceptar, modificar o detener datos en una red.</p>
+                    <p><strong>Mitigación:</strong> Usar entradas ARP estáticas y herramientas de monitoreo de red.</p>
+                </div>
+            </li>
+            <li onclick="toggleDetails('details106')">Secuestro de SSL/TLS
+                <div id="details106" class="details">
+                    <p><strong>Descripción:</strong> Interceptar y alterar el tráfico cifrado SSL/TLS.</p>
+                    <p><strong>Explotación:</strong> Un atacante puede descifrar, modificar y volver a cifrar datos.</p>
+                    <p><strong>Mitigación:</strong> Usar métodos de cifrado fuertes y fijación de certificados.</p>
+                </div>
+            </li>
+            <li onclick="toggleDetails('details107')">Secuestro de Sesiones
+                <div id="details107" class="details">
+                    <p><strong>Descripción:</strong> Tomar el control de una sesión de usuario robando o prediciendo tokens de sesión.</p>
+                    <p><strong>Explotación:</strong> Un atacante puede hacerse pasar por un usuario legítimo.</p>
+                    <p><strong>Mitigación:</strong> Usar cookies seguras y prácticas de gestión de sesiones.</p>
+                </div>
+            </li>
+            <li onclick="toggleDetails('details108')">Suplantación de IP
+                <div id="details108" class="details">
+                    <p><strong>Descripción:</strong> Crear paquetes IP con una dirección IP de origen falsa.</p>
+                    <p><strong>Explotación:</strong> Un atacante puede eludir medidas de seguridad y lanzar ataques.</p>
+                    <p><strong>Mitigación:</strong> Implementar filtrado de paquetes y monitoreo de red.</p>
+                </div>
+            </li>
+            <li onclick="toggleDetails('details109')">Suplantación de Dirección MAC
+                <div id="details109" class="details">
+                    <p><strong>Descripción:</strong> Cambiar la dirección MAC de un dispositivo para eludir listas de control de acceso.</p>
+                    <p><strong>Explotación:</strong> Un atacante puede obtener acceso no autorizado a la red.</p>
+                    <p><strong>Mitigación:</strong> Usar seguridad de puertos y filtrado de direcciones MAC.</p>
+                </div>
+            </li>
+            <li onclick="toggleDetails('details110')">Explotación de Relay SMTP
+                <div id="details110" class="details">
+                    <p><strong>Descripción:</strong> Explotar servidores SMTP para enviar correos electrónicos no deseados o maliciosos.</p>
+                    <p><strong>Explotación:</strong> Un atacante puede usar relés abiertos para ocultar su origen.</p>
+                    <p><strong>Mitigación:</strong> Proteger los servidores SMTP con autenticación y restricciones de relé.</p>
+                </div>
+            </li>
+            <li onclick="toggleDetails('details111')">Técnicas de Evasión de Firewall
+                <div id="details111" class="details">
+                    <p><strong>Descripción:</strong> Eludir las reglas del firewall para acceder a áreas restringidas.</p>
+                    <p><strong>Explotación:</strong> Un atacante puede usar técnicas como fragmentación, túneles o suplantación.</p>
+                    <p><strong>Mitigación:</strong> Configurar adecuadamente los firewalls y monitorear el tráfico en busca de anomalías.</p>
+                </div>
+            </li>
+            <li onclick="toggleDetails('details112')">Elusión de Sistemas IDS/IPS
+                <div id="details112" class="details">
+                    <p><strong>Descripción:</strong> Evitar la detección por sistemas de detección/prevención de intrusiones.</p>
+                    <p><strong>Explotación:</strong> Un atacante puede modificar las cargas útiles o usar cifrado para evadir la detección.</p>
+                    <p><strong>Mitigación:</strong> Actualizar regularmente las firmas IDS/IPS y usar múltiples métodos de detección.</p>
+                </div>
+            </li>
+            <li onclick="toggleDetails('details113')">Inyección SQL a través de la Red
+                <div id="details113" class="details">
+                    <p><strong>Descripción:</strong> Inyectar consultas SQL maliciosas a través de interfaces de red.</p>
+                    <p><strong>Explotación:</strong> Un atacante puede recuperar, modificar o eliminar datos de la base de datos.</p>
+                    <p><strong>Mitigación:</strong> Usar consultas parametrizadas y validación de entradas.</p>
+                </div>
+            </li>
+            <li onclick="toggleDetails('details114')">Explotación de Desbordamientos de Búfer a través de la Red
+                <div id="details114" class="details">
+                    <p><strong>Descripción:</strong> Enviar datos para desbordar un búfer y ejecutar código arbitrario.</p>
+                    <p><strong>Explotación:</strong> Un atacante puede tomar el control del sistema afectado.</p>
+                    <p><strong>Mitigación:</strong> Implementar verificación de límites adecuada y usar prácticas de programación segura.</p>
+                </div>
+            </li>
+            <li onclick="toggleDetails('details115')">Ataques de Denegación de Servicio (DoS)
+                <div id="details115" class="details">
+                    <p><strong>Descripción:</strong> Sobrecargar un sistema para hacerlo inaccesible a los usuarios.</p>
+                    <p><strong>Explotación:</strong> Un atacante puede interrumpir los servicios y causar tiempo de inactividad.</p>
+                    <p><strong>Mitigación:</strong> Usar limitación de velocidad, balanceo de carga y servicios de protección DDoS.</p>
+                </div>
+            </li>
+            <li onclick="toggleDetails('details116')">Ataques Distribuidos de Denegación de Servicio (DDoS)
+                <div id="details116" class="details">
+                    <p><strong>Descripción:</strong> Usar múltiples sistemas para lanzar un ataque DoS.</p>
+                    <p><strong>Explotación:</strong> Un atacante puede usar botnets para amplificar el ataque.</p>
+                    <p><strong>Mitigación:</strong> Implementar estrategias robustas de mitigación de DDoS y usar protecciones basadas en la nube.</p>
+                </div>
+            </li>
+            <li onclick="toggleDetails('details117')">Explotación de Vulnerabilidades Conocidas (usando herramientas como Metasploit)
+                <div id="details117" class="details">
+                    <p><strong>Descripción:</strong> Usar exploits preconstruidos para aprovechar vulnerabilidades conocidas.</p>
+                    <p><strong>Explotación:</strong> Un atacante puede obtener acceso no autorizado o control.</p>
+                    <p><strong>Mitigación:</strong> Aplicar parches y actualizaciones regularmente a todos los sistemas.</p>
+                </div>
+            </li>
+            <li onclick="toggleDetails('details118')">Cracking de Contraseñas a través de la Red
+                <div id="details118" class="details">
+                    <p><strong>Descripción:</strong> Capturar y descifrar contraseñas transmitidas a través de la red.</p>
+                    <p><strong>Explotación:</strong> Un atacante puede obtener acceso a cuentas de usuarios.</p>
+                    <p><strong>Mitigación:</strong> Usar contraseñas fuertes, hasheadas y implementar autenticación multifactor.</p>
+                </div>
+            </li>
+            <li onclick="toggleDetails('details119')">Hacking de Redes Inalámbricas
+                <div id="details119" class="details">
+                    <p><strong>Descripción:</strong> Comprometer redes inalámbricas para obtener acceso no autorizado.</p>
+                    <p><strong>Explotación:</strong> Un atacante puede espiar, inyectar datos o obtener acceso a la red.</p>
+                    <p><strong>Mitigación:</strong> Usar cifrado WPA3 fuerte y deshabilitar WPS.</p>
+                </div>
+            </li>
+            <li onclick="toggleDetails('details120')">Configuración de Servidor DHCP Malicioso
+                <div id="details120" class="details">
+                    <p><strong>Descripción:</strong> Configurar un servidor DHCP malicioso para asignar direcciones IP incorrectas.</p>
+                    <p><strong>Explotación:</strong> Un atacante puede redirigir el tráfico y realizar ataques MitM.</p>
+                    <p><strong>Mitigación:</strong> Usar DHCP snooping y monitorear el tráfico de la red en busca de anomalías.</p>
+                </div>
+            </li>
+            <li onclick="toggleDetails('details121')">Ejecución Remota de Código
+                <div id="details121" class="details">
+                    <p><strong>Descripción:</strong> Ejecutar código arbitrario en un sistema remoto.</p>
+                    <p><strong>Explotación:</strong> Un atacante puede tomar el control del sistema afectado.</p>
+                    <p><strong>Mitigación:</strong> Aplicar parches y usar prácticas de programación segura.</p>
+                </div>
+            </li>
+            <li onclick="toggleDetails('details122')">Ataques a Protocolos de Red
+                <div id="details122" class="details">
+                    <p><strong>Descripción:</strong> Explotar debilidades en los protocolos de red.</p>
+                    <p><strong>Explotación:</strong> Un atacante puede interrumpir las comunicaciones o obtener acceso no autorizado.</p>
+                    <p><strong>Mitigación:</strong> Usar versiones seguras de los protocolos y configurarlos adecuadamente.</p>
+                </div>
+            </li>
+            <li onclick="toggleDetails('details123')">Explotación de Servicios de Red
+                <div id="details123" class="details">
+                    <p><strong>Descripción:</strong> Explotar vulnerabilidades en los servicios de red.</p>
+                    <p><strong>Explotación:</strong> Un atacante puede obtener acceso no autorizado o control.</p>
+                    <p><strong>Mitigación:</strong> Actualizar y proteger regularmente todos los servicios de red.</p>
+                </div>
+            </li>
+            <li onclick="toggleDetails('details124')">Elusión de Protocolos de Comunicación Segura en Redes
+                <div id="details124" class="details">
+                    <p><strong>Descripción:</strong> Eludir las medidas de seguridad en los protocolos de comunicación de red.</p>
+                    <p><strong>Explotación:</strong> Un atacante puede interceptar o manipular datos.</p>
+                    <p><strong>Mitigación:</strong> Usar métodos de cifrado y autenticación fuertes.</p>
+                </div>
+            </li>
+            <li onclick="toggleDetails('details125')">Exposición de Exploits de Día Cero
+                <div id="details125" class="details">
+                    <p><strong>Descripción:</strong> Explotar vulnerabilidades desconocidas en software o hardware.</p>
+                    <p><strong>Explotación:</strong> Un atacante puede obtener control antes de que haya un parche disponible.</p>
+                    <p><strong>Mitigación:</strong> Usar inteligencia de amenazas y monitorear para detectar anomalías.</p>
+                </div>
+            </li>
+            <li onclick="toggleDetails('details126')">Hacking de Routers
+                <div id="details126" class="details">
+                    <p><strong>Descripción:</strong> Comprometer routers para interceptar o manipular el tráfico.</p>
+                    <p><strong>Explotación:</strong> Un atacante puede tomar el control del tráfico de la red.</p>
+                    <p><strong>Mitigación:</strong> Usar contraseñas fuertes y actualizar el firmware del router regularmente.</p>
+                </div>
+            </li>
+            <li onclick="toggleDetails('details127')">Técnicas de Evasión de Honeypots
+                <div id="details127" class="details">
+                    <p><strong>Descripción:</strong> Evitar la detección por honeypots configurados para atrapar atacantes.</p>
+                    <p><strong>Explotación:</strong> Un atacante puede eludir los honeypots y evitar la detección.</p>
+                    <p><strong>Mitigación:</strong> Usar múltiples capas de defensa y monitorear tácticas de evasión.</p>
+                </div>
+            </li>
+            <li onclick="toggleDetails('details128')">Pivoting en VPN
+                <div id="details128" class="details">
+                    <p><strong>Descripción:</strong> Usar una VPN comprometida para acceder a redes internas.</p>
+                    <p><strong>Explotación:</strong> Un atacante puede moverse lateralmente dentro de una red.</p>
+                    <p><strong>Mitigación:</strong> Usar segmentación de red y monitorear la actividad de la VPN.</p>
+                </div>
+            </li>
+            <li onclick="toggleDetails('details129')">Túneles SSH
+                <div id="details129" class="details">
+                    <p><strong>Descripción:</strong> Crear túneles cifrados usando SSH.</p>
+                    <p><strong>Explotación:</strong> Un atacante puede eludir firewalls y acceder a áreas restringidas.</p>
+                    <p><strong>Mitigación:</strong> Monitorear el tráfico SSH y usar controles de acceso estrictos.</p>
+                </div>
+            </li>
+            <li onclick="toggleDetails('details130')">Striping de SSL
+                <div id="details130" class="details">
+                    <p><strong>Descripción:</strong> Degradar HTTPS a HTTP para interceptar datos.</p>
+                    <p><strong>Explotación:</strong> Un atacante puede interceptar y leer información sensible.</p>
+                    <p><strong>Mitigación:</strong> Usar HSTS y monitorear intentos de striping de SSL.</p>
+                </div>
+            </li>
+            <li onclick="toggleDetails('details131')">Ataques de Repetición de Credenciales
+                <div id="details131" class="details">
+                    <p><strong>Descripción:</strong> Reutilizar credenciales capturadas para obtener acceso no autorizado.</p>
+                    <p><strong>Explotación:</strong> Un atacante puede hacerse pasar por un usuario legítimo.</p>
+                    <p><strong>Mitigación:</strong> Usar tokens de sesión únicos e implementar autenticación multifactor.</p>
+                </div>
+            </li>
+            <li onclick="toggleDetails('details132')">Ataques de Canales Laterales
+                <div id="details132" class="details">
+                    <p><strong>Descripción:</strong> Explotar fugas de información indirectas de un sistema.</p>
+                    <p><strong>Explotación:</strong> Un atacante puede inferir datos sensibles a partir del uso de energía, tiempo, etc.</p>
+                    <p><strong>Mitigación:</strong> Implementar técnicas de generación de ruido y usar diseño de hardware seguro.</p>
+                </div>
+            </li>
+            <li onclick="toggleDetails('details133')">Secuestro de Subdominios a través de Configuraciones Erróneas de Red
+                <div id="details133" class="details">
+                    <p><strong>Descripción:</strong> Tomar el control de un subdominio debido a configuraciones DNS incorrectas.</p>
+                    <p><strong>Explotación:</strong> Un atacante puede redirigir el tráfico y realizar ataques de phishing.</p>
+                    <p><strong>Mitigación:</strong> Auditar regularmente las configuraciones DNS y eliminar subdominios no utilizados.</p>
+                </div>
+            </li>
+            <li onclick="toggleDetails('details134')">Ataques de Relay SMB
+                <div id="details134" class="details">
+                    <p><strong>Descripción:</strong> Reenviar solicitudes de autenticación SMB para obtener acceso no autorizado.</p>
+                    <p><strong>Explotación:</strong> Un atacante puede autenticarse como un usuario legítimo.</p>
+                    <p><strong>Mitigación:</strong> Deshabilitar SMBv1 y usar firmas SMB.</p>
+                </div>
+            </li>
+            <li onclick="toggleDetails('details135')">Ataques a Kerberos
+                <div id="details135" class="details">
+                    <p><strong>Descripción:</strong> Explotar debilidades en el protocolo de autenticación Kerberos.</p>
+                    <p><strong>Explotación:</strong> Un atacante puede hacerse pasar por usuarios o escalar privilegios.</p>
+                    <p><strong>Mitigación:</strong> Mantener los sistemas actualizados y monitorear los tickets de Kerberos en busca de anomalías.</p>
+                </div>
+            </li>
+            <li onclick="toggleDetails('details136')">Inyección LDAP
+                <div id="details136" class="details">
+                    <p><strong>Descripción:</strong> Inyectar consultas LDAP maliciosas para manipular servicios de directorio.</p>
+                    <p><strong>Explotación:</strong> Un atacante puede acceder, modificar o eliminar datos del directorio.</p>
+                    <p><strong>Mitigación:</strong> Usar consultas parametrizadas y validación de entradas.</p>
+                </div>
+            </li>
+            <li onclick="toggleDetails('details137')">Exploits de RDP
+                <div id="details137" class="details">
+                    <p><strong>Descripción:</strong> Explotar vulnerabilidades en el Protocolo de Escritorio Remoto.</p>
+                    <p><strong>Explotación:</strong> Un atacante puede obtener acceso remoto a sistemas.</p>
+                    <p><strong>Mitigación:</strong> Aplicar parches y usar métodos de autenticación fuertes.</p>
+                </div>
+            </li>
+            <li onclick="toggleDetails('details138')">Hacking de VoIP
+                <div id="details138" class="details">
+                    <p><strong>Descripción:</strong> Comprometer sistemas de Voz sobre IP para espiar o interrumpir comunicaciones.</p>
+                    <p><strong>Explotación:</strong> Un atacante puede interceptar llamadas o causar interrupciones en el servicio.</p>
+                    <p><strong>Mitigación:</strong> Usar cifrado y proteger la infraestructura VoIP.</p>
+                </div>
+            </li>
+            <li onclick="toggleDetails('details139')">Hacking de Redes Móviles
+                <div id="details139" class="details">
+                    <p><strong>Descripción:</strong> Comprometer redes móviles para interceptar o manipular datos.</p>
+                    <p><strong>Explotación:</strong> Un atacante puede espiar, rastrear o interrumpir comunicaciones.</p>
+                    <p><strong>Mitigación:</strong> Usar cifrado fuerte y proteger la infraestructura de la red móvil.</p>
+                </div>
+            </li>
+            <li onclick="toggleDetails('details140')">Secuestro de Gateway de API
+                <div id="details140" class="details">
+                    <p><strong>Descripción:</strong> Comprometer puertas de enlace de API para interceptar o manipular el tráfico de API.</p>
+                    <p><strong>Explotación:</strong> Un atacante puede alterar las respuestas de la API o obtener acceso no autorizado.</p>
+                    <p><strong>Mitigación:</strong> Proteger las puertas de enlace de API y usar métodos de autenticación fuertes.</p>
+                </div>
+            </li>
+            <li onclick="toggleDetails('details141')">Explotación de Sistemas de Archivos de Red
+                <div id="details141" class="details">
+                    <p><strong>Descripción:</strong> Comprometer sistemas de archivos de red para acceder o manipular archivos.</p>
+                    <p><strong>Explotación:</strong> Un atacante puede robar o modificar datos sensibles.</p>
+                    <p><strong>Mitigación:</strong> Proteger los sistemas de archivos de red con autenticación fuerte y cifrado.</p>
+                </div>
+            </li>
+            <li onclick="toggleDetails('details142')">Ataques a Redes en la Nube
+                <div id="details142" class="details">
+                    <p><strong>Descripción:</strong> Comprometer redes en la nube para acceder o manipular datos.</p>
+                    <p><strong>Explotación:</strong> Un atacante puede robar datos o interrumpir los servicios en la nube.</p>
+                    <p><strong>Mitigación:</strong> Usar autenticación fuerte y cifrado para los servicios en la nube.</p>
+                </div>
+            </li>
+            <li onclick="toggleDetails('details143')">Elusión de Segmentación de Red
+                <div id="details143" class="details">
+                    <p><strong>Descripción:</strong> Eludir la segmentación de red para obtener acceso no autorizado.</p>
+                    <p><strong>Explotación:</strong> Un atacante puede moverse lateralmente dentro de una red.</p>
+                    <p><strong>Mitigación:</strong> Usar segmentación de red estricta y monitorear en busca de anomalías.</p>
+                </div>
+            </li>
+            <li onclick="toggleDetails('details144')">Ataques a IPv6
+                <div id="details144" class="details">
+                    <p><strong>Descripción:</strong> Explotar vulnerabilidades en los protocolos y las implementaciones de IPv6.</p>
+                    <p><strong>Explotación:</strong> Un atacante puede interrumpir o manipular el tráfico IPv6.</p>
+                    <p><strong>Mitigación:</strong> Usar configuraciones seguras de IPv6 y monitorear el tráfico IPv6.</p>
+                </div>
+            </li>
+            <li onclick="toggleDetails('details145')">Ataques de Sincronización de Red
+                <div id="details145" class="details">
+                    <p><strong>Descripción:</strong> Explotar información de tiempo para inferir datos sensibles.</p>
+                    <p><strong>Explotación:</strong> Un atacante puede inferir datos basándose en los tiempos de respuesta.</p>
+                    <p><strong>Mitigación:</strong> Usar técnicas de ofuscación de tiempo y prácticas de programación segura.</p>
+                </div>
+            </li>
+            <li onclick="toggleDetails('details146')">Utilización de Botnets
+                <div id="details146" class="details">
+                    <p><strong>Descripción:</strong> Usar una red de dispositivos comprometidos para lanzar ataques.</p>
+                    <p><strong>Explotación:</strong> Un atacante puede realizar ataques DDoS o distribuir malware.</p>
+                    <p><strong>Mitigación:</strong> Detectar y desmantelar botnets y usar defensas de red robustas.</p>
+                </div>
+            </li>
+            <li onclick="toggleDetails('details147')">Cryptojacking a través de Dispositivos de Red
+                <div id="details147" class="details">
+                    <p><strong>Descripción:</strong> Usar dispositivos de red para minar criptomonedas sin consentimiento.</p>
+                    <p><strong>Explotación:</strong> Un atacante puede usar los recursos del sistema para la minería.</p>
+                    <p><strong>Mitigación:</strong> Monitorear el tráfico de la red en busca de actividad inusual y proteger los dispositivos.</p>
+                </div>
+            </li>
+            <li onclick="toggleDetails('details148')">Ataques de Desautenticación Wi-Fi
+                <div id="details148" class="details">
+                    <p><strong>Descripción:</strong> Forzar a los dispositivos a desconectarse de las redes Wi-Fi.</p>
+                    <p><strong>Explotación:</strong> Un atacante puede interrumpir la conectividad Wi-Fi.</p>
+                    <p><strong>Mitigación:</strong> Usar WPA3 y monitorear el tráfico Wi-Fi en busca de tramas de desautenticación.</p>
+                </div>
+            </li>
+            <li onclick="toggleDetails('details149')">Bluejacking
+                <div id="details149" class="details">
+                    <p><strong>Descripción:</strong> Enviar mensajes no solicitados a través de Bluetooth.</p>
+                    <p><strong>Explotación:</strong> Un atacante puede enviar mensajes de spam o phishing.</p>
+                    <p><strong>Mitigación:</strong> Mantener los dispositivos Bluetooth en modo no visible.</p>
+                </div>
+            </li>
+            <li onclick="toggleDetails('details150')">Bluesnarfing
+                <div id="details150" class="details">
+                    <p><strong>Descripción:</strong> Acceso no autorizado a dispositivos habilitados para Bluetooth.</p>
+                    <p><strong>Explotación:</strong> Un atacante puede robar datos de dispositivos Bluetooth.</p>
+                    <p><strong>Mitigación:</strong> Usar emparejamiento Bluetooth fuerte y mantener los dispositivos actualizados.</p>
+                </div>
+            </li>
+            <li onclick="toggleDetails('details151')">Pharming
+                <div id="details151" class="details">
+                    <p><strong>Descripción:</strong> Redirigir el tráfico de un sitio legítimo a uno malicioso.</p>
+                    <p><strong>Explotación:</strong> Un atacante puede robar credenciales o distribuir malware.</p>
+                    <p><strong>Mitigación:</strong> Usar DNS seguro y monitorear en busca de cambios en el DNS.</p>
+                </div>
+            </li>
+            <li onclick="toggleDetails('details152')">Clickjacking en Paneles de Red
+                <div id="details152" class="details">
+                    <p><strong>Descripción:</strong> Engañar a los usuarios para que hagan clic en contenido malicioso oculto detrás de elementos legítimos.</p>
+                    <p><strong>Explotación:</strong> Un atacante puede ejecutar acciones sin el conocimiento del usuario.</p>
+                    <p><strong>Mitigación:</strong> Usar técnicas de protección contra frame y encabezados seguros.</p>
+                </div>
+            </li>
+            <li onclick="toggleDetails('details153')">Ataques Sybil en Entornos de Red
+                <div id="details153" class="details">
+                    <p><strong>Descripción:</strong> Crear múltiples identidades falsas para influir o interrumpir las operaciones de la red.</p>
+                    <p><strong>Explotación:</strong> Un atacante puede manipular datos o decisiones de la red.</p>
+                    <p><strong>Mitigación:</strong> Usar métodos de verificación de identidad fuertes y monitorear en busca de anomalías.</p>
+                </div>
+            </li>
+            <li onclick="toggleDetails('details154')">Explotación de Errores de Configuración de Red
+                <div id="details154" class="details">
+                    <p><strong>Descripción:</strong> Aprovechar configuraciones incorrectas en la configuración de la red.</p>
+                    <p><strong>Explotación:</strong> Un atacante puede obtener acceso no autorizado o interrumpir servicios.</p>
+                    <p><strong>Mitigación:</strong> Auditar regularmente las configuraciones de red y aplicar mejores prácticas.</p>
+                </div>
+            </li>
+            <li onclick="toggleDetails('details155')">Utilización de Kits de Explotación
+                <div id="details155" class="details">
+                    <p><strong>Descripción:</strong> Usar kits de explotación preempaquetados para automatizar ataques.</p>
+                    <p><strong>Explotación:</strong> Un atacante puede explotar rápidamente vulnerabilidades conocidas.</p>
+                    <p><strong>Mitigación:</strong> Mantener los sistemas actualizados y usar herramientas de seguridad para detectar kits de explotación.</p>
+                </div>
+            </li>
+            <li onclick="toggleDetails('details156')">Slipstreaming NAT
+                <div id="details156" class="details">
+                    <p><strong>Descripción:</strong> Eludir las protecciones NAT/firewall para acceder a dispositivos internos.</p>
+                    <p><strong>Explotación:</strong> Un atacante puede acceder remotamente a dispositivos detrás de un NAT.</p>
+                    <p><strong>Mitigación:</strong> Usar reglas de firewall estrictas y monitorear en busca de tráfico inusual.</p>
+                </div>
+            </li>
+            <li onclick="toggleDetails('details157')">Service Side Request Forgery (SSRF) en Servicios de Red
+                <div id="details157" class="details">
+                    <p><strong>Descripción:</strong> Explotar el manejo de solicitudes en el lado del servidor para realizar acciones no autorizadas.</p>
+                    <p><strong>Explotación:</strong> Un atacante puede manipular solicitudes para acceder a sistemas internos.</p>
+                    <p><strong>Mitigación:</strong> Validar y sanitizar las solicitudes del lado del servidor.</p>
+                </div>
+            </li>
+            <li onclick="toggleDetails('details158')">Manipulación de Tráfico de Red
+                <div id="details158" class="details">
+                    <p><strong>Descripción:</strong> Interceptar y alterar el tráfico de la red.</p>
+                    <p><strong>Explotación:</strong> Un atacante puede modificar datos o inyectar contenido malicioso.</p>
+                    <p><strong>Mitigación:</strong> Usar cifrado y monitorear en busca de anomalías en el tráfico.</p>
+                </div>
+            </li>
+            <li onclick="toggleDetails('details159')">Ataques de Ransomware a través de la Red
+                <div id="details159" class="details">
+                    <p><strong>Descripción:</strong> Propagar ransomware a través de canales de red.</p>
+                    <p><strong>Explotación:</strong> Un atacante puede cifrar datos y exigir un rescate.</p>
+                    <p><strong>Mitigación:</strong> Usar prácticas robustas de seguridad y copias de seguridad.</p>
+                </div>
+            </li>
+            <li onclick="toggleDetails('details160')">Utilización de Malware en Ataques de Red
+                <div id="details160" class="details">
+                    <p><strong>Descripción:</strong> Usar software malicioso para comprometer sistemas de red.</p>
+                    <p><strong>Explotación:</strong> Un atacante puede robar datos o interrumpir operaciones.</p>
+                    <p><strong>Mitigación:</strong> Usar herramientas antivirus y antimalware y mantener los sistemas actualizados.</p>
+                </div>
+            </li>
+            <li onclick="toggleDetails('details161')">Exfiltración de Datos a través de Canales Encubiertos
+                <div id="details161" class="details">
+                    <p><strong>Descripción:</strong> Transmitir datos fuera de una red a través de canales ocultos.</p>
+                    <p><strong>Explotación:</strong> Un atacante puede robar información sensible sin ser detectado.</p>
+                    <p><strong>Mitigación:</strong> Monitorear el tráfico de la red y usar herramientas de prevención de pérdida de datos.</p>
+                </div>
+            </li>
+            <li onclick="toggleDetails('details162')">Rebinding de DNS
+                <div id="details162" class="details">
+                    <p><strong>Descripción:</strong> Explotar respuestas DNS para eludir la política del mismo origen y acceder a recursos internos.</p>
+                    <p><strong>Explotación:</strong> Un atacante puede controlar los navegadores de los clientes para acceder a sistemas internos.</p>
+                    <p><strong>Mitigación:</strong> Usar protecciones contra el rebinding de DNS y monitorear el tráfico DNS.</p>
+                </div>
+            </li>
+            <li onclick="toggleDetails('details163')">Manipulación de Lógica de Aplicaciones Basadas en Red
+                <div id="details163" class="details">
+                    <p><strong>Descripción:</strong> Explotar fallas lógicas en aplicaciones basadas en red.</p>
+                    <p><strong>Explotación:</strong> Un atacante puede manipular el comportamiento de la aplicación a su favor.</p>
+                    <p><strong>Mitigación:</strong> Usar prácticas de programación segura y realizar pruebas exhaustivas.</p>
+                </div>
+            </li>
+            <li onclick="toggleDetails('details164')">Tap Físico de Red
+                <div id="details164" class="details">
+                    <p><strong>Descripción:</strong> Instalar un dispositivo físico para interceptar el tráfico de la red.</p>
+                    <p><strong>Explotación:</strong> Un atacante puede capturar y analizar paquetes de datos.</p>
+                    <p><strong>Mitigación:</strong> Proteger el acceso físico a la infraestructura de la red.</p>
+                </div>
+            </li>
+            <li onclick="toggleDetails('details165')">Modificación de Firmware de Dispositivos de Red
+                <div id="details165" class="details">
+                    <p><strong>Descripción:</strong> Alterar el firmware de los dispositivos de red para introducir vulnerabilidades.</p>
+                    <p><strong>Explotación:</strong> Un atacante puede obtener control persistente sobre los dispositivos.</p>
+                    <p><strong>Mitigación:</strong> Usar actualizaciones de firmware firmadas y monitorear la integridad del dispositivo.</p>
+                </div>
+            </li>
+            <li onclick="toggleDetails('details166')">Cross-Site Scripting (XSS) a través de la Red
+                <div id="details166" class="details">
+                    <p><strong>Descripción:</strong> Inyectar scripts maliciosos en aplicaciones basadas en red.</p>
+                    <p><strong>Explotación:</strong> Un atacante puede robar tokens de sesión o realizar acciones en nombre de los usuarios.</p>
+                    <p><strong>Mitigación:</strong> Usar validación de entradas y políticas de seguridad de contenido.</p>
+                </div>
+            </li>
+            <li onclick="toggleDetails('details167')">Cross-Site Request Forgery (CSRF) en Dispositivos de Red
+                <div id="details167" class="details">
+                    <p><strong>Descripción:</strong> Forzar a los usuarios a realizar acciones no deseadas en dispositivos de red.</p>
+                    <p><strong>Explotación:</strong> Un atacante puede cambiar configuraciones o ejecutar comandos sin el conocimiento del usuario.</p>
+                    <p><strong>Mitigación:</strong> Usar tokens anti-CSRF y configurar los dispositivos de manera segura.</p>
+                </div>
+            </li>
+            <li onclick="toggleDetails('details168')">Spear Phishing a Administradores de Red
+                <div id="details168" class="details">
+                    <p><strong>Descripción:</strong> Ataques de phishing dirigidos a administradores de red.</p>
+                    <p><strong>Explotación:</strong> Un atacante puede obtener credenciales y acceso de administrador.</p>
+                    <p><strong>Mitigación:</strong> Realizar capacitación en concienciación sobre seguridad y usar autenticación multifactor.</p>
+                </div>
+            </li>
+            <li onclick="toggleDetails('details169')">Inyección de Código en Protocolos de Red
+                <div id="details169" class="details">
+                    <p><strong>Descripción:</strong> Inyectar código malicioso en protocolos de red para ejecutar comandos arbitrarios.</p>
+                    <p><strong>Explotación:</strong> Un atacante puede controlar dispositivos o aplicaciones de red.</p>
+                    <p><strong>Mitigación:</strong> Usar prácticas de programación segura y validar los datos de los protocolos.</p>
+                </div>
+            </li>
+            <li onclick="toggleDetails('details170')">Explotación de Condiciones de Carrera a través de la Red
+                <div id="details170" class="details">
+                    <p><strong>Descripción:</strong> Explotar vulnerabilidades de tiempo para alterar el orden de las operaciones.</p>
+                    <p><strong>Explotación:</strong> Un atacante puede manipular datos o el flujo de ejecución.</p>
+                    <p><strong>Mitigación:</strong> Usar mecanismos de sincronización y realizar pruebas exhaustivas.</p>
+                </div>
+            </li>
+            <li onclick="toggleDetails('details171')">Explotación de Errores de Tiempo de Verificación a Tiempo de Uso (TOCTOU) en Configuraciones de Red
+                <div id="details171" class="details">
+                    <p><strong>Descripción:</strong> Explotar las brechas de tiempo entre la verificación y la ejecución de acciones.</p>
+                    <p><strong>Explotación:</strong> Un atacante puede cambiar las condiciones después de las verificaciones pero antes de la ejecución.</p>
+                    <p><strong>Mitigación:</strong> Usar operaciones atómicas y reducir la ventana entre la verificación y el uso.</p>
+                </div>
+            </li>
+            <li onclick="toggleDetails('details172')">Explotación de Balanceadores de Carga de Red
+                <div id="details172" class="details">
+                    <p><strong>Descripción:</strong> Comprometer balanceadores de carga para manipular la distribución del tráfico.</p>
+                    <p><strong>Explotación:</strong> Un atacante puede interrumpir la disponibilidad del servicio o redirigir el tráfico.</p>
+                    <p><strong>Mitigación:</strong> Proteger los balanceadores de carga con autenticación fuerte y monitoreo.</p>
+                </div>
+            </li>
+            <li onclick="toggleDetails('details173')">Explotación de Herramientas de Gestión de Red
+                <div id="details173" class="details">
+                    <p><strong>Descripción:</strong> Comprometer herramientas utilizadas para gestionar la infraestructura de red.</p>
+                    <p><strong>Explotación:</strong> Un atacante puede controlar o interrumpir las operaciones de red.</p>
+                    <p><strong>Mitigación:</strong> Proteger las herramientas de gestión y limitar el acceso a usuarios autorizados.</p>
+                </div>
+            </li>
+            <li onclick="toggleDetails('details174')">Elusión de Controles de Acceso a la Red
+                <div id="details174" class="details">
+                    <p><strong>Descripción:</strong> Eludir mecanismos que controlan el acceso a los recursos de la red.</p>
+                    <p><strong>Explotación:</strong> Un atacante puede obtener acceso no autorizado a áreas sensibles.</p>
+                    <p><strong>Mitigación:</strong> Usar controles de acceso fuertes y monitorear en busca de intentos no autorizados.</p>
+                </div>
+            </li>
+            <li onclick="toggleDetails('details175')">Manipulación de Cuotas
+                <div id="details175" class="details">
+                    <p><strong>Descripción:</strong> Alterar configuraciones de cuota para exceder los recursos asignados.</p>
+                    <p><strong>Explotación:</strong> Un atacante puede causar interrupciones en el servicio o agotamiento de recursos.</p>
+                    <p><strong>Mitigación:</strong> Monitorear el uso de recursos y aplicar políticas estrictas de cuotas.</p>
+                </div>
+            </li>
+            <li onclick="toggleDetails('details176')">Ataques Reflectivos DDoS
+                <div id="details176" class="details">
+                    <p><strong>Descripción:</strong> Amplificar ataques DDoS reflejando tráfico en servidores mal configurados.</p>
+                    <p><strong>Explotación:</strong> Un atacante puede aumentar el volumen del tráfico de ataque.</p>
+                    <p><strong>Mitigación:</strong> Configurar adecuadamente los servidores y usar servicios de protección DDoS.</p>
+                </div>
+            </li>
+            <li onclick="toggleDetails('details177')">Ataques de Amplificación DDoS
+                <div id="details177" class="details">
+                    <p><strong>Descripción:</strong> Usar técnicas de amplificación para aumentar el impacto de los ataques DDoS.</p>
+                    <p><strong>Explotación:</strong> Un atacante puede abrumar a los objetivos con tráfico amplificado.</p>
+                    <p><strong>Mitigación:</strong> Usar limitación de velocidad y servicios de mitigación DDoS.</p>
+                </div>
+            </li>
+            <li onclick="toggleDetails('details178')">Tunneling de DNS
+                <div id="details178" class="details">
+                    <p><strong>Descripción:</strong> Usar consultas DNS para tunelar datos dentro y fuera de una red.</p>
+                    <p><strong>Explotación:</strong> Un atacante puede eludir las medidas de seguridad para exfiltrar datos.</p>
+                    <p><strong>Mitigación:</strong> Monitorear el tráfico DNS en busca de anomalías y usar filtrado DNS.</p>
+                </div>
+            </li>
+            <li onclick="toggleDetails('details179')">Tunneling de ICMP
+                <div id="details179" class="details">
+                    <p><strong>Descripción:</strong> Usar paquetes ICMP para tunelar datos a través de una red.</p>
+                    <p><strong>Explotación:</strong> Un atacante puede exfiltrar datos o eludir firewalls.</p>
+                    <p><strong>Mitigación:</strong> Monitorear el tráfico ICMP y usar reglas de filtrado estrictas.</p>
+                </div>
+            </li>
+            <li onclick="toggleDetails('details180')">Manipulación de Mecanismos de Autenticación Basados en Red
+                <div id="details180" class="details">
+                    <p><strong>Descripción:</strong> Explotar debilidades en los protocolos de autenticación.</p>
+                    <p><strong>Explotación:</strong> Un atacante puede obtener acceso no autorizado a recursos de la red.</p>
+                    <p><strong>Mitigación:</strong> Usar métodos de autenticación fuertes y multifactor.</p>
+                </div>
+            </li>
+            <li onclick="toggleDetails('details181')">Fuga de Datos de la Red a través de Canales Laterales
+                <div id="details181" class="details">
+                    <p><strong>Descripción:</strong> Exfiltrar datos a través de medios indirectos como el consumo de energía o el tiempo.</p>
+                    <p><strong>Explotación:</strong> Un atacante puede inferir información sensible sin acceso directo.</p>
+                    <p><strong>Mitigación:</strong> Implementar técnicas de resistencia a canales laterales y prácticas de programación segura.</p>
+                </div>
+            </li>
+            <li onclick="toggleDetails('details182')">Volcado de Memoria a través de la Red
+                <div id="details182" class="details">
+                    <p><strong>Descripción:</strong> Capturar y analizar el contenido de la memoria de forma remota.</p>
+                    <p><strong>Explotación:</strong> Un atacante puede recuperar datos sensibles de volcados de memoria.</p>
+                    <p><strong>Mitigación:</strong> Proteger el acceso a la memoria y usar cifrado.</p>
+                </div>
+            </li>
+            <li onclick="toggleDetails('details183')">Elusión de Autenticación Multifactor a través de la Intercepción de la Red
+                <div id="details183" class="details">
+                    <p><strong>Descripción:</strong> Interceptar y eludir mecanismos de autenticación multifactor.</p>
+                    <p><strong>Explotación:</strong> Un atacante puede obtener acceso a pesar de las protecciones 2FA.</p>
+                    <p><strong>Mitigación:</strong> Usar canales de comunicación seguros y monitorear en busca de anomalías.</p>
+                </div>
+            </li>
+            <li onclick="toggleDetails('details184')">Explotación de Cifras SSL/TLS Débiles
+                <div id="details184" class="details">
+                    <p><strong>Descripción:</strong> Atacar sistemas que usan cifras de cifrado débiles o desactualizadas.</p>
+                    <p><strong>Explotación:</strong> Un atacante puede descifrar o manipular datos cifrados.</p>
+                    <p><strong>Mitigación:</strong> Usar cifras y protocolos de cifrado fuertes y actualizados.</p>
+                </div>
+            </li>
+            <li onclick="toggleDetails('details185')">Navegación Forzada en Entornos de Red
+                <div id="details185" class="details">
+                    <p><strong>Descripción:</strong> Acceder a partes no autorizadas de una red manipulando URLs.</p>
+                    <p><strong>Explotación:</strong> Un atacante puede eludir los controles de acceso a áreas restringidas.</p>
+                    <p><strong>Mitigación:</strong> Usar controles de acceso adecuados y validar las URLs.</p>
+                </div>
+            </li>
+            <li onclick="toggleDetails('details186')">Smuggling de HTTP
+                <div id="details186" class="details">
+                    <p><strong>Descripción:</strong> Crear solicitudes HTTP para eludir las medidas de seguridad y alcanzar recursos protegidos.</p>
+                    <p><strong>Explotación:</strong> Un atacante puede manipular y eludir controles de seguridad.</p>
+                    <p><strong>Mitigación:</strong> Usar análisis robusto de HTTP y validar solicitudes.</p>
+                </div>
+            </li>
+            <li onclick="toggleDetails('details187')">Inundación de HTTP
+                <div id="details187" class="details">
+                    <p><strong>Descripción:</strong> Sobrecargar un servidor con solicitudes HTTP para causar una denegación de servicio.</p>
+                    <p><strong>Explotación:</strong> Un atacante puede interrumpir servicios y causar tiempo de inactividad.</p>
+                    <p><strong>Mitigación:</strong> Usar limitación de velocidad y servicios de protección DDoS.</p>
+                </div>
+            </li>
+            <li onclick="toggleDetails('details188')">Secuestro de Web Socket
+                <div id="details188" class="details">
+                    <p><strong>Descripción:</strong> Comprometer conexiones de web socket para interceptar o manipular datos.</p>
+                    <p><strong>Explotación:</strong> Un atacante puede leer o alterar comunicaciones en tiempo real.</p>
+                    <p><strong>Mitigación:</strong> Usar protocolos de web socket seguros y validar datos.</p>
+                </div>
+            </li>
+            <li onclick="toggleDetails('details189')">Explotación de Firewalls de Aplicaciones Web a través de la Red
+                <div id="details189" class="details">
+                    <p><strong>Descripción:</strong> Eludir o manipular firewalls de aplicaciones web para lanzar ataques.</p>
+                    <p><strong>Explotación:</strong> Un atacante puede acceder a recursos protegidos o inyectar código malicioso.</p>
+                    <p><strong>Mitigación:</strong> Usar firewalls de aplicaciones web fuertes y bien configurados.</p>
+                </div>
+            </li>
+            <li onclick="toggleDetails('details190')">Secuestro de BGP
+                <div id="details190" class="details">
+                    <p><strong>Descripción:</strong> Manipular rutas BGP para redirigir o interceptar el tráfico.</p>
+                    <p><strong>Explotación:</strong> Un atacante puede interrumpir o espiar las comunicaciones de la red.</p>
+                    <p><strong>Mitigación:</strong> Usar configuraciones seguras de BGP y monitorear las rutas en busca de anomalías.</p>
+                </div>
+            </li>
+            <li onclick="toggleDetails('details191')">Uso de Técnicas de Amenaza Persistente Avanzada (APT) en Entornos de Red
+                <div id="details191" class="details">
+                    <p><strong>Descripción:</strong> Emplear estrategias sofisticadas y a largo plazo para comprometer redes.</p>
+                    <p><strong>Explotación:</strong> Un atacante puede mantener el acceso y exfiltrar datos durante períodos prolongados.</p>
+                    <p><strong>Mitigación:</strong> Usar medidas de seguridad integrales y monitoreo continuo.</p>
+                </div>
+            </li>
+            <li onclick="toggleDetails('details192')">Reversión y Explotación de Firmware en Dispositivos de Red
+                <div id="details192" class="details">
+                    <p><strong>Descripción:</strong> Analizar y explotar el firmware en dispositivos de red.</p>
+                    <p><strong>Explotación:</strong> Un atacante puede introducir puertas traseras o vulnerabilidades.</p>
+                    <p><strong>Mitigación:</strong> Usar actualizaciones de firmware firmadas y prácticas de programación segura.</p>
+                </div>
+            </li>
+            <li onclick="toggleDetails('details193')">Explotación de Redes Celulares
+                <div id="details193" class="details">
+                    <p><strong>Descripción:</strong> Comprometer redes celulares para interceptar o manipular comunicaciones.</p>
+                    <p><strong>Explotación:</strong> Un atacante puede espiar, rastrear o interrumpir los servicios celulares.</p>
+                    <p><strong>Mitigación:</strong> Usar cifrado fuerte y proteger la infraestructura de la red celular.</p>
+                </div>
+            </li>
+            <li onclick="toggleDetails('details194')">Ataques a Dispositivos IoT de Red
+                <div id="details194" class="details">
+                    <p><strong>Descripción:</strong> Comprometer dispositivos de Internet de las Cosas para obtener acceso a la red.</p>
+                    <p><strong>Explotación:</strong> Un atacante puede usar dispositivos IoT para lanzar ataques o recopilar datos.</p>
+                    <p><strong>Mitigación:</strong> Proteger los dispositivos IoT con autenticación fuerte y actualizaciones regulares.</p>
+                </div>
+            </li>
+            <li onclick="toggleDetails('details195')">Robo de Datos a través de Capas de Red
+                <div id="details195" class="details">
+                    <p><strong>Descripción:</strong> Interceptar datos mientras atraviesan las capas de la red.</p>
+                    <p><strong>Explotación:</strong> Un atacante puede robar información sensible en tránsito.</p>
+                    <p><strong>Mitigación:</strong> Usar cifrado y canales de comunicación seguros.</p>
+                </div>
+            </li>
+            <li onclick="toggleDetails('details196')">Uso de Software de Seguridad Malicioso para Suplantar Credenciales de Red
+                <div id="details196" class="details">
+                    <p><strong>Descripción:</strong> Desplegar software de seguridad falso para robar credenciales.</p>
+                    <p><strong>Explotación:</strong> Un atacante puede recopilar información de inicio de sesión bajo la apariencia de seguridad.</p>
+                    <p><strong>Mitigación:</strong> Educar a los usuarios y usar herramientas de seguridad legítimas y verificadas.</p>
+                </div>
+            </li>
+            <li onclick="toggleDetails('details197')">Inteligencia de Amenazas sobre Vulnerabilidades de Red
+                <div id="details197" class="details">
+                    <p><strong>Descripción:</strong> Recopilar y analizar información sobre vulnerabilidades de red.</p>
+                    <p><strong>Explotación:</strong> Un atacante puede usar inteligencia de amenazas para planificar ataques.</p>
+                    <p><strong>Mitigación:</strong> Mantenerse informado sobre amenazas e implementar medidas de seguridad proactivas.</p>
+                </div>
+            </li>
+            <li onclick="toggleDetails('details198')">Uso de Herramientas de Explotación Personalizadas
+                <div id="details198" class="details">
+                    <p><strong>Descripción:</strong> Desarrollar y desplegar herramientas personalizadas para explotar vulnerabilidades de red.</p>
+                    <p><strong>Explotación:</strong> Un atacante puede usar herramientas personalizadas para evadir la detección y maximizar el impacto.</p>
+                    <p><strong>Mitigación:</strong> Monitorear en busca de actividad inusual y usar herramientas avanzadas de detección de amenazas.</p>
+                </div>
+            </li>
+            <li onclick="toggleDetails('details199')">Explotación en Cadena para Impacto en Toda la Red
+                <div id="details199" class="details">
+                    <p><strong>Descripción:</strong> Vincular múltiples exploits para comprometer toda una red.</p>
+                    <p><strong>Explotación:</strong> Un atacante puede moverse lateralmente y escalar privilegios en toda una red.</p>
+                    <p><strong>Mitigación:</strong> Usar defensas de seguridad en capas y realizar evaluaciones de seguridad regulares.</p>
+                </div>
+            </li>
+            <li onclick="toggleDetails('details200')">Amplificación de Ataques DDoS
+                <div id="details200" class="details">
+                    <p><strong>Descripción:</strong> Usar técnicas de amplificación para aumentar el impacto de los ataques DDoS.</p>
+                    <p><strong>Explotación:</strong> Un atacante puede abrumar a los objetivos con tráfico amplificado.</p>
+                    <p><strong>Mitigación:</strong> Usar limitación de velocidad y servicios de mitigación DDoS.</p>
+                </div>
+            </li>
+        </ol>
+    </div>
+    <div class="buttons">
+        <a href="agenda.html" class="back">⇦</a>
+        <a href="#top" class="top">⇧</a>
+        <a onclick="toggleLanguage()" class="translate">EN/ES</a>
+    </div>
+</body>
+</html>
