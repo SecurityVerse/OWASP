@@ -1,0 +1,7 @@
+<struts>
+    <package name="default" namespace="/" extends="struts-default">
+        <action name="hello" class="com.example.HelloWorldAction">
+            <result name="success">/hello.jsp</result>
+        </action>
+    </package>
+</struts>
